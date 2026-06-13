@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
-import { ArrowRight, MessageCircle, ChevronDown, Github, Linkedin, Twitter } from "lucide-react";
+import { ArrowRight, MessageCircle, ChevronDown, Github, Linkedin, Twitter, MapPin } from "lucide-react";
 
 const roles = ["Full Stack Developer", "React Specialist", "Node.js Expert", "Cloud Architect", "Professional Vibe Coder"];
 
@@ -83,11 +83,25 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-[var(--accent-primary)]/20 bg-[var(--accent-primary)]/5 text-[var(--accent-primary)] mb-10"
-          style={{ fontSize: "13px" }}
+          className="inline-flex items-center gap-4 mb-10"
         >
-          <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-primary)] animate-pulse" />
-          Available for freelance & full-time opportunities
+          <div
+            className="flex items-center gap-2 px-3 py-1.5 rounded-full border"
+            style={{ fontSize: "12px", borderColor: "rgba(var(--accent-success-rgb), 0.25)", background: "rgba(var(--accent-success-rgb), 0.06)", color: "var(--accent-success)" }}
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-60" style={{ background: "var(--accent-success)" }} />
+              <span className="relative inline-flex rounded-full h-2 w-2" style={{ background: "var(--accent-success)" }} />
+            </span>
+            Online
+          </div>
+          <div
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border"
+            style={{ fontSize: "12px", borderColor: "rgba(var(--text-primary-rgb), 0.08)", background: "rgba(var(--text-primary-rgb), 0.03)", color: "var(--text-muted)" }}
+          >
+            <MapPin className="w-3 h-3" />
+            Jakarta, Indonesia
+          </div>
         </motion.div>
 
         <motion.h1
