@@ -10,6 +10,7 @@ import { ExperienceSection } from "./components/ExperienceSection";
 import { TestimonialsSection } from "./components/TestimonialsSection";
 import { ContactSection } from "./components/ContactSection";
 import { Footer } from "./components/Footer";
+import { MusicPlayer } from "./components/MusicPlayer";
 
 function LoadingScreen({ onDone }: { onDone: () => void }) {
   const [progress, setProgress] = useState(0);
@@ -137,6 +138,7 @@ export default function App() {
             </div>
           </main>
           <Footer />
+          <MusicPlayer />
         </motion.div>
       )}
     </div>
