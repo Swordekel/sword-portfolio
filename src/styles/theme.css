@@ -197,6 +197,10 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  section[id] {
+    scroll-margin-top: 80px;
+  }
+
   body {
     background: var(--bg-base);
     color: var(--text-primary);

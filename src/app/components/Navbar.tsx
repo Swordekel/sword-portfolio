@@ -32,14 +32,12 @@ export function Navbar() {
     const targetId = href.replace("#", "");
     const element = document.getElementById(targetId);
     if (element) {
-      const headerOffset = 64; // Height of the fixed navbar (h-16 = 64px)
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
+      setTimeout(() => {
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }, 50);
 
       // Update URL hash without causing viewport jump
       window.history.pushState(null, "", href);
