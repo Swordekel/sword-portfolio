@@ -24,6 +24,28 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const handleNavLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string, label: string) => {
+    e.preventDefault();
+    setActive(label);
+    setMenuOpen(false);
+
+    const targetId = href.replace("#", "");
+    const element = document.getElementById(targetId);
+    if (element) {
+      const headerOffset = 64; // Height of the fixed navbar (h-16 = 64px)
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+
+      // Update URL hash without causing viewport jump
+      window.history.pushState(null, "", href);
+    }
+  };
+
   return (
     <motion.header
       initial={{ y: -80, opacity: 0 }}
@@ -40,7 +62,7 @@ export function Navbar() {
       } : {}}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
-        <a href="#home" className="flex items-center gap-2.5 group" onClick={() => setActive("Home")}>
+        <a href="#home" className="flex items-center gap-2.5 group" onClick={(e) => handleNavLinkClick(e, "#home", "Home")}>
           <div className="w-8 h-8 rounded-lg overflow-hidden shadow-[0_0_16px_rgba(var(--accent-primary-rgb),0.3)]">
             <img
               src={theme === "dark" ? "/logo-dark.jpg" : "/logo-light.jpg"}
@@ -56,7 +78,7 @@ export function Navbar() {
             <a
               key={link.label}
               href={link.href}
-              onClick={() => setActive(link.label)}
+              onClick={(e) => handleNavLinkClick(e, link.href, link.label)}
               className={`relative px-4 py-2 text-sm rounded-lg transition-all duration-200 group ${
                 active === link.label
                   ? "text-[var(--accent-primary)]"
@@ -116,7 +138,7 @@ export function Navbar() {
                 <a
                   key={link.label}
                   href={link.href}
-                  onClick={() => { setActive(link.label); setMenuOpen(false); }}
+                  onClick={(e) => handleNavLinkClick(e, link.href, link.label)}
                   className="px-4 py-3 text-sm text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--text-primary)]/5 rounded-lg transition-all duration-200"
                 >
                   {link.label}
