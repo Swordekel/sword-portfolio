@@ -1,31 +1,31 @@
 import { motion } from "motion/react";
 
 const techs = [
-  { name: "React", color: "#61DAFB", bg: "rgba(97,218,251,0.08)" },
-  { name: "Next.js", color: "var(--text-primary)", bg: "rgba(240,240,255,0.06)" },
-  { name: "TypeScript", color: "#3B82F6", bg: "rgba(59,130,246,0.08)" },
-  { name: "Node.js", color: "#68D391", bg: "rgba(104,211,145,0.08)" },
-  { name: "Python", color: "#F6E05E", bg: "rgba(246,224,94,0.08)" },
-  { name: "Tailwind CSS", color: "#38BDF8", bg: "rgba(56,189,248,0.08)" },
-  { name: "PostgreSQL", color: "#A78BFA", bg: "rgba(167,139,250,0.08)" },
-  { name: "MongoDB", color: "#68D391", bg: "rgba(104,211,145,0.08)" },
-  { name: "Docker", color: "#60A5FA", bg: "rgba(96,165,250,0.08)" },
-  { name: "AWS", color: "#F97316", bg: "rgba(249,115,22,0.08)" },
-  { name: "GraphQL", color: "#E879F9", bg: "rgba(232,121,249,0.08)" },
-  { name: "Redis", color: "#F87171", bg: "rgba(248,113,113,0.08)" },
-  { name: "Prisma", color: "#C084FC", bg: "rgba(192,132,252,0.08)" },
-  { name: "Kubernetes", color: "#60A5FA", bg: "rgba(96,165,250,0.08)" },
-  { name: "Terraform", color: "#A78BFA", bg: "rgba(167,139,250,0.08)" },
-  { name: "Git", color: "#FB923C", bg: "rgba(251,146,60,0.08)" },
+  { name: "React", color: "var(--accent-primary)", bg: "rgba(var(--accent-primary-rgb), 0.08)" },
+  { name: "Next.js", color: "var(--accent-secondary)", bg: "rgba(var(--accent-secondary-rgb), 0.08)" },
+  { name: "TypeScript", color: "var(--accent-tertiary)", bg: "rgba(var(--accent-tertiary-rgb), 0.08)" },
+  { name: "Node.js", color: "var(--accent-success)", bg: "rgba(var(--accent-success-rgb), 0.08)" },
+  { name: "Python", color: "var(--accent-primary)", bg: "rgba(var(--accent-primary-rgb), 0.08)" },
+  { name: "Tailwind CSS", color: "var(--accent-secondary)", bg: "rgba(var(--accent-secondary-rgb), 0.08)" },
+  { name: "PostgreSQL", color: "var(--accent-tertiary)", bg: "rgba(var(--accent-tertiary-rgb), 0.08)" },
+  { name: "MongoDB", color: "var(--accent-success)", bg: "rgba(var(--accent-success-rgb), 0.08)" },
+  { name: "Docker", color: "var(--accent-primary)", bg: "rgba(var(--accent-primary-rgb), 0.08)" },
+  { name: "AWS", color: "var(--accent-secondary)", bg: "rgba(var(--accent-secondary-rgb), 0.08)" },
+  { name: "GraphQL", color: "var(--accent-tertiary)", bg: "rgba(var(--accent-tertiary-rgb), 0.08)" },
+  { name: "Redis", color: "var(--accent-success)", bg: "rgba(var(--accent-success-rgb), 0.08)" },
+  { name: "Prisma", color: "var(--accent-primary)", bg: "rgba(var(--accent-primary-rgb), 0.08)" },
+  { name: "Kubernetes", color: "var(--accent-secondary)", bg: "rgba(var(--accent-secondary-rgb), 0.08)" },
+  { name: "Terraform", color: "var(--accent-tertiary)", bg: "rgba(var(--accent-tertiary-rgb), 0.08)" },
+  { name: "Git", color: "var(--accent-success)", bg: "rgba(var(--accent-success-rgb), 0.08)" },
 ];
 
 const levels = [
   { label: "React / Next.js", pct: 96, color: "var(--accent-primary)" },
-  { label: "TypeScript / JavaScript", pct: 94, color: "#3B82F6" },
-  { label: "Node.js / Express", pct: 91, color: "#68D391" },
-  { label: "PostgreSQL / MongoDB", pct: 87, color: "#A78BFA" },
-  { label: "Docker / Kubernetes", pct: 82, color: "#60A5FA" },
-  { label: "AWS / Cloud", pct: 79, color: "#F97316" },
+  { label: "TypeScript / JavaScript", pct: 94, color: "var(--accent-secondary)" },
+  { label: "Node.js / Express", pct: 91, color: "var(--accent-success)" },
+  { label: "PostgreSQL / MongoDB", pct: 87, color: "var(--accent-tertiary)" },
+  { label: "Docker / Kubernetes", pct: 82, color: "var(--accent-primary)" },
+  { label: "AWS / Cloud", pct: 79, color: "var(--accent-secondary)" },
 ];
 
 function SkillBar({ label, pct, color }: { label: string; pct: number; color: string }) {
@@ -47,7 +47,7 @@ function SkillBar({ label, pct, color }: { label: string; pct: number; color: st
           viewport={{ once: true }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
           className="h-full rounded-full"
-          style={{ background: `linear-gradient(90deg, ${color}80, ${color})`, boxShadow: `0 0 8px ${color}60` }}
+          style={{ background: `linear-gradient(90deg, ${color}, ${color})`, boxShadow: `0 0 8px ${color}` }}
         />
       </div>
     </motion.div>
@@ -143,9 +143,9 @@ export function TechStack() {
           <div className="grid grid-cols-2 gap-4">
             {[
               { title: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "ShadCN UI"], color: "var(--accent-primary)" },
-              { title: "Backend", items: ["Node.js", "Python", "Express", "FastAPI", "GraphQL", "REST API"], color: "#68D391" },
-              { title: "Database", items: ["PostgreSQL", "MongoDB", "Redis", "Prisma ORM", "Supabase", "PlanetScale"], color: "#A78BFA" },
-              { title: "DevOps", items: ["Docker", "Kubernetes", "AWS", "Vercel", "GitHub Actions", "Terraform"], color: "#F97316" },
+              { title: "Backend", items: ["Node.js", "Python", "Express", "FastAPI", "GraphQL", "REST API"], color: "var(--accent-success)" },
+              { title: "Database", items: ["PostgreSQL", "MongoDB", "Redis", "Prisma ORM", "Supabase", "PlanetScale"], color: "var(--accent-tertiary)" },
+              { title: "DevOps", items: ["Docker", "Kubernetes", "AWS", "Vercel", "GitHub Actions", "Terraform"], color: "var(--accent-secondary)" },
             ].map((cat) => (
               <motion.div
                 key={cat.title}

@@ -209,10 +209,10 @@ export function ExperienceSection() {
             >
               <div style={{ fontSize: "13px", fontWeight: 600, color: "var(--text-primary)", marginBottom: "16px" }}>Certifications</div>
               {[
-                { name: "AWS Solutions Architect — Professional", issuer: "Amazon Web Services", year: "2023", color: "#F97316" },
-                { name: "Google Cloud Professional Developer", issuer: "Google Cloud", year: "2022", color: "#60A5FA" },
-                { name: "Meta React Developer", issuer: "Meta / Coursera", year: "2021", color: "#3B82F6" },
-                { name: "MongoDB Associate Developer", issuer: "MongoDB University", year: "2021", color: "#68D391" },
+                { name: "AWS Solutions Architect — Professional", issuer: "Amazon Web Services", year: "2023", color: "var(--accent-primary)" },
+                { name: "Google Cloud Professional Developer", issuer: "Google Cloud", year: "2022", color: "var(--accent-secondary)" },
+                { name: "Meta React Developer", issuer: "Meta / Coursera", year: "2021", color: "var(--accent-tertiary)" },
+                { name: "MongoDB Associate Developer", issuer: "MongoDB University", year: "2021", color: "var(--accent-success)" },
               ].map((cert) => (
                 <div
                   key={cert.name}
