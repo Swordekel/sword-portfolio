@@ -91,7 +91,7 @@ export function Footer() {
         >
           <div className="flex items-center gap-1.5" style={{ fontSize: "12px", color: "var(--text-muted)" }}>
             <span>© 2025 Sword Ekel. Built with</span>
-            <Heart className="w-3 h-3" style={{ color: "#FF6B6B", fill: "#FF6B6B" }} />
+            <Heart className="w-3 h-3" style={{ color: "var(--accent-primary)", fill: "var(--accent-primary)" }} />
             <span>using React & Tailwind CSS.</span>
           </div>
 

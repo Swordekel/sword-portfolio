@@ -18,8 +18,8 @@ const contactInfo = [
 
 const socials = [
   { icon: Github, href: "#", label: "GitHub", color: "var(--text-primary)" },
-  { icon: Linkedin, href: "#", label: "LinkedIn", color: "#0A66C2" },
-  { icon: Twitter, href: "#", label: "Twitter / X", color: "#1DA1F2" },
+  { icon: Linkedin, href: "#", label: "LinkedIn", color: "var(--accent-secondary)" },
+  { icon: Twitter, href: "#", label: "Twitter / X", color: "var(--accent-tertiary)" },
 ];
 
 export function ContactSection() {
@@ -155,10 +155,10 @@ export function ContactSection() {
                       className={inputClass}
                       style={{
                         ...inputStyle,
-                        borderColor: errors.name ? "#FF4444" : "rgba(var(--text-primary-rgb), 0.08)",
+                        borderColor: errors.name ? "var(--destructive)" : "rgba(var(--text-primary-rgb), 0.08)",
                       }}
                       onFocus={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "var(--accent-primary)50"; (e.currentTarget as HTMLElement).style.boxShadow = "0 0 16px rgba(var(--accent-primary-rgb), 0.08)"; }}
-                      onBlur={(e) => { (e.currentTarget as HTMLElement).style.borderColor = errors.name ? "#FF4444" : "rgba(var(--text-primary-rgb), 0.08)"; (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}
+                      onBlur={(e) => { (e.currentTarget as HTMLElement).style.borderColor = errors.name ? "var(--destructive)" : "rgba(var(--text-primary-rgb), 0.08)"; (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}
                     />
                   </div>
                   <div>
@@ -172,10 +172,10 @@ export function ContactSection() {
                       className={inputClass}
                       style={{
                         ...inputStyle,
-                        borderColor: errors.email ? "#FF4444" : "rgba(var(--text-primary-rgb), 0.08)",
+                        borderColor: errors.email ? "var(--destructive)" : "rgba(var(--text-primary-rgb), 0.08)",
                       }}
                       onFocus={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "var(--accent-primary)50"; (e.currentTarget as HTMLElement).style.boxShadow = "0 0 16px rgba(var(--accent-primary-rgb), 0.08)"; }}
-                      onBlur={(e) => { (e.currentTarget as HTMLElement).style.borderColor = errors.email ? "#FF4444" : "rgba(var(--text-primary-rgb), 0.08)"; (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}
+                      onBlur={(e) => { (e.currentTarget as HTMLElement).style.borderColor = errors.email ? "var(--destructive)" : "rgba(var(--text-primary-rgb), 0.08)"; (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}
                     />
                   </div>
                 </div>
@@ -188,9 +188,9 @@ export function ContactSection() {
                     {...register("subject", { required: true })}
                     placeholder="Project Inquiry / Collaboration / Just saying hi"
                     className={inputClass}
-                    style={{ ...inputStyle, borderColor: errors.subject ? "#FF4444" : "rgba(var(--text-primary-rgb), 0.08)" }}
+                    style={{ ...inputStyle, borderColor: errors.subject ? "var(--destructive)" : "rgba(var(--text-primary-rgb), 0.08)" }}
                     onFocus={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "var(--accent-primary)50"; (e.currentTarget as HTMLElement).style.boxShadow = "0 0 16px rgba(var(--accent-primary-rgb), 0.08)"; }}
-                    onBlur={(e) => { (e.currentTarget as HTMLElement).style.borderColor = errors.subject ? "#FF4444" : "rgba(var(--text-primary-rgb), 0.08)"; (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}
+                    onBlur={(e) => { (e.currentTarget as HTMLElement).style.borderColor = errors.subject ? "var(--destructive)" : "rgba(var(--text-primary-rgb), 0.08)"; (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}
                   />
                 </div>
 
@@ -203,9 +203,9 @@ export function ContactSection() {
                     placeholder="Tell me about your project, timeline, and budget..."
                     rows={5}
                     className={`${inputClass} resize-none`}
-                    style={{ ...inputStyle, borderColor: errors.message ? "#FF4444" : "rgba(var(--text-primary-rgb), 0.08)" }}
+                    style={{ ...inputStyle, borderColor: errors.message ? "var(--destructive)" : "rgba(var(--text-primary-rgb), 0.08)" }}
                     onFocus={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "var(--accent-primary)50"; (e.currentTarget as HTMLElement).style.boxShadow = "0 0 16px rgba(var(--accent-primary-rgb), 0.08)"; }}
-                    onBlur={(e) => { (e.currentTarget as HTMLElement).style.borderColor = errors.message ? "#FF4444" : "rgba(var(--text-primary-rgb), 0.08)"; (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}
+                    onBlur={(e) => { (e.currentTarget as HTMLElement).style.borderColor = errors.message ? "var(--destructive)" : "rgba(var(--text-primary-rgb), 0.08)"; (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}
                   />
                 </div>
 
