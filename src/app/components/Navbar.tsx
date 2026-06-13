@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Menu, X, Download } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
+import { useTheme } from "./ThemeProvider";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -15,6 +16,7 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [active, setActive] = useState("Home");
+  const { theme } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -39,8 +41,12 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
         <a href="#home" className="flex items-center gap-2.5 group" onClick={() => setActive("Home")}>
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[var(--accent-primary)] to-[var(--accent-secondary)] flex items-center justify-center shadow-[0_0_16px_rgba(var(--accent-primary-rgb),0.3)]">
-            <span style={{ fontFamily: "JetBrains Mono, monospace", fontSize: "11px", fontWeight: 700, color: "var(--accent-foreground)" }}>SE</span>
+          <div className="w-8 h-8 rounded-lg overflow-hidden shadow-[0_0_16px_rgba(var(--accent-primary-rgb),0.3)]">
+            <img
+              src={theme === "dark" ? "/logo-dark.jpg" : "/logo-light.jpg"}
+              alt="Sword Ekel Logo"
+              className="w-full h-full object-cover"
+            />
           </div>
           <span className="text-[var(--text-primary)] font-semibold tracking-tight">Sword Ekel</span>
         </a>

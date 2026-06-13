@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useTheme } from "./components/ThemeProvider";
 import { motion, AnimatePresence } from "motion/react";
 import { Navbar } from "./components/Navbar";
 import { HeroSection } from "./components/HeroSection";
@@ -12,6 +13,7 @@ import { Footer } from "./components/Footer";
 
 function LoadingScreen({ onDone }: { onDone: () => void }) {
   const [progress, setProgress] = useState(0);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const intervals = [
@@ -46,10 +48,14 @@ function LoadingScreen({ onDone }: { onDone: () => void }) {
         className="flex flex-col items-center gap-8"
       >
         <div
-          className="w-16 h-16 rounded-2xl flex items-center justify-center"
-          style={{ background: "linear-gradient(135deg, var(--accent-primary), var(--accent-secondary))", boxShadow: "0 0 40px rgba(var(--accent-primary-rgb), 0.3)" }}
+          className="w-16 h-16 rounded-2xl overflow-hidden"
+          style={{ boxShadow: "0 0 40px rgba(var(--accent-primary-rgb), 0.3)" }}
         >
-          <span style={{ fontFamily: "JetBrains Mono, monospace", fontSize: "18px", fontWeight: 700, color: "var(--accent-foreground)" }}>SE</span>
+          <img
+            src={theme === "dark" ? "/logo-dark.jpg" : "/logo-light.jpg"}
+            alt="Sword Ekel Logo"
+            className="w-full h-full object-cover"
+          />
         </div>
 
         <div style={{ textAlign: "center" }}>

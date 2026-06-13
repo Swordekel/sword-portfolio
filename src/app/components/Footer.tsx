@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { Github, Linkedin, Twitter, Heart } from "lucide-react";
+import { useTheme } from "./ThemeProvider";
 
 const links = {
   Navigation: [
@@ -19,6 +20,7 @@ const links = {
 };
 
 export function Footer() {
+  const { theme } = useTheme();
   return (
     <footer className="relative border-t overflow-hidden" style={{ borderColor: "rgba(var(--text-primary-rgb), 0.06)" }}>
       <div
@@ -31,10 +33,14 @@ export function Footer() {
           <div className="col-span-2">
             <a href="#home" className="flex items-center gap-2.5 mb-5">
               <div
-                className="w-9 h-9 rounded-xl flex items-center justify-center"
-                style={{ background: "linear-gradient(135deg, var(--accent-primary), var(--accent-secondary))", boxShadow: "0 0 16px rgba(var(--accent-primary-rgb), 0.25)" }}
+                className="w-9 h-9 rounded-xl overflow-hidden"
+                style={{ boxShadow: "0 0 16px rgba(var(--accent-primary-rgb), 0.25)" }}
               >
-                <span style={{ fontFamily: "JetBrains Mono, monospace", fontSize: "11px", fontWeight: 700, color: "var(--accent-foreground)" }}>SE</span>
+                <img
+                  src={theme === "dark" ? "/logo-dark.jpg" : "/logo-light.jpg"}
+                  alt="Sword Ekel Logo"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <span style={{ fontSize: "16px", fontWeight: 600, color: "var(--text-primary)" }}>Sword Ekel</span>
             </a>
