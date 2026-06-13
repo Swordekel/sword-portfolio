@@ -1,57 +1,126 @@
-import { useState } from "react";
+import { useState, type ComponentType } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { ExternalLink, Github, ArrowUpRight } from "lucide-react";
+import {
+  ExternalLink,
+  Github,
+  ArrowUpRight,
+  Bot,
+  Music,
+  ShieldCheck,
+  Car,
+  Mic2,
+  Leaf,
+  Boxes,
+} from "lucide-react";
 
-const categories = ["All", "Web App", "SaaS", "Mobile", "API"];
+const categories = ["All", "Web App", "Mobile"];
 
-const projects = [
+type IconType = ComponentType<{ className?: string; size?: number; strokeWidth?: number; style?: React.CSSProperties }>;
+
+type Project = {
+  id: number;
+  title: string;
+  description: string;
+  icon: IconType;
+  tags: string[];
+  category: "Web App" | "Mobile";
+  year: string;
+  live: string | null;
+  github: string;
+  accent: string;
+};
+
+const projects: Project[] = [
   {
     id: 1,
-    title: "NexaFlow — SaaS Analytics Platform",
-    description: "Real-time analytics dashboard with multi-tenant architecture, custom reporting engine, and AI-powered insights. Handles 10M+ events/month.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&h=560&fit=crop&auto=format&q=80",
-    tags: ["Next.js", "TypeScript", "PostgreSQL", "Redis", "Stripe", "AWS"],
-    category: "SaaS",
-    year: "2024",
-    live: "#",
-    github: "#",
+    title: "Sword AI — Local Ollama Chat",
+    description:
+      "Cross-platform AI chat app powered by self-hosted Ollama. One Flutter codebase ships to Web, Android, iOS PWA, and Windows. Features tool calling, RAG, vision support, and persistent multi-conversation history.",
+    icon: Bot,
+    tags: ["Flutter", "Dart", "Ollama", "Qwen 2.5", "PWA"],
+    category: "Mobile",
+    year: "2026",
+    live: null,
+    github: "https://github.com/Swordekel/sword-ai",
     accent: "var(--accent-primary)",
   },
   {
     id: 2,
-    title: "CommercePro — E-Commerce Platform",
-    description: "Full-featured e-commerce solution with advanced inventory management, real-time order tracking, and seamless payment integrations. 50K+ monthly transactions.",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=900&h=560&fit=crop&auto=format&q=80",
-    tags: ["React", "Node.js", "MongoDB", "Stripe", "Docker", "Redis"],
-    category: "Web App",
-    year: "2024",
-    live: "#",
-    github: "#",
+    title: "Lyrion — Spotify-style Music Player",
+    description:
+      "Flutter local music player with Spotify-inspired dark UI. Now Playing with vinyl rotation + glassmorphism overlay, LRC lyrics editor with real-time timestamp tapping, playlists, queue, and background audio.",
+    icon: Music,
+    tags: ["Flutter", "Dart", "just_audio", "Local Audio", "LRC"],
+    category: "Mobile",
+    year: "2026",
+    live: null,
+    github: "https://github.com/Swordekel/lyrion",
     accent: "var(--accent-secondary)",
   },
   {
     id: 3,
-    title: "DevCollab — Real-time Workspace",
-    description: "Collaborative coding environment with live code sharing, video calls, AI pair programming assistant, and GitHub integration. Loved by 5K+ developers.",
-    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=900&h=560&fit=crop&auto=format&q=80",
-    tags: ["React", "WebSocket", "Node.js", "WebRTC", "OpenAI", "PostgreSQL"],
+    title: "CyberPath — Cybersecurity Education",
+    description:
+      "Interactive cybersecurity learning platform built across multiple iterations as a class project. Modules covering web security fundamentals, OWASP basics, and hands-on challenges. Stack evolved from PHP to Next.js + TypeScript.",
+    icon: ShieldCheck,
+    tags: ["Next.js", "TypeScript", "Tailwind", "PHP"],
     category: "Web App",
-    year: "2023",
-    live: "#",
-    github: "#",
+    year: "2025",
+    live: "https://cyberpath-finall.vercel.app",
+    github: "https://github.com/Swordekel/CyberPath-Education-Cyber",
     accent: "var(--accent-tertiary)",
   },
   {
     id: 4,
-    title: "FinanceApp — Mobile Banking UI",
-    description: "Premium mobile banking interface with biometric authentication, spending analytics, investment portfolio tracking, and P2P transfers.",
-    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=900&h=560&fit=crop&auto=format&q=80",
-    tags: ["React Native", "TypeScript", "Node.js", "MongoDB", "Plaid API"],
-    category: "Mobile",
-    year: "2023",
-    live: "#",
-    github: "#",
+    title: "TWHrenCar — Online Car Rental",
+    description:
+      "Car rental landing & booking interface with modern UI. Browse fleet, view rates, and submit inquiries — focused on clean UX and responsive design.",
+    icon: Car,
+    tags: ["HTML", "CSS", "JavaScript", "Vercel"],
+    category: "Web App",
+    year: "2026",
+    live: "https://driveelite-gold.vercel.app",
+    github: "https://github.com/Swordekel/TWHrenCar",
     accent: "var(--accent-success)",
+  },
+  {
+    id: 5,
+    title: "Lahila — Band Music Website",
+    description:
+      "Promotional website for a music band — showcasing discography, gigs, and bio with immersive visuals. Custom CSS animations bring the brand to life.",
+    icon: Mic2,
+    tags: ["HTML", "CSS", "Vercel"],
+    category: "Web App",
+    year: "2026",
+    live: "https://lahila.vercel.app",
+    github: "https://github.com/Swordekel/lahila",
+    accent: "var(--accent-primary)",
+  },
+  {
+    id: 6,
+    title: "Papuyo — Healthy Pudding Business",
+    description:
+      "Business landing site for an Entrepreneurship class project at Binus. Selling low-sugar papaya pudding sweetened with stevia — built to validate a real product end-to-end, from branding to ordering UX.",
+    icon: Leaf,
+    tags: ["Next.js", "TypeScript", "Tailwind", "Business"],
+    category: "Web App",
+    year: "2025",
+    live: "https://papuyo.vercel.app",
+    github: "https://github.com/Swordekel/Papuyo",
+    accent: "var(--accent-secondary)",
+  },
+  {
+    id: 7,
+    title: "Tetris × Blockchain",
+    description:
+      "Experimental Tetris clone with blockchain integration — exploring Web3 mechanics applied to a classic puzzle. Built to learn smart contract interaction patterns hands-on.",
+    icon: Boxes,
+    tags: ["Next.js", "TypeScript", "Web3"],
+    category: "Web App",
+    year: "2025",
+    live: "https://tetris-blockchain-ten.vercel.app",
+    github: "https://github.com/Swordekel/tetris-blockchain",
+    accent: "var(--accent-tertiary)",
   },
 ];
 
@@ -59,7 +128,10 @@ export function ProjectsSection() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [hovered, setHovered] = useState<number | null>(null);
 
-  const filtered = activeCategory === "All" ? projects : projects.filter((p) => p.category === activeCategory);
+  const filtered =
+    activeCategory === "All"
+      ? projects
+      : projects.filter((p) => p.category === activeCategory);
 
   return (
     <section id="projects" className="py-32 relative overflow-hidden">
@@ -77,9 +149,9 @@ export function ProjectsSection() {
             transition={{ duration: 0.6 }}
           >
             <span style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--accent-primary)" }}>
-              Featured Projects
+              Selected Projects
             </span>
-            <h2 className="text-foreground mt-3">Work that speaks<br />for itself.</h2>
+            <h2 className="text-foreground mt-3">Things I've shipped<br />or am still shipping.</h2>
           </motion.div>
 
           <motion.div
@@ -111,109 +183,156 @@ export function ProjectsSection() {
 
         <div className="grid md:grid-cols-2 gap-6">
           <AnimatePresence mode="popLayout">
-            {filtered.map((project, i) => (
-              <motion.article
-                key={project.id}
-                layout
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="group relative rounded-2xl overflow-hidden border cursor-pointer"
-                style={{ background: "var(--bg-surface)", borderColor: hovered === project.id ? `${project.accent}30` : "rgba(var(--text-primary-rgb), 0.06)" }}
-                onMouseEnter={() => setHovered(project.id)}
-                onMouseLeave={() => setHovered(null)}
-              >
-                <div className="relative overflow-hidden" style={{ height: "220px" }}>
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    style={{ filter: "saturate(0.85)" }}
-                  />
-                  <div
-                    className="absolute inset-0 transition-opacity duration-300"
-                    style={{
-                      background: `linear-gradient(to top, var(--bg-surface) 0%, rgba(var(--bg-base-rgb), 0.6) 50%, rgba(0,0,0,0.2) 100%)`,
-                    }}
-                  />
-                  <div
-                    className="absolute inset-0 transition-opacity duration-300 flex items-center justify-center"
-                    style={{ opacity: hovered === project.id ? 1 : 0, background: `rgba(0,0,0,0.3)` }}
+            {filtered.map((project, i) => {
+              const primaryHref = project.live ?? project.github;
+              const Icon = project.icon;
+              return (
+                <motion.article
+                  key={project.id}
+                  layout
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5, delay: i * 0.08 }}
+                  className="group relative rounded-2xl overflow-hidden border"
+                  style={{ background: "var(--bg-surface)", borderColor: hovered === project.id ? `${project.accent}30` : "rgba(var(--text-primary-rgb), 0.06)" }}
+                  onMouseEnter={() => setHovered(project.id)}
+                  onMouseLeave={() => setHovered(null)}
+                >
+                  <a
+                    href={primaryHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative block overflow-hidden cursor-pointer"
+                    style={{ height: "200px" }}
                   >
-                    <span
-                      className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold transition-all duration-300"
-                      style={{ background: project.accent, color: "var(--accent-foreground)", fontSize: "13px" }}
-                    >
-                      View Case Study
-                      <ArrowUpRight className="w-4 h-4" />
-                    </span>
-                  </div>
+                    <div
+                      className="absolute inset-0"
+                      style={{
+                        background: `linear-gradient(135deg, ${project.accent}28 0%, ${project.accent}08 60%, var(--bg-surface) 100%)`,
+                      }}
+                    />
+                    <div
+                      className="absolute inset-0 opacity-40"
+                      style={{
+                        backgroundImage: `radial-gradient(circle at 25% 50%, ${project.accent}30 0%, transparent 45%), radial-gradient(circle at 80% 30%, ${project.accent}18 0%, transparent 40%)`,
+                      }}
+                    />
+                    <div className="relative h-full flex items-center justify-center transition-transform duration-500 group-hover:scale-110">
+                      <Icon
+                        size={88}
+                        strokeWidth={1.25}
+                        style={{ color: project.accent, opacity: 0.55, filter: `drop-shadow(0 8px 24px ${project.accent}40)` }}
+                      />
+                    </div>
 
-                  <div className="absolute top-4 right-4 flex items-center gap-2">
-                    <span
-                      className="px-2.5 py-1 rounded-lg"
-                      style={{ fontSize: "11px", fontWeight: 600, background: "rgba(0,0,0,0.5)", color: "var(--text-muted)", backdropFilter: "blur(8px)" }}
+                    <div
+                      className="absolute inset-0 transition-opacity duration-300 flex items-center justify-center"
+                      style={{ opacity: hovered === project.id ? 1 : 0, background: "rgba(0,0,0,0.35)" }}
                     >
-                      {project.category}
-                    </span>
-                    <span
-                      className="px-2.5 py-1 rounded-lg"
-                      style={{ fontSize: "11px", color: "var(--text-muted)", background: "rgba(0,0,0,0.5)", fontFamily: "JetBrains Mono, monospace", backdropFilter: "blur(8px)" }}
-                    >
-                      {project.year}
-                    </span>
-                  </div>
-                </div>
-
-                <div className="p-6">
-                  <h3 className="text-foreground mb-3 transition-colors duration-200 group-hover:text-[var(--text-primary)]" style={{ fontSize: "1.05rem", fontWeight: 700 }}>
-                    {project.title}
-                  </h3>
-                  <p className="mb-5 leading-relaxed" style={{ fontSize: "13px", color: "var(--text-muted)", lineHeight: 1.7 }}>
-                    {project.description}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tags.map((tag) => (
                       <span
-                        key={tag}
+                        className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold"
+                        style={{ background: project.accent, color: "var(--accent-foreground)", fontSize: "13px" }}
+                      >
+                        {project.live ? "Visit Live Site" : "View on GitHub"}
+                        <ArrowUpRight className="w-4 h-4" />
+                      </span>
+                    </div>
+
+                    <div className="absolute top-4 right-4 flex items-center gap-2">
+                      <span
                         className="px-2.5 py-1 rounded-lg"
                         style={{
                           fontSize: "11px",
-                          fontWeight: 500,
-                          color: project.accent,
-                          background: `${project.accent}10`,
-                          border: `1px solid ${project.accent}20`,
-                          fontFamily: "JetBrains Mono, monospace",
+                          fontWeight: 600,
+                          background: "rgba(0,0,0,0.5)",
+                          color: "var(--text-secondary)",
+                          backdropFilter: "blur(8px)",
                         }}
                       >
-                        {tag}
+                        {project.category}
                       </span>
-                    ))}
-                  </div>
+                      <span
+                        className="px-2.5 py-1 rounded-lg"
+                        style={{
+                          fontSize: "11px",
+                          color: "var(--text-muted)",
+                          background: "rgba(0,0,0,0.5)",
+                          fontFamily: "JetBrains Mono, monospace",
+                          backdropFilter: "blur(8px)",
+                        }}
+                      >
+                        {project.year}
+                      </span>
+                    </div>
+                  </a>
 
-                  <div className="flex items-center gap-3 pt-4 border-t" style={{ borderColor: "rgba(var(--text-primary-rgb), 0.06)" }}>
-                    <a
-                      href={project.live}
-                      className="flex items-center gap-1.5 px-4 py-2 rounded-lg border transition-all duration-200 hover:bg-[var(--text-primary)]/5"
-                      style={{ fontSize: "12px", fontWeight: 500, color: "var(--text-primary)", borderColor: "rgba(var(--text-primary-rgb), 0.1)" }}
+                  <div className="p-6">
+                    <h3
+                      className="text-foreground mb-3 transition-colors duration-200"
+                      style={{ fontSize: "1.05rem", fontWeight: 700 }}
                     >
-                      <ExternalLink className="w-3.5 h-3.5" />
-                      Live Demo
-                    </a>
-                    <a
-                      href={project.github}
-                      className="flex items-center gap-1.5 px-4 py-2 rounded-lg transition-all duration-200 hover:bg-[var(--text-primary)]/5"
-                      style={{ fontSize: "12px", fontWeight: 500, color: "var(--text-muted)" }}
-                    >
-                      <Github className="w-3.5 h-3.5" />
-                      Source
-                    </a>
+                      {project.title}
+                    </h3>
+                    <p className="mb-5 leading-relaxed" style={{ fontSize: "13px", color: "var(--text-muted)", lineHeight: 1.7 }}>
+                      {project.description}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-2.5 py-1 rounded-lg"
+                          style={{
+                            fontSize: "11px",
+                            fontWeight: 500,
+                            color: project.accent,
+                            background: `${project.accent}10`,
+                            border: `1px solid ${project.accent}20`,
+                            fontFamily: "JetBrains Mono, monospace",
+                          }}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="flex items-center gap-3 pt-4 border-t" style={{ borderColor: "rgba(var(--text-primary-rgb), 0.06)" }}>
+                      {project.live && (
+                        <a
+                          href={project.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-1.5 px-4 py-2 rounded-lg border transition-all duration-200 hover:bg-[var(--text-primary)]/5"
+                          style={{ fontSize: "12px", fontWeight: 500, color: "var(--text-primary)", borderColor: "rgba(var(--text-primary-rgb), 0.1)" }}
+                        >
+                          <ExternalLink className="w-3.5 h-3.5" />
+                          Live Demo
+                        </a>
+                      )}
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 px-4 py-2 rounded-lg transition-all duration-200 hover:bg-[var(--text-primary)]/5"
+                        style={{ fontSize: "12px", fontWeight: 500, color: "var(--text-muted)" }}
+                      >
+                        <Github className="w-3.5 h-3.5" />
+                        Source
+                      </a>
+                      {!project.live && (
+                        <span
+                          className="ml-auto text-xs"
+                          style={{ fontSize: "11px", color: "var(--text-muted)", fontStyle: "italic" }}
+                        >
+                          Self-hosted · no public demo
+                        </span>
+                      )}
+                    </div>
                   </div>
-                </div>
-              </motion.article>
-            ))}
+                </motion.article>
+              );
+            })}
           </AnimatePresence>
         </div>
 
@@ -225,7 +344,9 @@ export function ProjectsSection() {
           className="text-center mt-14"
         >
           <a
-            href="#"
+            href="https://github.com/Swordekel"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border transition-all duration-300 hover:border-[var(--accent-primary)]/30 hover:bg-[var(--accent-primary)]/5"
             style={{ fontSize: "14px", fontWeight: 500, color: "var(--text-muted)", borderColor: "rgba(var(--text-primary-rgb), 0.08)" }}
           >

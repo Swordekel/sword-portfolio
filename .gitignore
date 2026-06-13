@@ -22,7 +22,7 @@ secrets/
 credentials.json
 .anthropic
 .openai
-.claude/settings.local.json
+.claude/
 
 # ============ Logs ============
 npm-debug.log*
