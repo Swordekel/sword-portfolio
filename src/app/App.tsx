@@ -103,9 +103,9 @@ export default function App() {
             </div>
             <div
               style={{
-                background: "#080818",
-                borderTop: "1px solid rgba(255,255,255,0.04)",
-                borderBottom: "1px solid rgba(255,255,255,0.04)",
+                background: "var(--bg-elevated)",
+                borderTop: "1px solid var(--border-subtle)",
+                borderBottom: "1px solid var(--border-subtle)",
               }}
             >
               <TechStack />
@@ -113,9 +113,9 @@ export default function App() {
             <ProjectsSection />
             <div
               style={{
-                background: "#080818",
-                borderTop: "1px solid rgba(255,255,255,0.04)",
-                borderBottom: "1px solid rgba(255,255,255,0.04)",
+                background: "var(--bg-elevated)",
+                borderTop: "1px solid var(--border-subtle)",
+                borderBottom: "1px solid var(--border-subtle)",
               }}
             >
               <ExperienceSection />
@@ -123,8 +123,8 @@ export default function App() {
             <TestimonialsSection />
             <div
               style={{
-                background: "#080818",
-                borderTop: "1px solid rgba(255,255,255,0.04)",
+                background: "var(--bg-elevated)",
+                borderTop: "1px solid var(--border-subtle)",
               }}
             >
               <ContactSection />
