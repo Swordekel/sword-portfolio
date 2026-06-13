@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { ArrowRight, MessageCircle, ChevronDown, Github, Linkedin, Twitter, MapPin } from "lucide-react";
 
-const roles = ["Full Stack Developer", "React Specialist", "Node.js Expert", "Cloud Architect", "Professional Vibe Coder"];
+const roles = ["Software Engineer", "Full-Stack Developer", "Cyber Security Student", "Web App Pentester", "Vibe Coder"];
 
 function useTypingEffect(words: string[], speed = 75, pause = 2200) {
   const [display, setDisplay] = useState("");
@@ -145,8 +145,8 @@ export function HeroSection() {
           className="max-w-2xl mx-auto leading-relaxed mb-12"
           style={{ color: "var(--text-muted)", fontSize: "1.0625rem" }}
         >
-          I craft scalable, high-performance web applications that drive real business impact.
-          From pixel-perfect frontends to robust backend architectures — I build digital products that matter.
+          Full-stack developer building real projects, with a Cyber Security background from Binus University &
+          PT INTI SIBER NET internship. I ship apps that work — and treat security as a first-class concern, not an afterthought.
         </motion.p>
 
         <motion.div

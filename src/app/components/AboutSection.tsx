@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "motion/react";
-import { Code2, Users, Briefcase, Award } from "lucide-react";
+import { Code2, GraduationCap, Globe, ShieldCheck } from "lucide-react";
 
 function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: string }) {
   const [count, setCount] = useState(0);
@@ -29,15 +29,15 @@ function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: str
 }
 
 const stats = [
-  { icon: Briefcase, label: "Years Experience", value: 5, suffix: "+" },
-  { icon: Code2, label: "Projects Completed", value: 60, suffix: "+" },
-  { icon: Users, label: "Happy Clients", value: 35, suffix: "+" },
-  { icon: Award, label: "Awards Won", value: 8, suffix: "" },
+  { icon: GraduationCap, label: "Current Semester", value: 6, suffix: "" },
+  { icon: Code2, label: "Public Projects", value: 20, suffix: "+" },
+  { icon: Globe, label: "Live Deployments", value: 10, suffix: "+" },
+  { icon: ShieldCheck, label: "Year Pentest Intern", value: 1, suffix: "" },
 ];
 
 const skills = [
-  "System Architecture", "API Design", "Performance Optimization",
-  "Team Leadership", "Code Review", "CI/CD Pipelines",
+  "Full-Stack Development", "React & Next.js", "TypeScript",
+  "Secure Coding", "Web App Pentesting", "Vulnerability Analysis",
 ];
 
 const fadeUp = {
@@ -103,9 +103,9 @@ export function AboutSection() {
                 className="absolute -bottom-5 -right-5 rounded-xl border px-5 py-4"
                 style={{ background: "var(--bg-surface)", borderColor: "rgba(var(--accent-primary-rgb), 0.15)", backdropFilter: "blur(12px)" }}
               >
-                <div style={{ fontSize: "12px", color: "var(--text-muted)", marginBottom: "4px" }}>Currently building</div>
-                <div style={{ fontSize: "14px", color: "var(--text-primary)", fontWeight: 600 }}>SaaS Platform</div>
-                <div style={{ fontSize: "12px", color: "var(--accent-primary)", marginTop: "4px" }}>Next.js + Supabase</div>
+                <div style={{ fontSize: "12px", color: "var(--text-muted)", marginBottom: "4px" }}>Currently interning at</div>
+                <div style={{ fontSize: "14px", color: "var(--text-primary)", fontWeight: 600 }}>PT INTI SIBER NET</div>
+                <div style={{ fontSize: "12px", color: "var(--accent-primary)", marginTop: "4px" }}>Cyber Security Analyst</div>
               </div>
             </div>
           </motion.div>
@@ -118,10 +118,10 @@ export function AboutSection() {
             transition={{ duration: 0.7, delay: 0.2 }}
           >
             <p className="leading-relaxed mb-6" style={{ color: "var(--text-secondary)", fontSize: "1.0625rem", lineHeight: 1.8 }}>
-              Saya adalah Full Stack Developer & Professional Vibe Coder dengan pengalaman lebih dari 5 tahun membangun aplikasi web modern yang skalabel dan berperforma tinggi. Passionate tentang clean code, user experience, dan teknologi terbaru.
+              Saya seorang Software Engineer dalam masa pembentukan — fokus utama saya sekarang adalah membangun aplikasi web full-stack yang nyata dan production-ready. Background saya datang dari S1 Cyber Security di Binus University dan internship sebagai Cyber Security Analyst di PT INTI SIBER NET, yang artinya saya build sambil tahu sisi mana yang bisa di-break.
             </p>
             <p className="leading-relaxed mb-10" style={{ color: "var(--text-muted)", fontSize: "0.9375rem", lineHeight: 1.8 }}>
-              Dari startup hingga perusahaan enterprise, saya telah membantu berbagai klien mewujudkan visi digital mereka — dengan pendekatan yang selalu mengutamakan kualitas, kecepatan, dan maintainability.
+              Saat ini saya aktif shipping project untuk portfolio — dari sewa mobil sampai education platform, semua deploy ke Vercel. Goal saya: jadi developer yang punya security mindset built-in, bukan as an afterthought. Open buat opportunity sebagai Software Engineer, Full-Stack Developer, atau collaboration di project teknis apapun.
             </p>
 
             <div className="flex flex-wrap gap-2 mb-12">

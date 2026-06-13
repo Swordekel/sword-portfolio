@@ -2,46 +2,34 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
+/**
+ * REFERENCES — diisi dengan testimonial REAL dari orang yang pernah bekerja
+ * sama dengan Anda (dosen, mentor, teammate project, klien freelance).
+ *
+ * Untuk tambah entry baru, copy object di bawah lalu isi:
+ *   - name     : Nama lengkap orang tsb
+ *   - role     : Posisi + hubungan dengan Anda (mis. "Dosen Secure Programming"
+ *                atau "Team Lead Project CyberPath")
+ *   - avatar   : 2 huruf inisial (mis. "AB")
+ *   - color    : Warna brand untuk card (rotasi: accent-primary/secondary/
+ *                tertiary/success)
+ *   - rating   : Bintang (1-5)
+ *   - text     : Quote dari mereka (minta izin sebelum publish)
+ *   - context  : Konteks kolaborasi (mis. "Project Akhir Mata Kuliah XYZ")
+ *
+ * Hapus seluruh section di App.tsx jika belum ada satu pun reference real —
+ * better empty daripada placeholder yang ketahuan kosongan.
+ */
 const testimonials = [
   {
     id: 1,
-    name: "Sarah Chen",
-    role: "CTO at NexaLabs",
-    avatar: "SC",
+    name: "[Nama Reference]",
+    role: "[Posisi / Hubungan dengan saya]",
+    avatar: "XX",
     color: "var(--accent-primary)",
     rating: 5,
-    text: "Sword transformed our entire data pipeline into a beautiful, performant SaaS product. His attention to both technical architecture and user experience is rare. The platform has been running flawlessly for 18 months — zero critical incidents. Highly recommend.",
-    project: "NexaFlow Analytics Platform",
-  },
-  {
-    id: 2,
-    name: "Marcus Weber",
-    role: "Founder at FlowStack",
-    avatar: "MW",
-    color: "var(--accent-secondary)",
-    rating: 5,
-    text: "Working with Sword was a game-changer for us. He not only delivered the product on time but also proactively identified architectural issues we hadn't considered. The codebase he left behind is clean, documented, and our new team loves it. 10/10.",
-    project: "FlowStack CRM Platform",
-  },
-  {
-    id: 3,
-    name: "Priya Sharma",
-    role: "Product Manager at TechVision",
-    avatar: "PS",
-    color: "var(--accent-tertiary)",
-    rating: 5,
-    text: "Sword has an exceptional ability to translate complex product requirements into elegant technical solutions. He consistently delivers ahead of schedule and the quality is always production-ready. He's become an indispensable part of our engineering team.",
-    project: "Internal Analytics Dashboard",
-  },
-  {
-    id: 4,
-    name: "David Kurniawan",
-    role: "CEO at DigitalKraft",
-    avatar: "DK",
-    color: "var(--accent-success)",
-    rating: 5,
-    text: "From Day 1, Sword brought a level of professionalism and craftsmanship that raised our whole team's bar. He built our e-commerce platform from scratch in 3 months, and it now handles 50K+ monthly transactions without a hiccup. Outstanding work.",
-    project: "CommercePro E-Commerce",
+    text: "Tulis quote real dari mereka di sini setelah minta izin. Cukup 2-4 kalimat tentang bagaimana Anda bekerja, apa yang mereka apresiasi, dan dampak konkret dari kolaborasi.",
+    context: "Konteks kerja sama (mis. project kuliah, freelance, dst.)",
   },
 ];
 
@@ -59,6 +47,7 @@ function Stars({ count }: { count: number }) {
 
 export function TestimonialsSection() {
   const [active, setActive] = useState(0);
+  const hasMultiple = testimonials.length > 1;
 
   const prev = () => setActive((i) => (i - 1 + testimonials.length) % testimonials.length);
   const next = () => setActive((i) => (i + 1) % testimonials.length);
@@ -70,55 +59,60 @@ export function TestimonialsSection() {
         style={{ background: "radial-gradient(ellipse 70% 50% at 50% 50%, rgba(var(--accent-secondary-rgb), 0.05) 0%, transparent 100%)" }}
       />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-20"
+          className="text-center mb-16"
         >
           <span style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--accent-primary)" }}>
-            Testimonials
+            References
           </span>
-          <h2 className="text-foreground mt-3">What clients say<br />about working with me.</h2>
+          <h2 className="text-foreground mt-3">People I've worked with.</h2>
+          <p className="mt-5 max-w-xl mx-auto" style={{ color: "var(--text-muted)", fontSize: "1rem", lineHeight: 1.7 }}>
+            Honest references from collaborators, mentors, and project teammates.
+          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
-          {testimonials.map((t, i) => (
-            <motion.button
-              key={t.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              onClick={() => setActive(i)}
-              className="text-left rounded-2xl p-6 border transition-all duration-300"
-              style={{
-                background: active === i ? `${t.color}08` : "var(--bg-surface)",
-                borderColor: active === i ? `${t.color}30` : "rgba(var(--text-primary-rgb), 0.06)",
-                boxShadow: active === i ? `0 0 32px ${t.color}10` : "none",
-              }}
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
-                  style={{ background: `${t.color}20`, color: t.color, fontSize: "11px", fontWeight: 700, fontFamily: "JetBrains Mono, monospace" }}
-                >
-                  {t.avatar}
+        {hasMultiple && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
+            {testimonials.map((t, i) => (
+              <motion.button
+                key={t.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                onClick={() => setActive(i)}
+                className="text-left rounded-2xl p-6 border transition-all duration-300"
+                style={{
+                  background: active === i ? `${t.color}08` : "var(--bg-surface)",
+                  borderColor: active === i ? `${t.color}30` : "rgba(var(--text-primary-rgb), 0.06)",
+                  boxShadow: active === i ? `0 0 32px ${t.color}10` : "none",
+                }}
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+                    style={{ background: `${t.color}20`, color: t.color, fontSize: "11px", fontWeight: 700, fontFamily: "JetBrains Mono, monospace" }}
+                  >
+                    {t.avatar}
+                  </div>
+                  <div>
+                    <div style={{ fontSize: "13px", fontWeight: 600, color: "var(--text-primary)" }}>{t.name}</div>
+                    <div style={{ fontSize: "11px", color: "var(--text-muted)", marginTop: "2px" }}>{t.role}</div>
+                  </div>
                 </div>
-                <div>
-                  <div style={{ fontSize: "13px", fontWeight: 600, color: "var(--text-primary)" }}>{t.name}</div>
-                  <div style={{ fontSize: "11px", color: "var(--text-muted)", marginTop: "2px" }}>{t.role}</div>
-                </div>
-              </div>
-              <Stars count={t.rating} />
-              <p className="mt-3 line-clamp-3" style={{ fontSize: "12px", color: "var(--text-muted)", lineHeight: 1.6 }}>
-                "{t.text}"
-              </p>
-            </motion.button>
-          ))}
-        </div>
+                <Stars count={t.rating} />
+                <p className="mt-3 line-clamp-3" style={{ fontSize: "12px", color: "var(--text-muted)", lineHeight: 1.6 }}>
+                  "{t.text}"
+                </p>
+              </motion.button>
+            ))}
+          </div>
+        )}
 
         <AnimatePresence mode="wait">
           <motion.div
@@ -159,7 +153,7 @@ export function TestimonialsSection() {
                 <div style={{ fontSize: "18px", fontWeight: 700, color: "var(--text-primary)" }}>{testimonials[active].name}</div>
                 <div style={{ fontSize: "13px", color: testimonials[active].color, marginTop: "2px" }}>{testimonials[active].role}</div>
                 <div style={{ fontSize: "11px", color: "var(--text-muted)", marginTop: "4px" }}>
-                  Project: {testimonials[active].project}
+                  {testimonials[active].context}
                 </div>
               </div>
               <div className="ml-auto">
@@ -171,38 +165,40 @@ export function TestimonialsSection() {
               "{testimonials[active].text}"
             </p>
 
-            <div className="flex items-center justify-between mt-8 pt-6 border-t" style={{ borderColor: "rgba(var(--text-primary-rgb), 0.06)" }}>
-              <div className="flex gap-2">
-                {testimonials.map((_, i) => (
+            {hasMultiple && (
+              <div className="flex items-center justify-between mt-8 pt-6 border-t" style={{ borderColor: "rgba(var(--text-primary-rgb), 0.06)" }}>
+                <div className="flex gap-2">
+                  {testimonials.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setActive(i)}
+                      className="transition-all duration-300 rounded-full"
+                      style={{
+                        width: active === i ? "24px" : "8px",
+                        height: "8px",
+                        background: active === i ? testimonials[active].color : "rgba(var(--text-primary-rgb), 0.15)",
+                      }}
+                    />
+                  ))}
+                </div>
+                <div className="flex gap-2">
                   <button
-                    key={i}
-                    onClick={() => setActive(i)}
-                    className="transition-all duration-300 rounded-full"
-                    style={{
-                      width: active === i ? "24px" : "8px",
-                      height: "8px",
-                      background: active === i ? testimonials[active].color : "rgba(var(--text-primary-rgb), 0.15)",
-                    }}
-                  />
-                ))}
+                    onClick={prev}
+                    className="w-9 h-9 rounded-lg border flex items-center justify-center transition-all duration-200 hover:border-[var(--text-primary)]/20 hover:bg-[var(--text-primary)]/5"
+                    style={{ borderColor: "rgba(var(--text-primary-rgb), 0.08)", color: "var(--text-muted)" }}
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                  </button>
+                  <button
+                    onClick={next}
+                    className="w-9 h-9 rounded-lg border flex items-center justify-center transition-all duration-200 hover:border-[var(--text-primary)]/20 hover:bg-[var(--text-primary)]/5"
+                    style={{ borderColor: "rgba(var(--text-primary-rgb), 0.08)", color: "var(--text-muted)" }}
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                </div>
               </div>
-              <div className="flex gap-2">
-                <button
-                  onClick={prev}
-                  className="w-9 h-9 rounded-lg border flex items-center justify-center transition-all duration-200 hover:border-[var(--text-primary)]/20 hover:bg-[var(--text-primary)]/5"
-                  style={{ borderColor: "rgba(var(--text-primary-rgb), 0.08)", color: "var(--text-muted)" }}
-                >
-                  <ChevronLeft className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={next}
-                  className="w-9 h-9 rounded-lg border flex items-center justify-center transition-all duration-200 hover:border-[var(--text-primary)]/20 hover:bg-[var(--text-primary)]/5"
-                  style={{ borderColor: "rgba(var(--text-primary-rgb), 0.08)", color: "var(--text-muted)" }}
-                >
-                  <ChevronRight className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
+            )}
           </motion.div>
         </AnimatePresence>
       </div>
