@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 import { motion } from "motion/react";
 import { Send, Mail, MapPin, Clock, Github, Linkedin, Twitter, CheckCircle } from "lucide-react";
 import { useForm } from "react-hook-form";
@@ -8,10 +8,35 @@ type FormData = {
   email: string;
   subject: string;
   message: string;
+  _honey?: string;
 };
 
-const contactInfo = [
-  { icon: Mail, label: "Email", value: "hello@swordekel.dev", color: "var(--accent-primary)" },
+function WhatsAppIcon({ className, style }: { className?: string; style?: CSSProperties }) {
+  return (
+    <svg
+      className={className}
+      style={style}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
+    </svg>
+  );
+}
+
+const RECIPIENT_EMAIL = "swordekel@gmail.com";
+
+const contactInfo: Array<{
+  icon: typeof Mail | typeof WhatsAppIcon;
+  label: string;
+  value: string;
+  color: string;
+  href?: string;
+}> = [
+  { icon: Mail, label: "Email", value: RECIPIENT_EMAIL, color: "var(--accent-primary)", href: `mailto:${RECIPIENT_EMAIL}` },
+  { icon: WhatsAppIcon, label: "WhatsApp", value: "+62 811-1688-303", color: "var(--accent-success)", href: "https://wa.me/628111688303?text=Halo%20Sword%2C%20saya%20tertarik%20untuk%20kolaborasi%20dari%20portfolio%20Anda." },
   { icon: MapPin, label: "Location", value: "Jakarta, Indonesia", color: "var(--accent-secondary)" },
   { icon: Clock, label: "Availability", value: "Mon–Fri, 9AM–6PM WIB", color: "var(--accent-tertiary)" },
 ];
@@ -24,12 +49,34 @@ const socials = [
 
 export function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<FormData>();
 
   const onSubmit = async (data: FormData) => {
-    await new Promise((r) => setTimeout(r, 1200));
-    console.log("Form submitted:", data);
-    setSubmitted(true);
+    if (data._honey) return;
+    setSubmitError(null);
+    try {
+      const res = await fetch(`https://formsubmit.co/ajax/${RECIPIENT_EMAIL}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          subject: data.subject,
+          message: data.message,
+          _subject: `Portfolio inquiry: ${data.subject}`,
+          _template: "table",
+          _captcha: "false",
+        }),
+      });
+      const json = await res.json().catch(() => null);
+      if (!res.ok || (json && json.success !== "true" && json.success !== true)) {
+        throw new Error(json?.message || `Request failed (${res.status})`);
+      }
+      setSubmitted(true);
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : "Gagal mengirim pesan. Coba lagi atau hubungi via WhatsApp.");
+    }
   };
 
   const inputClass = "w-full px-4 py-3 rounded-xl border bg-transparent outline-none transition-all duration-200 text-[var(--text-primary)] placeholder-[var(--text-muted)]";
@@ -67,24 +114,60 @@ export function ContactSection() {
             transition={{ duration: 0.7 }}
           >
             <div className="flex flex-col gap-5 mb-12">
-              {contactInfo.map((info) => (
-                <div
-                  key={info.label}
-                  className="flex items-center gap-4 p-4 rounded-xl border"
-                  style={{ background: "var(--bg-surface)", borderColor: "rgba(var(--text-primary-rgb), 0.06)" }}
-                >
-                  <div
-                    className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0"
-                    style={{ background: `${info.color}12`, border: `1px solid ${info.color}25` }}
-                  >
-                    <info.icon className="w-4 h-4" style={{ color: info.color }} />
+              {contactInfo.map((info) => {
+                const inner = (
+                  <>
+                    <div
+                      className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0"
+                      style={{ background: `${info.color}12`, border: `1px solid ${info.color}25` }}
+                    >
+                      <info.icon className="w-4 h-4" style={{ color: info.color }} />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div style={{ fontSize: "11px", color: "var(--text-muted)", marginBottom: "2px" }}>{info.label}</div>
+                      <div style={{ fontSize: "14px", color: "var(--text-primary)", fontWeight: 500 }} className="truncate">{info.value}</div>
+                    </div>
+                  </>
+                );
+
+                const baseClass = "flex items-center gap-4 p-4 rounded-xl border transition-all duration-200";
+                const baseStyle = {
+                  background: "var(--bg-surface)",
+                  borderColor: "rgba(var(--text-primary-rgb), 0.06)",
+                };
+
+                if (info.href) {
+                  const isExternal = info.href.startsWith("http");
+                  return (
+                    <a
+                      key={info.label}
+                      href={info.href}
+                      target={isExternal ? "_blank" : undefined}
+                      rel={isExternal ? "noopener noreferrer" : undefined}
+                      className={`${baseClass} group cursor-pointer`}
+                      style={baseStyle}
+                      onMouseEnter={(e) => {
+                        const el = e.currentTarget as HTMLElement;
+                        el.style.borderColor = `${info.color}40`;
+                        el.style.boxShadow = `0 0 24px ${info.color}15`;
+                      }}
+                      onMouseLeave={(e) => {
+                        const el = e.currentTarget as HTMLElement;
+                        el.style.borderColor = "rgba(var(--text-primary-rgb), 0.06)";
+                        el.style.boxShadow = "none";
+                      }}
+                    >
+                      {inner}
+                    </a>
+                  );
+                }
+
+                return (
+                  <div key={info.label} className={baseClass} style={baseStyle}>
+                    {inner}
                   </div>
-                  <div>
-                    <div style={{ fontSize: "11px", color: "var(--text-muted)", marginBottom: "2px" }}>{info.label}</div>
-                    <div style={{ fontSize: "14px", color: "var(--text-primary)", fontWeight: 500 }}>{info.value}</div>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             <div>
@@ -144,6 +227,15 @@ export function ContactSection() {
                 className="rounded-2xl border p-8 flex flex-col gap-5"
                 style={{ background: "var(--bg-surface)", borderColor: "rgba(var(--text-primary-rgb), 0.06)" }}
               >
+                <input
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  {...register("_honey")}
+                  style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+                />
+
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label style={{ fontSize: "12px", color: "var(--text-muted)", display: "block", marginBottom: "8px", fontWeight: 500 }}>
@@ -208,6 +300,29 @@ export function ContactSection() {
                     onBlur={(e) => { (e.currentTarget as HTMLElement).style.borderColor = errors.message ? "var(--destructive)" : "rgba(var(--text-primary-rgb), 0.08)"; (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}
                   />
                 </div>
+
+                {submitError && (
+                  <div
+                    className="rounded-lg border px-4 py-3"
+                    style={{
+                      background: "rgba(220, 38, 38, 0.08)",
+                      borderColor: "rgba(220, 38, 38, 0.25)",
+                      fontSize: "13px",
+                      color: "var(--text-primary)",
+                      lineHeight: 1.5,
+                    }}
+                  >
+                    {submitError}{" "}
+                    <a
+                      href="https://wa.me/628111688303?text=Halo%20Sword%2C%20saya%20ingin%20menghubungi%20Anda%20dari%20portfolio."
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ color: "var(--accent-success)", fontWeight: 600, textDecoration: "underline" }}
+                    >
+                      Chat via WhatsApp
+                    </a>
+                  </div>
+                )}
 
                 <button
                   type="submit"
