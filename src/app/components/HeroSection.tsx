@@ -33,7 +33,7 @@ function useTypingEffect(words: string[], speed = 75, pause = 2200) {
 }
 
 const socials = [
-  { icon: Github, href: "#", label: "GitHub" },
+  { icon: Github, href: "https://github.com/Swordekel", label: "GitHub" },
   { icon: Linkedin, href: "#", label: "LinkedIn" },
   { icon: Twitter, href: "#", label: "Twitter" },
 ];
@@ -207,6 +207,8 @@ export function HeroSection() {
             <a
               key={s.label}
               href={s.href}
+              target={s.href.startsWith("http") ? "_blank" : undefined}
+              rel={s.href.startsWith("http") ? "noopener noreferrer" : undefined}
               aria-label={s.label}
               className="w-10 h-10 rounded-xl border border-[var(--text-primary)]/8 flex items-center justify-center transition-all duration-200 hover:border-[var(--accent-primary)]/30 hover:bg-[var(--accent-primary)]/5 hover:shadow-[0_0_16px_rgba(var(--accent-primary-rgb), 0.1)]"
               style={{ color: "var(--text-muted)" }}

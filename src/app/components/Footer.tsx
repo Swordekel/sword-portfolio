@@ -49,13 +49,15 @@ export function Footer() {
             </p>
             <div className="flex gap-3 mt-6">
               {[
-                { icon: Github, href: "#" },
+                { icon: Github, href: "https://github.com/Swordekel" },
                 { icon: Linkedin, href: "#" },
                 { icon: Twitter, href: "#" },
               ].map((s, i) => (
                 <a
                   key={i}
                   href={s.href}
+                  target={s.href.startsWith("http") ? "_blank" : undefined}
+                  rel={s.href.startsWith("http") ? "noopener noreferrer" : undefined}
                   className="w-9 h-9 rounded-lg border flex items-center justify-center transition-all duration-200 hover:border-[var(--accent-primary)]/30 hover:bg-[var(--accent-primary)]/5"
                   style={{ borderColor: "rgba(var(--text-primary-rgb), 0.08)", color: "var(--text-muted)" }}
                   onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--text-primary)"; }}
