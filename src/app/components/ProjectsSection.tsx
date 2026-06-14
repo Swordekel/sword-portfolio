@@ -633,12 +633,6 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
                 />
               ))}
             </div>
-            <div
-              className="mt-3"
-              style={{ fontSize: "11px", color: "var(--text-muted)", fontStyle: "italic", lineHeight: 1.5 }}
-            >
-              Drop screenshots into <code style={{ color: project.accent }}>public/projects/{project.slug}/</code> to replace these placeholders.
-            </div>
           </div>
         </div>
 
