@@ -1,4 +1,4 @@
-import { useState, type ComponentType } from "react";
+import { useEffect, useState, type ComponentType } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
   ExternalLink,
@@ -11,16 +11,28 @@ import {
   Mic2,
   Leaf,
   Boxes,
+  X,
+  Check,
 } from "lucide-react";
 
 const categories = ["All", "Web App", "Mobile"];
 
 type IconType = ComponentType<{ className?: string; size?: number; strokeWidth?: number; style?: React.CSSProperties }>;
 
+type GallerySlot = {
+  title: string;
+  /** Optional path under public/. Falls back to gradient placeholder if absent. */
+  image?: string;
+};
+
 type Project = {
   id: number;
+  slug: string;
   title: string;
   description: string;
+  longDescription: string;
+  features: string[];
+  gallery: GallerySlot[];
   icon: IconType;
   tags: string[];
   category: "Web App" | "Mobile";
@@ -30,12 +42,35 @@ type Project = {
   accent: string;
 };
 
+/**
+ * To add real screenshots: drop image files into
+ *   public/projects/<slug>/01.png (02.png, 03.png ...)
+ * then set `image: "/projects/<slug>/01.png"` on the matching gallery slot.
+ * Missing images automatically fall back to a styled gradient placeholder.
+ */
 const projects: Project[] = [
   {
     id: 1,
+    slug: "sword-ai",
     title: "Sword AI — Local Ollama Chat",
     description:
-      "Cross-platform AI chat app powered by self-hosted Ollama. One Flutter codebase ships to Web, Android, iOS PWA, and Windows. Features tool calling, RAG, vision support, and persistent multi-conversation history.",
+      "Cross-platform AI chat app powered by self-hosted Ollama. One Flutter codebase ships to Web, Android, iOS PWA, and Windows.",
+    longDescription:
+      "Sword AI is a fully local AI chat experience — no cloud, no API keys, no per-token costs. The Flutter client runs everywhere (Web, Android, iOS PWA, Windows) and talks to a self-hosted Ollama server running open-weights models like Qwen 2.5 7B on consumer hardware (RTX 3060 Ti class). Conversations stay on-device with privacy-first storage. Architected with tool calling, RAG, and vision-capable model support for daily use, not just a demo.",
+    features: [
+      "Single Flutter codebase ships to Web, Android, iOS PWA, and Windows",
+      "Self-hosted Ollama backend — zero API keys or cloud costs",
+      "Tool calling: file operations, system info, web search",
+      "RAG service with persistent memory entries",
+      "Vision-capable model support (multimodal chat)",
+      "Multi-conversation history stored locally per device",
+      "Configurable model picker (Qwen, Llama, custom)",
+    ],
+    gallery: [
+      { title: "Chat Screen" },
+      { title: "Model Picker" },
+      { title: "Tool Use Demo" },
+    ],
     icon: Bot,
     tags: ["Flutter", "Dart", "Ollama", "Qwen 2.5", "PWA"],
     category: "Mobile",
@@ -46,9 +81,27 @@ const projects: Project[] = [
   },
   {
     id: 2,
+    slug: "lyrion",
     title: "Lyrion — Spotify-style Music Player",
     description:
-      "Flutter local music player with Spotify-inspired dark UI. Now Playing with vinyl rotation + glassmorphism overlay, LRC lyrics editor with real-time timestamp tapping, playlists, queue, and background audio.",
+      "Flutter local music player with Spotify-inspired dark UI, vinyl rotation, glassmorphism, and a real-time LRC lyrics editor.",
+    longDescription:
+      "Lyrion (Vibe Music) is a Flutter music player that takes the Spotify visual language and applies it to a fully local-first library. Built for users who own their music files. Features a vinyl-rotating Now Playing screen with video background and glassmorphism overlay, a full LRC lyrics editor with real-time timestamp tap-set, playlists, album views, queue management, and background audio that keeps playing when the screen locks on Android.",
+    features: [
+      "Local-first library — MP3, FLAC, WAV, AAC, M4A",
+      "Spotify-inspired dark UI with smooth motion",
+      "Now Playing: vinyl rotation, video background, glassmorphism",
+      "LRC lyrics auto-scroll with real-time tap-set editor",
+      "Playlist & album management with custom cover art",
+      "Search by title, artist, or album",
+      "Queue with shuffle / repeat (off · all · one)",
+      "Background audio on Android — survives screen lock",
+    ],
+    gallery: [
+      { title: "Now Playing" },
+      { title: "Library" },
+      { title: "LRC Editor" },
+    ],
     icon: Music,
     tags: ["Flutter", "Dart", "just_audio", "Local Audio", "LRC"],
     category: "Mobile",
@@ -59,9 +112,24 @@ const projects: Project[] = [
   },
   {
     id: 3,
+    slug: "cyberpath",
     title: "CyberPath — Cybersecurity Education",
     description:
-      "Interactive cybersecurity learning platform built across multiple iterations as a class project. Modules covering web security fundamentals, OWASP basics, and hands-on challenges. Stack evolved from PHP to Next.js + TypeScript.",
+      "Interactive cybersecurity learning platform built across multiple iterations as a class project. Modules covering web security and OWASP basics.",
+    longDescription:
+      "CyberPath is an interactive cybersecurity learning platform built over multiple iterations as a class project at Binus. The latest version uses Next.js + TypeScript + Tailwind for the frontend with hands-on modules covering OWASP basics, web app security, and beginner-friendly challenge tracks. The project went through PHP → Next.js evolution, demonstrating end-to-end ownership of stack decisions.",
+    features: [
+      "Multi-iteration evolution from PHP backend to Next.js + TS",
+      "Web security fundamentals & OWASP-aligned content",
+      "Interactive hands-on challenge modules",
+      "Tailwind UI with responsive design",
+      "Built as a Binus class project",
+    ],
+    gallery: [
+      { title: "Landing Page" },
+      { title: "Course Module" },
+      { title: "Challenge UI" },
+    ],
     icon: ShieldCheck,
     tags: ["Next.js", "TypeScript", "Tailwind", "PHP"],
     category: "Web App",
@@ -72,9 +140,25 @@ const projects: Project[] = [
   },
   {
     id: 4,
+    slug: "twhrencar",
     title: "TWHrenCar — Online Car Rental",
     description:
-      "Car rental landing & booking interface with modern UI. Browse fleet, view rates, and submit inquiries — focused on clean UX and responsive design.",
+      "Car rental landing & booking interface with modern UI. Browse fleet, view rates, and submit inquiries.",
+    longDescription:
+      "TWHrenCar is a car rental landing and booking interface focused on clean UX. Visitors can browse the fleet by vehicle category, view daily rates, and submit booking inquiries. Built with vanilla HTML/CSS/JavaScript to demonstrate UI design and responsive layout fundamentals without framework overhead.",
+    features: [
+      "Fleet browsing by vehicle category",
+      "Daily rate display per car",
+      "Booking inquiry form",
+      "Responsive layout for mobile",
+      "Pure HTML/CSS/JavaScript — no framework overhead",
+      "Deployed on Vercel",
+    ],
+    gallery: [
+      { title: "Hero" },
+      { title: "Fleet Grid" },
+      { title: "Booking Form" },
+    ],
     icon: Car,
     tags: ["HTML", "CSS", "JavaScript", "Vercel"],
     category: "Web App",
@@ -85,9 +169,24 @@ const projects: Project[] = [
   },
   {
     id: 5,
+    slug: "lahila",
     title: "Lahila — Band Music Website",
     description:
-      "Promotional website for a music band — showcasing discography, gigs, and bio with immersive visuals. Custom CSS animations bring the brand to life.",
+      "Promotional website for a music band — showcasing discography, gigs, and bio with immersive visuals.",
+    longDescription:
+      "Lahila is a promotional website for a music band — built to showcase identity, discography, and gig schedule with immersive visuals. Custom CSS animations and atmospheric color treatments bring the brand's vibe to life from first scroll.",
+    features: [
+      "Band identity, discography, and gigs showcase",
+      "Custom CSS animations",
+      "Immersive atmospheric color treatments",
+      "Responsive layout",
+      "Deployed on Vercel",
+    ],
+    gallery: [
+      { title: "Hero" },
+      { title: "Discography" },
+      { title: "Gigs" },
+    ],
     icon: Mic2,
     tags: ["HTML", "CSS", "Vercel"],
     category: "Web App",
@@ -98,9 +197,25 @@ const projects: Project[] = [
   },
   {
     id: 6,
+    slug: "papuyo",
     title: "Papuyo — Healthy Pudding Business",
     description:
-      "Business landing site for an Entrepreneurship class project at Binus. Selling low-sugar papaya pudding sweetened with stevia — built to validate a real product end-to-end, from branding to ordering UX.",
+      "Business landing site for an Entrepreneurship class project at Binus. Selling low-sugar papaya pudding sweetened with stevia.",
+    longDescription:
+      "Papuyo is a healthy-food business landing built as my final project for the Entrepreneurship course at Binus University. The product is low-sugar papaya pudding sweetened with stevia — designed for health-conscious consumers. The site validates the business end-to-end: branding, product positioning, ordering UX, and a clear conversion funnel.",
+    features: [
+      "Branding for low-sugar papaya pudding product",
+      "Stevia-based sweetener positioning",
+      "Order inquiry funnel",
+      "Built as Binus Entrepreneurship final project",
+      "End-to-end business validation (product → pitch → site)",
+      "Next.js + TypeScript + Tailwind stack",
+    ],
+    gallery: [
+      { title: "Hero" },
+      { title: "Product Detail" },
+      { title: "Order Form" },
+    ],
     icon: Leaf,
     tags: ["Next.js", "TypeScript", "Tailwind", "Business"],
     category: "Web App",
@@ -111,9 +226,25 @@ const projects: Project[] = [
   },
   {
     id: 7,
+    slug: "tetris-blockchain",
     title: "Tetris × Blockchain",
     description:
-      "Experimental Tetris clone with blockchain integration — exploring Web3 mechanics applied to a classic puzzle. Built to learn smart contract interaction patterns hands-on.",
+      "Experimental Tetris clone with blockchain integration — exploring Web3 mechanics applied to a classic puzzle game.",
+    longDescription:
+      "Tetris × Blockchain is an experimental remix of the classic puzzle game with Web3 mechanics layered in. Built to explore smart contract interaction patterns from the client side — wallet connect, transaction state, on-chain score persistence — without overcomplicating the gameplay loop. A sandbox for learning Web3 dev primitives hands-on.",
+    features: [
+      "Classic Tetris gameplay loop",
+      "Web3 wallet connect integration",
+      "On-chain score persistence experiment",
+      "Smart contract interaction sandbox",
+      "TypeScript + Next.js stack",
+      "Hands-on Web3 learning project",
+    ],
+    gallery: [
+      { title: "Game Board" },
+      { title: "Wallet Connect" },
+      { title: "Score Sync" },
+    ],
     icon: Boxes,
     tags: ["Next.js", "TypeScript", "Web3"],
     category: "Web App",
@@ -124,9 +255,297 @@ const projects: Project[] = [
   },
 ];
 
+function GalleryImage({ slot, accent, icon: Icon }: { slot: GallerySlot; accent: string; icon: IconType }) {
+  const [errored, setErrored] = useState(false);
+  const showImage = slot.image && !errored;
+
+  return (
+    <div
+      className="relative rounded-xl overflow-hidden border"
+      style={{
+        aspectRatio: "16 / 10",
+        background: `linear-gradient(135deg, ${accent}25 0%, ${accent}06 100%)`,
+        borderColor: "var(--border-soft)",
+      }}
+    >
+      {showImage ? (
+        <img
+          src={slot.image}
+          alt={slot.title}
+          className="absolute inset-0 w-full h-full object-cover"
+          onError={() => setErrored(true)}
+        />
+      ) : (
+        <>
+          <div
+            className="absolute inset-0 opacity-50"
+            style={{
+              backgroundImage: `radial-gradient(circle at 30% 50%, ${accent}30 0%, transparent 50%)`,
+            }}
+          />
+          <div className="relative h-full flex flex-col items-center justify-center gap-3">
+            <Icon size={36} strokeWidth={1.3} style={{ color: accent, opacity: 0.5 }} />
+            <span style={{ fontSize: "10.5px", color: "var(--text-muted)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+              {slot.title}
+            </span>
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
+function ProjectModal({ project, onClose }: { project: Project; onClose: () => void }) {
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [onClose]);
+
+  const Icon = project.icon;
+
+  return (
+    <motion.div
+      className="fixed inset-0 z-[60] flex items-center justify-center p-3 sm:p-8"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
+      onClick={onClose}
+      style={{ background: "rgba(0,0,0,0.65)", backdropFilter: "blur(8px)" }}
+    >
+      <motion.div
+        className="relative w-full max-w-5xl max-h-[92vh] rounded-2xl border overflow-hidden flex flex-col"
+        initial={{ opacity: 0, scale: 0.92, y: 30 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.92, y: 30 }}
+        transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          background: "var(--bg-base)",
+          borderColor: `${project.accent}40`,
+          boxShadow: `0 24px 80px rgba(0,0,0,0.45), 0 0 60px ${project.accent}18`,
+        }}
+      >
+        <button
+          onClick={onClose}
+          aria-label="Close project detail"
+          className="absolute top-4 right-4 z-10 w-9 h-9 rounded-xl border flex items-center justify-center transition-all duration-200"
+          style={{
+            background: "rgba(var(--bg-base-rgb), 0.6)",
+            borderColor: "var(--border-soft)",
+            color: "var(--text-muted)",
+            backdropFilter: "blur(8px)",
+          }}
+          onMouseEnter={(e) => {
+            const el = e.currentTarget as HTMLElement;
+            el.style.borderColor = `${project.accent}40`;
+            el.style.color = "var(--text-primary)";
+          }}
+          onMouseLeave={(e) => {
+            const el = e.currentTarget as HTMLElement;
+            el.style.borderColor = "var(--border-soft)";
+            el.style.color = "var(--text-muted)";
+          }}
+        >
+          <X className="w-4 h-4" />
+        </button>
+
+        <div
+          className="relative h-44 sm:h-56 shrink-0 overflow-hidden"
+          style={{ background: `linear-gradient(135deg, ${project.accent}30 0%, ${project.accent}08 60%, var(--bg-base) 100%)` }}
+        >
+          <div
+            className="absolute inset-0 opacity-50"
+            style={{
+              backgroundImage: `radial-gradient(circle at 25% 50%, ${project.accent}40 0%, transparent 45%), radial-gradient(circle at 80% 30%, ${project.accent}20 0%, transparent 40%)`,
+            }}
+          />
+          <div className="relative h-full flex items-center justify-center">
+            <Icon
+              size={104}
+              strokeWidth={1.2}
+              style={{ color: project.accent, opacity: 0.6, filter: `drop-shadow(0 12px 30px ${project.accent}55)` }}
+            />
+          </div>
+          <div className="absolute top-4 left-4 flex items-center gap-2">
+            <span
+              className="px-2.5 py-1 rounded-lg"
+              style={{
+                fontSize: "11px",
+                fontWeight: 600,
+                background: "rgba(0,0,0,0.5)",
+                color: "var(--text-secondary)",
+                backdropFilter: "blur(8px)",
+              }}
+            >
+              {project.category}
+            </span>
+            <span
+              className="px-2.5 py-1 rounded-lg"
+              style={{
+                fontSize: "11px",
+                color: "var(--text-muted)",
+                background: "rgba(0,0,0,0.5)",
+                fontFamily: "JetBrains Mono, monospace",
+                backdropFilter: "blur(8px)",
+              }}
+            >
+              {project.year}
+            </span>
+          </div>
+        </div>
+
+        <div className="overflow-y-auto px-6 sm:px-10 py-8 flex-1">
+          <h2 className="text-foreground mb-2" style={{ fontSize: "1.6rem", fontWeight: 800, lineHeight: 1.2 }}>
+            {project.title}
+          </h2>
+
+          <div className="flex flex-wrap gap-2 mb-6">
+            {project.tags.map((tag) => (
+              <span
+                key={tag}
+                className="px-2.5 py-1 rounded-lg"
+                style={{
+                  fontSize: "11px",
+                  fontWeight: 500,
+                  color: project.accent,
+                  background: `${project.accent}10`,
+                  border: `1px solid ${project.accent}20`,
+                  fontFamily: "JetBrains Mono, monospace",
+                }}
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          <p
+            className="leading-relaxed mb-8"
+            style={{ fontSize: "0.95rem", color: "var(--text-secondary)", lineHeight: 1.75 }}
+          >
+            {project.longDescription}
+          </p>
+
+          <div className="mb-10">
+            <div
+              className="mb-4"
+              style={{
+                fontSize: "11px",
+                fontWeight: 600,
+                letterSpacing: "0.16em",
+                textTransform: "uppercase",
+                color: project.accent,
+              }}
+            >
+              Key Features
+            </div>
+            <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2.5">
+              {project.features.map((f) => (
+                <li key={f} className="flex items-start gap-2.5">
+                  <span
+                    className="mt-1 shrink-0 rounded-full flex items-center justify-center"
+                    style={{
+                      width: 14,
+                      height: 14,
+                      background: `${project.accent}20`,
+                      color: project.accent,
+                    }}
+                  >
+                    <Check size={9} strokeWidth={3} />
+                  </span>
+                  <span style={{ fontSize: "13px", color: "var(--text-secondary)", lineHeight: 1.6 }}>{f}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="mb-2">
+            <div
+              className="mb-4"
+              style={{
+                fontSize: "11px",
+                fontWeight: 600,
+                letterSpacing: "0.16em",
+                textTransform: "uppercase",
+                color: project.accent,
+              }}
+            >
+              Gallery
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              {project.gallery.map((slot, i) => (
+                <GalleryImage key={i} slot={slot} accent={project.accent} icon={project.icon} />
+              ))}
+            </div>
+            <div
+              className="mt-3"
+              style={{ fontSize: "11px", color: "var(--text-muted)", fontStyle: "italic", lineHeight: 1.5 }}
+            >
+              Drop screenshots into <code style={{ color: project.accent }}>public/projects/{project.slug}/</code> to replace these placeholders.
+            </div>
+          </div>
+        </div>
+
+        <div
+          className="shrink-0 px-6 sm:px-10 py-5 border-t flex flex-wrap items-center gap-3"
+          style={{ borderColor: "var(--border-subtle)", background: "rgba(var(--bg-base-rgb), 0.6)" }}
+        >
+          {project.live && (
+            <a
+              href={project.live}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold transition-all duration-200"
+              style={{
+                background: project.accent,
+                color: "var(--accent-foreground)",
+                fontSize: "13px",
+              }}
+            >
+              <ExternalLink className="w-4 h-4" />
+              Visit Live Site
+            </a>
+          )}
+          <a
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-2.5 rounded-xl border transition-all duration-200 hover:bg-[var(--text-primary)]/5"
+            style={{
+              fontSize: "13px",
+              fontWeight: 500,
+              color: "var(--text-primary)",
+              borderColor: "var(--border-soft)",
+            }}
+          >
+            <Github className="w-4 h-4" />
+            View on GitHub
+          </a>
+          {!project.live && (
+            <span
+              className="ml-auto"
+              style={{ fontSize: "11px", color: "var(--text-muted)", fontStyle: "italic" }}
+            >
+              Self-hosted · no public demo
+            </span>
+          )}
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
 export function ProjectsSection() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [hovered, setHovered] = useState<number | null>(null);
+  const [activeProject, setActiveProject] = useState<Project | null>(null);
 
   const filtered =
     activeCategory === "All"
@@ -184,7 +603,6 @@ export function ProjectsSection() {
         <div className="grid md:grid-cols-2 gap-6">
           <AnimatePresence mode="popLayout">
             {filtered.map((project, i) => {
-              const primaryHref = project.live ?? project.github;
               const Icon = project.icon;
               return (
                 <motion.article
@@ -199,11 +617,10 @@ export function ProjectsSection() {
                   onMouseEnter={() => setHovered(project.id)}
                   onMouseLeave={() => setHovered(null)}
                 >
-                  <a
-                    href={primaryHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="relative block overflow-hidden cursor-pointer"
+                  <button
+                    onClick={() => setActiveProject(project)}
+                    aria-label={`View ${project.title} details`}
+                    className="relative block w-full overflow-hidden cursor-pointer"
                     style={{ height: "200px" }}
                   >
                     <div
@@ -234,7 +651,7 @@ export function ProjectsSection() {
                         className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold"
                         style={{ background: project.accent, color: "var(--accent-foreground)", fontSize: "13px" }}
                       >
-                        {project.live ? "Visit Live Site" : "View on GitHub"}
+                        View Project
                         <ArrowUpRight className="w-4 h-4" />
                       </span>
                     </div>
@@ -265,7 +682,7 @@ export function ProjectsSection() {
                         {project.year}
                       </span>
                     </div>
-                  </a>
+                  </button>
 
                   <div className="p-6">
                     <h3
@@ -297,17 +714,31 @@ export function ProjectsSection() {
                       ))}
                     </div>
 
-                    <div className="flex items-center gap-3 pt-4 border-t" style={{ borderColor: "rgba(var(--text-primary-rgb), 0.06)" }}>
+                    <div className="flex items-center gap-3 pt-4 border-t flex-wrap" style={{ borderColor: "rgba(var(--text-primary-rgb), 0.06)" }}>
+                      <button
+                        onClick={() => setActiveProject(project)}
+                        className="flex items-center gap-1.5 px-4 py-2 rounded-lg border transition-all duration-200"
+                        style={{
+                          fontSize: "12px",
+                          fontWeight: 500,
+                          color: project.accent,
+                          borderColor: `${project.accent}30`,
+                          background: `${project.accent}08`,
+                        }}
+                      >
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                        View Project
+                      </button>
                       {project.live && (
                         <a
                           href={project.live}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-1.5 px-4 py-2 rounded-lg border transition-all duration-200 hover:bg-[var(--text-primary)]/5"
-                          style={{ fontSize: "12px", fontWeight: 500, color: "var(--text-primary)", borderColor: "rgba(var(--text-primary-rgb), 0.1)" }}
+                          className="flex items-center gap-1.5 px-4 py-2 rounded-lg transition-all duration-200 hover:bg-[var(--text-primary)]/5"
+                          style={{ fontSize: "12px", fontWeight: 500, color: "var(--text-primary)" }}
                         >
                           <ExternalLink className="w-3.5 h-3.5" />
-                          Live Demo
+                          Live
                         </a>
                       )}
                       <a
@@ -320,14 +751,6 @@ export function ProjectsSection() {
                         <Github className="w-3.5 h-3.5" />
                         Source
                       </a>
-                      {!project.live && (
-                        <span
-                          className="ml-auto text-xs"
-                          style={{ fontSize: "11px", color: "var(--text-muted)", fontStyle: "italic" }}
-                        >
-                          Self-hosted · no public demo
-                        </span>
-                      )}
                     </div>
                   </div>
                 </motion.article>
@@ -355,6 +778,12 @@ export function ProjectsSection() {
           </a>
         </motion.div>
       </div>
+
+      <AnimatePresence>
+        {activeProject && (
+          <ProjectModal project={activeProject} onClose={() => setActiveProject(null)} />
+        )}
+      </AnimatePresence>
     </section>
   );
 }
