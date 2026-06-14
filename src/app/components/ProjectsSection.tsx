@@ -12,6 +12,7 @@ import {
   Mic2,
   Leaf,
   Boxes,
+  Fish,
   X,
   Check,
 } from "lucide-react";
@@ -139,7 +140,7 @@ const projects: Project[] = [
     tags: ["Next.js", "TypeScript", "Tailwind", "PHP"],
     category: "Web App",
     year: "2025",
-    live: "https://cyberpath-finall.vercel.app",
+    live: "https://cyberpath-real.vercel.app/",
     github: "https://github.com/Swordekel/CyberPath-Education-Cyber",
     accent: "var(--accent-tertiary)",
   },
@@ -168,7 +169,7 @@ const projects: Project[] = [
     tags: ["HTML", "CSS", "JavaScript", "Vercel"],
     category: "Web App",
     year: "2026",
-    live: "https://driveelite-gold.vercel.app",
+    live: "https://twhrentcar.vercel.app/",
     github: "https://github.com/Swordekel/TWHrenCar",
     accent: "var(--accent-success)",
   },
@@ -257,6 +258,35 @@ const projects: Project[] = [
     live: "https://tetris-blockchain-ten.vercel.app",
     github: "https://github.com/Swordekel/tetris-blockchain",
     accent: "var(--accent-tertiary)",
+  },
+  {
+    id: 8,
+    slug: "dunia-anura",
+    title: "Dunia Anura — Exotic Frog & Marine Fish Showcase",
+    description:
+      "Aesthetic showcase platform for exotic frogs (Anura order) and ornamental marine fish — powered by Three.js for interactive 3D visuals.",
+    longDescription:
+      "Dunia Anura is a showcase platform for exotic tropical frogs and ornamental marine fish — an aesthetic catalog built for collectors and enthusiasts. Powered by Three.js for interactive 3D visuals, the site uses React + Vite + Tailwind v4 to deliver smooth navigation, immersive species detail pages, and a clean modern presentation of the unique fauna.",
+    features: [
+      "Three.js powered interactive 3D visuals",
+      "React + Vite + Tailwind v4 modern stack",
+      "Species catalog for exotic frogs and marine fish",
+      "Immersive species detail pages",
+      "Responsive design optimized for collectors",
+      "Deployed on Vercel",
+    ],
+    gallery: [
+      { title: "Landing 3D" },
+      { title: "Species Catalog" },
+      { title: "Detail View" },
+    ],
+    icon: Fish,
+    tags: ["React", "Vite", "Tailwind v4", "Three.js"],
+    category: "Web App",
+    year: "2026",
+    live: "https://dunia-anura-design.vercel.app",
+    github: "https://github.com/Swordekel/dunia-anura-design",
+    accent: "var(--accent-success)",
   },
 ];
 
