@@ -1,4 +1,5 @@
 import { useEffect, useState, type ComponentType } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "motion/react";
 import {
   ExternalLink,
@@ -32,6 +33,8 @@ type Project = {
   description: string;
   longDescription: string;
   features: string[];
+  /** Optional hero image displayed in the modal banner instead of the gradient + icon. */
+  heroImage?: string;
   gallery: GallerySlot[];
   icon: IconType;
   tags: string[];
@@ -66,10 +69,12 @@ const projects: Project[] = [
       "Multi-conversation history stored locally per device",
       "Configurable model picker (Qwen, Llama, custom)",
     ],
+    heroImage: "/projects/sword-ai/gambar utama no watermark.jpg",
     gallery: [
-      { title: "Chat Screen" },
-      { title: "Model Picker" },
-      { title: "Tool Use Demo" },
+      { title: "Chat Screen", image: "/projects/sword-ai/Chat Screen.png" },
+      { title: "Model Picker", image: "/projects/sword-ai/Model Picker.png" },
+      { title: "Tool Use Demo", image: "/projects/sword-ai/Tool Use Demo.png" },
+      { title: "Mobile View", image: "/projects/sword-ai/mobile Screen.png" },
     ],
     icon: Bot,
     tags: ["Flutter", "Dart", "Ollama", "Qwen 2.5", "PWA"],
@@ -255,50 +260,165 @@ const projects: Project[] = [
   },
 ];
 
-function GalleryImage({ slot, accent, icon: Icon }: { slot: GallerySlot; accent: string; icon: IconType }) {
+function GalleryImage({
+  slot,
+  accent,
+  icon: Icon,
+  onOpen,
+}: {
+  slot: GallerySlot;
+  accent: string;
+  icon: IconType;
+  onOpen: (src: string, alt: string) => void;
+}) {
   const [errored, setErrored] = useState(false);
   const showImage = slot.image && !errored;
 
-  return (
-    <div
-      className="relative rounded-xl overflow-hidden border"
-      style={{
-        aspectRatio: "16 / 10",
-        background: `linear-gradient(135deg, ${accent}25 0%, ${accent}06 100%)`,
-        borderColor: "var(--border-soft)",
-      }}
-    >
-      {showImage ? (
+  const containerStyle = {
+    aspectRatio: "16 / 10",
+    background: `linear-gradient(135deg, ${accent}25 0%, ${accent}06 100%)`,
+    borderColor: "var(--border-soft)",
+  } as const;
+
+  if (showImage) {
+    return (
+      <button
+        type="button"
+        onClick={() => onOpen(slot.image!, slot.title)}
+        className="group relative rounded-xl overflow-hidden border block w-full cursor-zoom-in"
+        style={containerStyle}
+        aria-label={`View ${slot.title} full size`}
+      >
         <img
           src={slot.image}
           alt={slot.title}
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
           onError={() => setErrored(true)}
         />
-      ) : (
-        <>
-          <div
-            className="absolute inset-0 opacity-50"
+        <div
+          className="absolute inset-0 transition-opacity duration-200 opacity-0 group-hover:opacity-100 flex items-end justify-start p-2.5"
+          style={{ background: "linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 50%)" }}
+        >
+          <span
             style={{
-              backgroundImage: `radial-gradient(circle at 30% 50%, ${accent}30 0%, transparent 50%)`,
+              fontSize: "10.5px",
+              fontWeight: 600,
+              color: "#fff",
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
             }}
-          />
-          <div className="relative h-full flex flex-col items-center justify-center gap-3">
-            <Icon size={36} strokeWidth={1.3} style={{ color: accent, opacity: 0.5 }} />
-            <span style={{ fontSize: "10.5px", color: "var(--text-muted)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
-              {slot.title}
-            </span>
-          </div>
-        </>
-      )}
+          >
+            {slot.title}
+          </span>
+        </div>
+      </button>
+    );
+  }
+
+  return (
+    <div className="relative rounded-xl overflow-hidden border" style={containerStyle}>
+      <div
+        className="absolute inset-0 opacity-50"
+        style={{
+          backgroundImage: `radial-gradient(circle at 30% 50%, ${accent}30 0%, transparent 50%)`,
+        }}
+      />
+      <div className="relative h-full flex flex-col items-center justify-center gap-3">
+        <Icon size={36} strokeWidth={1.3} style={{ color: accent, opacity: 0.5 }} />
+        <span style={{ fontSize: "10.5px", color: "var(--text-muted)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+          {slot.title}
+        </span>
+      </div>
     </div>
   );
 }
 
+function Lightbox({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
+  if (typeof document === "undefined") return null;
+
+  const handleBackdropClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onClose();
+  };
+
+  const handleCloseClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onClose();
+  };
+
+  return createPortal(
+    <motion.div
+      className="fixed inset-0 z-[80] flex items-center justify-center p-4 sm:p-10 cursor-zoom-out"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.18 }}
+      onClick={handleBackdropClick}
+      style={{ background: "rgba(0,0,0,0.92)", backdropFilter: "blur(14px)" }}
+    >
+      <button
+        type="button"
+        onClick={handleCloseClick}
+        aria-label="Close fullscreen image"
+        className="absolute top-5 right-5 z-10 w-10 h-10 rounded-xl border flex items-center justify-center transition-all duration-200"
+        style={{
+          background: "rgba(0,0,0,0.5)",
+          borderColor: "rgba(255,255,255,0.15)",
+          color: "rgba(255,255,255,0.85)",
+        }}
+        onMouseEnter={(e) => {
+          const el = e.currentTarget as HTMLElement;
+          el.style.borderColor = "rgba(255,255,255,0.35)";
+          el.style.color = "#fff";
+        }}
+        onMouseLeave={(e) => {
+          const el = e.currentTarget as HTMLElement;
+          el.style.borderColor = "rgba(255,255,255,0.15)";
+          el.style.color = "rgba(255,255,255,0.85)";
+        }}
+      >
+        <X className="w-5 h-5" />
+      </button>
+
+      <motion.img
+        src={src}
+        alt={alt}
+        initial={{ scale: 0.92, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.92, opacity: 0 }}
+        transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+        onClick={(e) => e.stopPropagation()}
+        className="max-w-full max-h-full object-contain rounded-lg cursor-default"
+        style={{ boxShadow: "0 24px 80px rgba(0,0,0,0.5)" }}
+      />
+
+      <div
+        className="absolute bottom-5 left-1/2 -translate-x-1/2 pointer-events-none"
+        style={{
+          fontSize: "11px",
+          color: "rgba(255,255,255,0.45)",
+          letterSpacing: "0.1em",
+          textTransform: "uppercase",
+        }}
+      >
+        Click outside or press Esc to close
+      </div>
+    </motion.div>,
+    document.body
+  );
+}
+
 function ProjectModal({ project, onClose }: { project: Project; onClose: () => void }) {
+  const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(null);
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+      if (e.key !== "Escape") return;
+      if (lightbox) {
+        setLightbox(null);
+      } else {
+        onClose();
+      }
     };
     window.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
@@ -306,9 +426,11 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
       window.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
     };
-  }, [onClose]);
+  }, [onClose, lightbox]);
 
   const Icon = project.icon;
+  const openLightbox = (src: string, alt: string) => setLightbox({ src, alt });
+  const galleryCols = project.gallery.length === 4 ? "sm:grid-cols-2" : "sm:grid-cols-3";
 
   return (
     <motion.div
@@ -358,23 +480,44 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
         </button>
 
         <div
-          className="relative h-44 sm:h-56 shrink-0 overflow-hidden"
+          className="relative h-44 sm:h-64 shrink-0 overflow-hidden"
           style={{ background: `linear-gradient(135deg, ${project.accent}30 0%, ${project.accent}08 60%, var(--bg-base) 100%)` }}
         >
-          <div
-            className="absolute inset-0 opacity-50"
-            style={{
-              backgroundImage: `radial-gradient(circle at 25% 50%, ${project.accent}40 0%, transparent 45%), radial-gradient(circle at 80% 30%, ${project.accent}20 0%, transparent 40%)`,
-            }}
-          />
-          <div className="relative h-full flex items-center justify-center">
-            <Icon
-              size={104}
-              strokeWidth={1.2}
-              style={{ color: project.accent, opacity: 0.6, filter: `drop-shadow(0 12px 30px ${project.accent}55)` }}
-            />
-          </div>
-          <div className="absolute top-4 left-4 flex items-center gap-2">
+          {project.heroImage ? (
+            <button
+              type="button"
+              onClick={() => openLightbox(project.heroImage!, project.title)}
+              className="absolute inset-0 w-full h-full cursor-zoom-in group"
+              aria-label="View hero image full size"
+            >
+              <img
+                src={project.heroImage}
+                alt={project.title}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div
+                className="absolute inset-0"
+                style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, transparent 30%, transparent 60%, rgba(var(--bg-base-rgb), 0.6) 100%)" }}
+              />
+            </button>
+          ) : (
+            <>
+              <div
+                className="absolute inset-0 opacity-50"
+                style={{
+                  backgroundImage: `radial-gradient(circle at 25% 50%, ${project.accent}40 0%, transparent 45%), radial-gradient(circle at 80% 30%, ${project.accent}20 0%, transparent 40%)`,
+                }}
+              />
+              <div className="relative h-full flex items-center justify-center">
+                <Icon
+                  size={104}
+                  strokeWidth={1.2}
+                  style={{ color: project.accent, opacity: 0.6, filter: `drop-shadow(0 12px 30px ${project.accent}55)` }}
+                />
+              </div>
+            </>
+          )}
+          <div className="absolute top-4 left-4 flex items-center gap-2 pointer-events-none">
             <span
               className="px-2.5 py-1 rounded-lg"
               style={{
@@ -479,9 +622,15 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
             >
               Gallery
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div className={`grid grid-cols-1 ${galleryCols} gap-3`}>
               {project.gallery.map((slot, i) => (
-                <GalleryImage key={i} slot={slot} accent={project.accent} icon={project.icon} />
+                <GalleryImage
+                  key={i}
+                  slot={slot}
+                  accent={project.accent}
+                  icon={project.icon}
+                  onOpen={openLightbox}
+                />
               ))}
             </div>
             <div
@@ -538,6 +687,12 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           )}
         </div>
       </motion.div>
+
+      <AnimatePresence>
+        {lightbox && (
+          <Lightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 }
@@ -629,19 +784,35 @@ export function ProjectsSection() {
                         background: `linear-gradient(135deg, ${project.accent}28 0%, ${project.accent}08 60%, var(--bg-surface) 100%)`,
                       }}
                     />
-                    <div
-                      className="absolute inset-0 opacity-40"
-                      style={{
-                        backgroundImage: `radial-gradient(circle at 25% 50%, ${project.accent}30 0%, transparent 45%), radial-gradient(circle at 80% 30%, ${project.accent}18 0%, transparent 40%)`,
-                      }}
-                    />
-                    <div className="relative h-full flex items-center justify-center transition-transform duration-500 group-hover:scale-110">
-                      <Icon
-                        size={88}
-                        strokeWidth={1.25}
-                        style={{ color: project.accent, opacity: 0.55, filter: `drop-shadow(0 8px 24px ${project.accent}40)` }}
-                      />
-                    </div>
+                    {project.heroImage ? (
+                      <>
+                        <img
+                          src={project.heroImage}
+                          alt={project.title}
+                          className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                        <div
+                          className="absolute inset-0"
+                          style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, transparent 35%, transparent 65%, rgba(0,0,0,0.4) 100%)" }}
+                        />
+                      </>
+                    ) : (
+                      <>
+                        <div
+                          className="absolute inset-0 opacity-40"
+                          style={{
+                            backgroundImage: `radial-gradient(circle at 25% 50%, ${project.accent}30 0%, transparent 45%), radial-gradient(circle at 80% 30%, ${project.accent}18 0%, transparent 40%)`,
+                          }}
+                        />
+                        <div className="relative h-full flex items-center justify-center transition-transform duration-500 group-hover:scale-110">
+                          <Icon
+                            size={88}
+                            strokeWidth={1.25}
+                            style={{ color: project.accent, opacity: 0.55, filter: `drop-shadow(0 8px 24px ${project.accent}40)` }}
+                          />
+                        </div>
+                      </>
+                    )}
 
                     <div
                       className="absolute inset-0 transition-opacity duration-300 flex items-center justify-center"
