@@ -3,33 +3,31 @@ import { motion, AnimatePresence } from "motion/react";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
 /**
- * REFERENCES — diisi dengan testimonial REAL dari orang yang pernah bekerja
- * sama dengan Anda (dosen, mentor, teammate project, klien freelance).
- *
- * Untuk tambah entry baru, copy object di bawah lalu isi:
- *   - name     : Nama lengkap orang tsb
- *   - role     : Posisi + hubungan dengan Anda (mis. "Dosen Secure Programming"
- *                atau "Team Lead Project CyberPath")
- *   - avatar   : 2 huruf inisial (mis. "AB")
- *   - color    : Warna brand untuk card (rotasi: accent-primary/secondary/
- *                tertiary/success)
- *   - rating   : Bintang (1-5)
- *   - text     : Quote dari mereka (minta izin sebelum publish)
- *   - context  : Konteks kolaborasi (mis. "Project Akhir Mata Kuliah XYZ")
- *
- * Hapus seluruh section di App.tsx jika belum ada satu pun reference real —
- * better empty daripada placeholder yang ketahuan kosongan.
+ * REFERENCES — testimonial dari klien freelance & kolaborator real.
+ * Tambah entry baru dengan copy object di bawah, lalu isi: name, role,
+ * avatar (2 huruf inisial), color (rotasi accent-primary/secondary/
+ * tertiary/success), rating (1-5), text, context.
  */
 const testimonials = [
   {
     id: 1,
-    name: "[Nama Reference]",
-    role: "[Posisi / Hubungan dengan saya]",
-    avatar: "XX",
+    name: "Zakcri Ekel",
+    role: "Client · TWHrenCar",
+    avatar: "ZE",
     color: "var(--accent-primary)",
     rating: 5,
-    text: "Tulis quote real dari mereka di sini setelah minta izin. Cukup 2-4 kalimat tentang bagaimana Anda bekerja, apa yang mereka apresiasi, dan dampak konkret dari kolaborasi.",
-    context: "Konteks kerja sama (mis. project kuliah, freelance, dst.)",
+    text: "Sword bikin website TWHrenCar dari nol untuk bisnis sewa mobil saya. Komunikasinya lancar, eksekusi cepat, dan hasilnya lebih bagus dari ekspektasi awal — dia paham kebutuhan klien tanpa harus dijelasin berulang. Recommended buat siapapun yang butuh developer freelance yang reliable.",
+    context: "Freelance · Online Car Rental Website",
+  },
+  {
+    id: 2,
+    name: "Lahila Band",
+    role: "Client · Lahila Band Website",
+    avatar: "LB",
+    color: "var(--accent-secondary)",
+    rating: 5,
+    text: "Kami minta Sword bikin website untuk Lahila Band — dan dia berhasil capture vibe band kami dengan visual yang pas. Mulai dari mood color sampai animasinya, semua terasa intentional, bukan cuma template. Proses revisinya juga cepat dan komunikatif.",
+    context: "Freelance · Band Promotional Website",
   },
 ];
 
@@ -77,7 +75,7 @@ export function TestimonialsSection() {
         </motion.div>
 
         {hasMultiple && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
+          <div className={`grid grid-cols-1 gap-5 mb-16 ${testimonials.length >= 3 ? "md:grid-cols-2 lg:grid-cols-3" : "md:grid-cols-2"}`}>
             {testimonials.map((t, i) => (
               <motion.button
                 key={t.id}
