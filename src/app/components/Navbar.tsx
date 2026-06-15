@@ -98,7 +98,10 @@ export function Navbar() {
         <div className="hidden md:flex items-center gap-3">
           <ThemeToggle />
           <a
-            href="#"
+            href="/CV_Sword_Christ_Imanuel_Ekel.pdf"
+            download
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center gap-2 px-4 py-2 text-sm text-[var(--accent-primary)] border border-[var(--accent-primary)]/25 rounded-xl hover:bg-[var(--accent-primary)]/8 hover:border-[var(--accent-primary)]/50 hover:shadow-[0_0_24px_rgba(var(--accent-primary-rgb),0.15)] transition-all duration-300"
           >
             <Download className="w-3.5 h-3.5" />
@@ -144,7 +147,10 @@ export function Navbar() {
               ))}
               <div className="pt-2 border-t mt-2" style={{ borderColor: "var(--border-subtle)" }}>
                 <a
-                  href="#"
+                  href="/CV_Sword_Christ_Imanuel_Ekel.pdf"
+                  download
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-2 px-4 py-2.5 text-sm text-[var(--accent-primary)] border border-[var(--accent-primary)]/25 rounded-xl hover:bg-[var(--accent-primary)]/8 transition-all duration-300 w-fit"
                 >
                   <Download className="w-3.5 h-3.5" />
