@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { ArrowRight, MessageCircle, ChevronDown, Github, Linkedin, Twitter, MapPin } from "lucide-react";
 
-const roles = ["Software Engineer", "Full-Stack Developer", "Cyber Security Student", "Web App Pentester", "Vibe Coder"];
+const roles = ["Freelance Web & App Developer", "Software Engineer", "Full-Stack Developer", "Cyber Security Student", "Web App Pentester"];
 
 function useTypingEffect(words: string[], speed = 75, pause = 2200) {
   const [display, setDisplay] = useState("");
