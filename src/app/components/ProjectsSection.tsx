@@ -171,7 +171,8 @@ const projects: Project[] = [
     gallery: [
       { title: "Mobile View", image: "/projects/twhrencar/mobile.png" },
       { title: "Tablet View", image: "/projects/twhrencar/tablet.png" },
-      { title: "Desktop · Scrolled", image: "/projects/twhrencar/scrolled.png" },
+      { title: "Car View", image: "/projects/twhrencar/car.png" },
+      { title: "Car detail", image: "/projects/twhrencar/car-detail.png" },
     ],
     icon: Car,
     tags: ["HTML", "CSS", "JavaScript", "Vercel"],
