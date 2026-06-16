@@ -200,8 +200,6 @@ const projects: Project[] = [
     gallery: [
       { title: "Desktop View", image: "/projects/lahila/home.png" },
       { title: "Mobile View", image: "/projects/lahila/mobile.png" },
-      { title: "Tablet View", image: "/projects/lahila/tablet.png" },
-      { title: "Desktop · Scrolled", image: "/projects/lahila/scrolled.png" },
     ],
     icon: Mic2,
     tags: ["HTML", "CSS", "Vercel"],
