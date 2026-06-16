@@ -170,7 +170,6 @@ const projects: Project[] = [
     heroImage: "/projects/twhrencar/hero.png",
     gallery: [
       { title: "Mobile View", image: "/projects/twhrencar/mobile.png" },
-      { title: "Tablet View", image: "/projects/twhrencar/tablet.png" },
       { title: "Car View", image: "/projects/twhrencar/car.png" },
       { title: "Car detail", image: "/projects/twhrencar/car-detail.png" },
     ],
