@@ -15,6 +15,7 @@ import {
   Fish,
   X,
   Check,
+  Scissors,
 } from "lucide-react";
 
 const categories = ["All", "Web App", "Mobile"];
@@ -288,8 +289,6 @@ const projects: Project[] = [
     heroImage: "/projects/dunia-anura/hero.png",
     gallery: [
       { title: "Mobile View", image: "/projects/dunia-anura/mobile.png" },
-      { title: "Tablet View", image: "/projects/dunia-anura/tablet.png" },
-      { title: "Desktop · Scrolled", image: "/projects/dunia-anura/scrolled.png" },
     ],
     icon: Fish,
     tags: ["React", "Vite", "Tailwind v4", "Three.js"],
@@ -298,6 +297,35 @@ const projects: Project[] = [
     live: "https://dunia-anura-design.vercel.app",
     github: "https://github.com/Swordekel/dunia-anura-design",
     accent: "var(--accent-success)",
+  },
+  {
+    id: 9,
+    slug: "latar",
+    title: "Latar — In-Browser Background Remover PWA",
+    description:
+      "AI-powered background removal running 100% locally in the browser. Zero server uploads, absolute privacy, and custom canvas backgrounds.",
+    longDescription:
+      "Latar is a progressive web application (PWA) that removes image backgrounds instantly and entirely client-side using local machine learning models (@imgly/background-removal). Because the AI model runs locally on the user's device, no photos are ever uploaded to a server, ensuring total privacy. The app features a rich editor canvas allowing users to replace the background with solid colors, gradient fills, custom images, or transparency, along with adjustments and photo filters.",
+    features: [
+      "AI-powered background removal running entirely in the browser",
+      "100% local processing — no images are ever uploaded to a server",
+      "Editor Canvas: replace backgrounds with transparent, solid colors, gradients, or custom images",
+      "Real-time photo adjustments and filters on cutout objects",
+      "Flexible exports to high-quality PNG (transparent), JPEG, and WebP formats",
+      "Installable Progressive Web App (PWA) with complete offline support",
+    ],
+    heroImage: "/projects/latar/hero.png",
+    gallery: [
+      { title: "Editor View", image: "/projects/latar/editor.png" },
+      { title: "Mobile View", image: "/projects/latar/mobile.png" },
+    ],
+    icon: Scissors,
+    tags: ["React", "TypeScript", "Vite", "PWA", "@imgly/background-removal"],
+    category: "Web App",
+    year: "2026",
+    live: "https://latar.vercel.app/",
+    github: "https://github.com/Swordekel/latar",
+    accent: "var(--accent-primary)",
   },
 ];
 
