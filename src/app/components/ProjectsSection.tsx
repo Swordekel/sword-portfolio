@@ -74,10 +74,10 @@ const projects: Project[] = [
       "Theme music with autoplay + visible toggle",
       "Custom Toy Story cursor set (arrow + grab hands)",
     ],
+    heroImage: "/projects/toy-story/hero.jpg",
     gallery: [
-      { title: "3D Hero" },
-      { title: "Characters" },
-      { title: "Film Saga" },
+      { title: "Characters", image: "/projects/toy-story/characters.jpg" },
+      { title: "Film Saga", image: "/projects/toy-story/Saga.jpg" },
     ],
     icon: ToyBrick,
     tags: ["React", "TypeScript", "Three.js", "R3F", "Motion"],
@@ -103,10 +103,10 @@ const projects: Project[] = [
       "Responsive with a custom mobile navigation",
       "Deployed on Vercel",
     ],
+    heroImage: "/projects/billie-eilish/hero.jpg",
     gallery: [
-      { title: "Hero" },
-      { title: "Gallery" },
-      { title: "Tracks" },
+      { title: "Gallery", image: "/projects/billie-eilish/gallery.jpg" },
+      { title: "Tracks", image: "/projects/billie-eilish/music.jpg" },
     ],
     icon: Headphones,
     tags: ["React", "Vite", "GSAP", "Lenis", "Motion"],
@@ -132,10 +132,10 @@ const projects: Project[] = [
       "Footer with social links & creator credit",
       "Deployed on Vercel",
     ],
+    heroImage: "/projects/justin-bieber/hero.jpg",
     gallery: [
-      { title: "Hero" },
-      { title: "Moments" },
-      { title: "Music" },
+      { title: "Moments", image: "/projects/justin-bieber/moments.jpg" },
+      { title: "Music", image: "/projects/justin-bieber/music.jpg" },
     ],
     icon: Music2,
     tags: ["React", "Vite", "Motion", "Lenis"],
@@ -156,15 +156,18 @@ const projects: Project[] = [
     features: [
       "Curated amphibian species catalog",
       "Category browsing & product detail views",
+      "Built-in AI assistant for buyer guidance",
       "Clean, modern storefront UI",
       "React + Vite + TypeScript + Tailwind stack",
       "Responsive marketplace layout",
       "Deployed on Vercel",
     ],
+    heroImage: "/projects/amphiverse/hero.jpg",
     gallery: [
-      { title: "Storefront" },
-      { title: "Catalog" },
-      { title: "Product Detail" },
+      { title: "Collection", image: "/projects/amphiverse/collection.jpg" },
+      { title: "Catalog", image: "/projects/amphiverse/katalog.jpg" },
+      { title: "Product Detail", image: "/projects/amphiverse/detail-product.jpg" },
+      { title: "AI Assistant", image: "/projects/amphiverse/chatAi.jpg" },
     ],
     icon: Store,
     tags: ["React", "TypeScript", "Vite", "Tailwind"],
@@ -907,7 +910,7 @@ function CinematicPanel({
 
   return (
     <article className="w-screen h-full shrink-0 flex items-center">
-      <div className="w-full max-w-7xl mx-auto px-8 lg:px-12 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <div className="w-full max-w-[88rem] mx-auto px-8 lg:px-12 grid lg:grid-cols-[1fr_1.2fr] gap-10 lg:gap-20 items-center">
         {/* text */}
         <div className="order-2 lg:order-1">
           <div className="flex items-baseline gap-4 mb-3">
@@ -970,8 +973,8 @@ function CinematicPanel({
             type="button"
             onClick={() => onOpen(project)}
             aria-label={`View ${project.title}`}
-            className="group relative block w-full rounded-2xl overflow-hidden border cursor-pointer"
-            style={{ aspectRatio: "4 / 3", borderColor: `${project.accent}30`, boxShadow: `0 30px 80px -30px ${project.accent}66` }}
+            className="group relative block w-full aspect-[4/3] lg:aspect-auto lg:h-[72vh] rounded-2xl overflow-hidden border cursor-pointer"
+            style={{ borderColor: `${project.accent}30`, boxShadow: `0 30px 80px -30px ${project.accent}66` }}
           >
             <div className="absolute inset-0" style={{ background: `linear-gradient(135deg, ${project.accent}22 0%, ${project.accent}06 60%, var(--bg-surface) 100%)` }} />
             {project.heroImage ? (
