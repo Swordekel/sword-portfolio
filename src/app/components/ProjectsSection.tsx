@@ -1,6 +1,6 @@
-import { useEffect, useState, type ComponentType } from "react";
+import { useEffect, useRef, useState, type ComponentType } from "react";
 import { createPortal } from "react-dom";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, useScroll, useTransform } from "motion/react";
 import {
   ExternalLink,
   Github,
@@ -16,6 +16,10 @@ import {
   X,
   Check,
   Scissors,
+  ToyBrick,
+  Headphones,
+  Music2,
+  Store,
 } from "lucide-react";
 
 const categories = ["All", "Web App", "Mobile"];
@@ -54,6 +58,122 @@ type Project = {
  * Missing images automatically fall back to a styled gradient placeholder.
  */
 const projects: Project[] = [
+  {
+    id: 10,
+    slug: "toy-story",
+    title: "Toy Story — A Fan Tribute",
+    description:
+      "Immersive 3D fan tribute — a real WebGL sky with draggable floating toys, character cards, hover-video toys, and a fully custom themed cursor.",
+    longDescription:
+      "An animated, single-page Toy Story tribute built entirely from scratch (no template). The hero is a genuine WebGL scene — volumetric clouds with draggable, randomly-scattered toys and floating character photo-cards, all reacting to the cursor with parallax. It pairs hover-to-play character videos, a scroll-pinned film saga, autoplaying theme music, and a fully custom cursor set (glossy arrow + open/closed grab hands).",
+    features: [
+      "Real WebGL 3D hero — Three.js + React Three Fiber + drei",
+      "Draggable floating toys, layout randomised on every load",
+      "Hover-to-play character videos (idle → wave with sound)",
+      "Scroll-pinned film saga + kinetic quotes",
+      "Theme music with autoplay + visible toggle",
+      "Custom Toy Story cursor set (arrow + grab hands)",
+    ],
+    gallery: [
+      { title: "3D Hero" },
+      { title: "Characters" },
+      { title: "Film Saga" },
+    ],
+    icon: ToyBrick,
+    tags: ["React", "TypeScript", "Three.js", "R3F", "Motion"],
+    category: "Web App",
+    year: "2026",
+    live: "https://toy-story-tribute.vercel.app",
+    github: "https://github.com/Swordekel/toy-story-tribute",
+    accent: "var(--accent-primary)",
+  },
+  {
+    id: 11,
+    slug: "billie-eilish",
+    title: "Billie Eilish — Tribute Experience",
+    description:
+      "Animated single-page Billie Eilish tribute — kinetic typography, scroll-driven motion, and a moody neon-on-black aesthetic.",
+    longDescription:
+      "A single-page Billie Eilish tribute with an editorial, neon-green-on-black aesthetic. Built with React + Vite, it layers kinetic text (scramble, char-reveal, count-up, marquee), scroll-driven reveals, a smooth-scrolling gallery, a Spotify embed for real tracks, and a responsive mobile nav — polished into an immersive, brand-true experience.",
+    features: [
+      "Kinetic typography — scramble, char-reveal, count-up, marquee",
+      "Scroll-driven reveals with GSAP ScrollTrigger + Lenis",
+      "Spotify embed for real tracks",
+      "Moody neon-green-on-black brand aesthetic",
+      "Responsive with a custom mobile navigation",
+      "Deployed on Vercel",
+    ],
+    gallery: [
+      { title: "Hero" },
+      { title: "Gallery" },
+      { title: "Tracks" },
+    ],
+    icon: Headphones,
+    tags: ["React", "Vite", "GSAP", "Lenis", "Motion"],
+    category: "Web App",
+    year: "2026",
+    live: "https://billie-eilish-tribute.vercel.app",
+    github: "https://github.com/Swordekel/billie-eilish-tribute",
+    accent: "var(--accent-secondary)",
+  },
+  {
+    id: 12,
+    slug: "justin-bieber",
+    title: "Justin Bieber — Fan Experience",
+    description:
+      "Animated single-page Justin Bieber fan experience — section reveals, parallax, real photos & music, in a clean lavender-accented design.",
+    longDescription:
+      "A single-page Justin Bieber fan experience built with React + Vite. It features animated section reveals, parallax, a refined Moments gallery (desktop & mobile), real CC-licensed photography, a Spotify embed, and an AnimatedText reveal system — wrapped in a clean lavender-accented design and deployed to Vercel.",
+    features: [
+      "Animated section reveals & parallax (Motion + Lenis)",
+      "Refined Moments gallery for desktop & mobile",
+      "Spotify embed for real tracks",
+      "Real CC-licensed photography (no stock/Getty)",
+      "Footer with social links & creator credit",
+      "Deployed on Vercel",
+    ],
+    gallery: [
+      { title: "Hero" },
+      { title: "Moments" },
+      { title: "Music" },
+    ],
+    icon: Music2,
+    tags: ["React", "Vite", "Motion", "Lenis"],
+    category: "Web App",
+    year: "2026",
+    live: "https://justin-bieber-fan-experience.vercel.app",
+    github: "https://github.com/Swordekel/justin-bieber-fan-experience",
+    accent: "var(--accent-tertiary)",
+  },
+  {
+    id: 13,
+    slug: "amphiverse",
+    title: "Amphiverse — Premium Amphibian Marketplace",
+    description:
+      "A premium marketplace concept for exotic amphibians — browse and shop curated species through a clean, modern storefront.",
+    longDescription:
+      "Amphiverse is a premium marketplace for exotic amphibians, presenting curated species through a polished storefront. Built with React + Vite + TypeScript and Tailwind, it focuses on clean product presentation, category browsing, and a modern e-commerce experience for collectors and enthusiasts.",
+    features: [
+      "Curated amphibian species catalog",
+      "Category browsing & product detail views",
+      "Clean, modern storefront UI",
+      "React + Vite + TypeScript + Tailwind stack",
+      "Responsive marketplace layout",
+      "Deployed on Vercel",
+    ],
+    gallery: [
+      { title: "Storefront" },
+      { title: "Catalog" },
+      { title: "Product Detail" },
+    ],
+    icon: Store,
+    tags: ["React", "TypeScript", "Vite", "Tailwind"],
+    category: "Web App",
+    year: "2026",
+    live: "https://amphiverse.vercel.app",
+    github: "https://github.com/Swordekel/Amphiverse",
+    accent: "var(--accent-success)",
+  },
   {
     id: 1,
     slug: "sword-ai",
@@ -366,6 +486,8 @@ function GalleryImage({
         <img
           src={slot.image}
           alt={slot.title}
+          loading="lazy"
+          decoding="async"
           className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
           onError={() => setErrored(true)}
         />
@@ -422,6 +544,7 @@ function Lightbox({ src, alt, onClose }: { src: string; alt: string; onClose: ()
 
   return createPortal(
     <motion.div
+      data-lenis-prevent
       className="fixed inset-0 z-[80] flex items-center justify-center p-4 sm:p-10 cursor-zoom-out"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -619,7 +742,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           </div>
         </div>
 
-        <div className="overflow-y-auto px-6 sm:px-10 py-8 flex-1">
+        <div data-lenis-prevent className="overflow-y-auto px-6 sm:px-10 py-8 flex-1">
           <h2 className="text-foreground mb-2" style={{ fontSize: "1.6rem", fontWeight: 800, lineHeight: 1.2 }}>
             {project.title}
           </h2>
@@ -765,6 +888,152 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
   );
 }
 
+/** Projects shown in the cinematic, scroll-driven showcase (desktop only). */
+const FEATURED_SLUGS = ["toy-story", "billie-eilish", "justin-bieber", "amphiverse"];
+
+function CinematicPanel({
+  project,
+  index,
+  total,
+  onOpen,
+}: {
+  project: Project;
+  index: number;
+  total: number;
+  onOpen: (p: Project) => void;
+}) {
+  const Icon = project.icon;
+  const num = String(index + 1).padStart(2, "0");
+
+  return (
+    <article className="w-screen h-full shrink-0 flex items-center">
+      <div className="w-full max-w-7xl mx-auto px-8 lg:px-12 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        {/* text */}
+        <div className="order-2 lg:order-1">
+          <div className="flex items-baseline gap-4 mb-3">
+            <span
+              style={{
+                fontFamily: "JetBrains Mono, monospace",
+                fontSize: "clamp(3.5rem, 8vw, 7.5rem)",
+                fontWeight: 700,
+                lineHeight: 0.8,
+                color: project.accent,
+                opacity: 0.16,
+              }}
+            >
+              {num}
+            </span>
+            <span style={{ fontFamily: "JetBrains Mono, monospace", fontSize: "12px", color: "var(--text-muted)", letterSpacing: "0.1em" }}>
+              {num} / {String(total).padStart(2, "0")}
+            </span>
+          </div>
+
+          <div className="flex items-center gap-2 mb-4">
+            <span style={{ fontSize: "11px", fontWeight: 600, letterSpacing: "0.16em", textTransform: "uppercase", color: project.accent }}>
+              {project.category}
+            </span>
+            <span style={{ fontFamily: "JetBrains Mono, monospace", fontSize: "11px", color: "var(--text-muted)" }}>· {project.year}</span>
+          </div>
+
+          <h3 className="text-foreground mb-5" style={{ fontSize: "clamp(2rem, 4.4vw, 3.8rem)", fontWeight: 800, lineHeight: 1.02, letterSpacing: "-0.02em" }}>
+            {project.title}
+          </h3>
+
+          <p className="mb-7 max-w-md" style={{ fontSize: "15px", lineHeight: 1.7, color: "var(--text-secondary)" }}>
+            {project.description}
+          </p>
+
+          <div className="flex flex-wrap gap-2 mb-8">
+            {project.tags.slice(0, 5).map((tag) => (
+              <span
+                key={tag}
+                className="px-2.5 py-1 rounded-lg"
+                style={{ fontSize: "11px", fontWeight: 500, color: project.accent, background: `${project.accent}10`, border: `1px solid ${project.accent}20`, fontFamily: "JetBrains Mono, monospace" }}
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          <button
+            onClick={() => onOpen(project)}
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-transform duration-200 hover:-translate-y-0.5"
+            style={{ background: project.accent, color: "var(--accent-foreground)", fontSize: "14px" }}
+          >
+            View Project <ArrowUpRight className="w-4 h-4" />
+          </button>
+        </div>
+
+        {/* image */}
+        <div className="order-1 lg:order-2">
+          <button
+            type="button"
+            onClick={() => onOpen(project)}
+            aria-label={`View ${project.title}`}
+            className="group relative block w-full rounded-2xl overflow-hidden border cursor-pointer"
+            style={{ aspectRatio: "4 / 3", borderColor: `${project.accent}30`, boxShadow: `0 30px 80px -30px ${project.accent}66` }}
+          >
+            <div className="absolute inset-0" style={{ background: `linear-gradient(135deg, ${project.accent}22 0%, ${project.accent}06 60%, var(--bg-surface) 100%)` }} />
+            {project.heroImage ? (
+              <img
+                src={project.heroImage}
+                alt={project.title}
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+              />
+            ) : (
+              <div className="relative h-full flex items-center justify-center">
+                <Icon size={96} strokeWidth={1.2} style={{ color: project.accent, opacity: 0.5 }} />
+              </div>
+            )}
+            <div
+              className="absolute inset-0 flex items-center justify-center transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+              style={{ background: "rgba(0,0,0,0.28)" }}
+            >
+              <span className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold" style={{ background: project.accent, color: "var(--accent-foreground)", fontSize: "13px" }}>
+                View Project <ArrowUpRight className="w-4 h-4" />
+              </span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+/** Horizontal, scroll-pinned showcase of the featured projects (desktop only). */
+function CinematicProjects({ items, onOpen }: { items: Project[]; onOpen: (p: Project) => void }) {
+  const targetRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: targetRef, offset: ["start start", "end end"] });
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", `-${((items.length - 1) / items.length) * 100}%`]);
+
+  if (items.length === 0) return null;
+
+  return (
+    <div ref={targetRef} className="relative hidden md:block" style={{ height: `${items.length * 100}vh` }}>
+      <div className="sticky top-0 h-screen overflow-hidden">
+        <motion.div style={{ x }} className="flex h-full w-max">
+          {items.map((p, i) => (
+            <CinematicPanel key={p.id} project={p} index={i} total={items.length} onOpen={onOpen} />
+          ))}
+        </motion.div>
+
+        <motion.div
+          className="absolute bottom-0 left-0 h-[3px] w-full origin-left"
+          style={{ scaleX: scrollYProgress, background: "linear-gradient(90deg, var(--accent-primary), var(--accent-secondary))" }}
+        />
+        <div
+          className="absolute bottom-5 left-1/2 -translate-x-1/2 pointer-events-none flex items-center gap-2"
+          style={{ fontFamily: "JetBrains Mono, monospace", fontSize: "11px", color: "var(--text-muted)", letterSpacing: "0.1em" }}
+        >
+          SCROLL TO EXPLORE
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function ProjectsSection() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [hovered, setHovered] = useState<number | null>(null);
@@ -775,26 +1044,44 @@ export function ProjectsSection() {
       ? projects
       : projects.filter((p) => p.category === activeCategory);
 
+  const featured = FEATURED_SLUGS
+    .map((slug) => projects.find((p) => p.slug === slug))
+    .filter((p): p is Project => Boolean(p));
+
   return (
-    <section id="projects" className="py-32 relative overflow-hidden">
+    <section id="projects" className="py-32 relative">
       <div
         className="absolute inset-0 pointer-events-none"
         style={{ background: "radial-gradient(ellipse 50% 50% at 50% 100%, rgba(var(--accent-primary-rgb), 0.04) 0%, transparent 100%)" }}
       />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
+      {/* heading */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-12 md:mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <span style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--accent-primary)" }}>
+            Selected Projects
+          </span>
+          <h2 className="text-foreground mt-3">Things I've shipped<br />or am still shipping.</h2>
+        </motion.div>
+      </div>
+
+      {/* cinematic, scroll-driven featured showcase (desktop) */}
+      <CinematicProjects items={featured} onOpen={setActiveProject} />
+
+      {/* all projects: filter + grid */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 mt-16 md:mt-28">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+          <div>
             <span style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--accent-primary)" }}>
-              Selected Projects
+              All Projects
             </span>
-            <h2 className="text-foreground mt-3">Things I've shipped<br />or am still shipping.</h2>
-          </motion.div>
+            <h3 className="text-foreground mt-2" style={{ fontSize: "1.5rem", fontWeight: 700 }}>Browse everything</h3>
+          </div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -857,6 +1144,8 @@ export function ProjectsSection() {
                         <img
                           src={project.heroImage}
                           alt={project.title}
+                          loading="lazy"
+                          decoding="async"
                           className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                         />
                         <div

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Lenis from "lenis";
 import { useTheme } from "./components/ThemeProvider";
 import { motion, AnimatePresence } from "motion/react";
 import { Navbar } from "./components/Navbar";
@@ -86,6 +87,29 @@ function LoadingScreen({ onDone }: { onDone: () => void }) {
 
 export default function App() {
   const [loading, setLoading] = useState(true);
+
+  // Lenis momentum smooth scrolling — the single biggest "premium feel" upgrade.
+  useEffect(() => {
+    if (loading) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const lenis = new Lenis({
+      duration: 1.1,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      touchMultiplier: 1.5,
+    });
+    (window as unknown as { lenis?: Lenis }).lenis = lenis;
+    let raf = 0;
+    const loop = (time: number) => {
+      lenis.raf(time);
+      raf = requestAnimationFrame(loop);
+    };
+    raf = requestAnimationFrame(loop);
+    return () => {
+      cancelAnimationFrame(raf);
+      lenis.destroy();
+    };
+  }, [loading]);
 
   return (
     <div className="min-h-screen text-foreground transition-colors duration-300" style={{ background: "var(--bg-base)", fontFamily: "Inter, system-ui, sans-serif" }}>
