@@ -81,3 +81,8 @@ sumber/foto/
 
 # video masters and frame dumps
 sumber/video/
+
+# python and wrangler caches
+__pycache__/
+*.pyc
+.wrangler/

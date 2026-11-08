@@ -1,17 +1,22 @@
 // Merakit portfolio Sword Ekel dari src/ ke public/ tanpa paket tambahan:
-//   node bangun.mjs            semua arah desain + halaman pembanding di /
-//   node bangun.mjs gambar     hanya satu arah (nama folder di src/arah/)
+//   node bangun.mjs            situs yang tayang: arah pilihan (UTAMA) di /, plus _headers, robots, sitemap, 404;
+//                              arah lain dan media yang tidak dirujuk halaman dibuang dari public/
+//   node bangun.mjs gambar     satu arah lain ke public/<arah>/ untuk dibandingkan di lokal (jangan di-commit; hurufnya
+//                              ada di riwayat git, lihat README)
 // Setiap arah: src/arah/<arah>/halaman.mjs (export default (ctx) => dokumen HTML lengkap, opsional
 // export const BAHASA = ['en','id']), ditambah berkas lain di folder itu (css, js, svg) yang disalin apa adanya
-// ke public/<arah>/. Bahasa Inggris tayang di /<arah>/, bahasa Indonesia di /<arah>/id/.
+// ke public/<arah>/. Arah utama tayang di / (Indonesia di /id/ bila BAHASA memuatnya); arah lain di /<arah>/.
 // Hasil public/** ikut di-commit: hosting tidak menjalankan langkah build.
 import { createHash } from 'node:crypto';
-import { cpSync, existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { dirname, join, relative, sep } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import * as DATA from './src/data.mjs';
 
 const AKAR = dirname(fileURLToPath(import.meta.url));
+// arah yang tayang (pilihan pemilik 2026-11-09: versi E) dan alamatnya
+export const UTAMA = 'personal';
+export const SITUS = 'https://swordekel.arswordlab.com';
 const PUB = join(AKAR, 'public');
 const SRC = join(AKAR, 'src');
 const bacaJson = (p, cadangan = null) => (existsSync(p) ? JSON.parse(readFileSync(p, 'utf8')) : cadangan);
@@ -70,7 +75,60 @@ salinBerkas(join(SRC, 'js'), join(PUB, 'js'));
 
 const semua = readdirSync(join(SRC, 'arah')).filter((n) => existsSync(join(SRC, 'arah', n, 'halaman.mjs')));
 const diminta = process.argv.slice(2);
-const daftar = diminta.length ? diminta : semua;
+const daftar = diminta.length ? diminta : [];
+
+async function rakit(arah, lang, akar) {
+  const mod = await import(pathToFileURL(join(SRC, 'arah', arah, 'halaman.mjs')).href + `?t=${Date.now()}`);
+  const i = lang === 'id' ? 1 : 0;
+  const ctx = {
+    arah, lang, bahasa: mod.BAHASA || ['en'], esc, aset, media, srcset, ukuran, gambar, geo, info, MEDIA, PERIKSA, DATA,
+    situs: SITUS, t: (en, id) => (i ? id : en), tt: (pasangan) => (Array.isArray(pasangan) ? pasangan[i] : pasangan),
+    akar, alamatBahasa: (l) => (l === 'en' ? akar : `${akar}${l}/`),
+  };
+  return { mod, ctx, html: mod.default(ctx) };
+}
+
+if (!diminta.length) {
+  // situs yang tayang: arah pilihan di /, aset arahnya di /<arah>/, arah lain dan halaman pembanding dibuang
+  for (const n of semua) if (n !== UTAMA) rmSync(join(PUB, n), { recursive: true, force: true });
+  for (const n of readdirSync(join(PUB, 'font'))) if (n !== UTAMA) rmSync(join(PUB, 'font', n), { recursive: true, force: true });
+  rmSync(join(PUB, 'media', 'pilih'), { recursive: true, force: true });
+  salinBerkas(join(SRC, 'arah', UTAMA), join(PUB, UTAMA));
+  rmSync(join(PUB, UTAMA, 'index.html'), { force: true });
+  const { mod, ctx, html } = await rakit(UTAMA, 'en', '/');
+  writeFileSync(join(PUB, 'index.html'), html);
+  console.log('index.html', (html.length / 1024).toFixed(1), 'KB');
+  for (const lang of ctx.bahasa.filter((l) => l !== 'en')) {
+    const r = await rakit(UTAMA, lang, '/');
+    mkdirSync(join(PUB, lang), { recursive: true });
+    writeFileSync(join(PUB, lang, 'index.html'), r.html);
+    console.log(`${lang}/index.html`);
+  }
+  if (mod.halaman404) writeFileSync(join(PUB, '404.html'), mod.halaman404(ctx));
+  cpSync(join(SRC, '_headers'), join(PUB, '_headers'));
+  writeFileSync(join(PUB, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${SITUS}/sitemap.xml\n`);
+  const hari = new Date(Date.now() + 7 * 3600e3).toISOString().slice(0, 10); // tanggal WIB
+  const halamanUrl = ['/', ...ctx.bahasa.filter((l) => l !== 'en').map((l) => `/${l}/`)];
+  writeFileSync(join(PUB, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${halamanUrl.map((u) => `  <url><loc>${SITUS}${u}</loc><lastmod>${hari}</lastmod></url>`).join('\n')}\n</urlset>\n`);
+  console.log('_headers, robots.txt, sitemap.xml, 404.html');
+
+  // media yang tidak dirujuk halaman yang tayang (tangkapan HP, detail, potret abu-abu milik arah lain) tidak ikut terbit;
+  // alat/media.py membuatnya lagi bila suatu saat dipakai
+  const halamanTayang = [join(PUB, 'index.html'), join(PUB, '404.html'), ...ctx.bahasa.filter((l) => l !== 'en').map((l) => join(PUB, l, 'index.html')),
+    ...readdirSync(join(PUB, UTAMA)).map((n) => join(PUB, UTAMA, n)), ...readdirSync(join(PUB, 'js')).map((n) => join(PUB, 'js', n))];
+  const dirujuk = halamanTayang.filter((p) => existsSync(p) && statSync(p).isFile()).map((p) => readFileSync(p, 'utf8')).join('\n');
+  let dibuang = 0, bita = 0;
+  const sapu = (dir) => {
+    for (const n of readdirSync(dir)) {
+      const p = join(dir, n);
+      if (statSync(p).isDirectory()) { sapu(p); continue; }
+      if (dirujuk.includes('/' + relative(PUB, p).split(sep).join('/'))) continue;
+      bita += statSync(p).size; rmSync(p); dibuang++;
+    }
+  };
+  sapu(join(PUB, 'media'));
+  if (dibuang) console.log(`media tak dirujuk dibuang: ${dibuang} berkas, ${(bita / 1048576).toFixed(1)} MB`);
+}
 
 for (const arah of daftar) {
   const dir = join(SRC, 'arah', arah);
@@ -95,9 +153,3 @@ for (const arah of daftar) {
   }
 }
 
-// halaman pembanding di / (selama masa memilih arah)
-if (!diminta.length && existsSync(join(SRC, 'pilih.mjs'))) {
-  const mod = await import(pathToFileURL(join(SRC, 'pilih.mjs')).href + `?t=${Date.now()}`);
-  writeFileSync(join(PUB, 'index.html'), mod.default({ esc, aset, media, DATA, semua }));
-  console.log('index.html (pembanding)');
-}

@@ -23,7 +23,7 @@ for d in (OUT, GEO, INFO):
 MAN = ROOT / 'src' / 'media.json'
 man = json.loads(MAN.read_text(encoding='utf-8')) if MAN.exists() else {}
 
-LEBAR = {'desk': [1600, 960, 560], 'desk-1': [1600, 960, 560], 'desk-2': [1600, 960, 560], 'hp': [720, 400]}
+LEBAR = {'desk': [1600, 960, 560, 400, 160], 'desk-1': [1600, 960, 560], 'desk-2': [1600, 960, 560], 'hp': [720, 400]}
 PANDUAN = ROOT.parent / 'Dokumen' / 'sumber' / 'panduan' / 'img'
 
 

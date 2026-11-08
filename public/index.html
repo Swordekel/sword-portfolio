@@ -1,73 +1,451 @@
 <!doctype html>
-<html lang="id">
+<html lang="en" data-arah="personal">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex">
-<title>Pilih arah · Portfolio Sword Ekel</title>
-<style>
-  :root { color-scheme: light; --ink: #111; --paper: #f4f4f2; --mid: #5f6266; --rule: #d9d9d6; }
-  * { box-sizing: border-box; }
-  body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
-  main { max-width: 1240px; margin: 0 auto; padding: 64px 20px 96px; }
-  h1 { font-size: clamp(30px, 5vw, 48px); line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 12px; }
-  main > p { color: var(--mid); margin: 0 0 40px; max-width: 64ch; }
-  ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 560px), 1fr)); gap: 28px; }
-  li a { display: grid; gap: 14px; color: inherit; text-decoration: none; }
-  .layar { position: relative; display: block; aspect-ratio: 16 / 10; border-radius: 10px; overflow: hidden; background: #ddd;
-    box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 20px 40px -24px rgba(0,0,0,.35); }
-  .layar .d { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: transform .6s cubic-bezier(.16,1,.3,1); }
-  .layar .m { position: absolute; right: 14px; bottom: 14px; width: 21%; height: auto; border-radius: 10px; border: 3px solid #111; background: #111; box-shadow: 0 10px 24px -10px rgba(0,0,0,.5); }
-  li a:hover .d { transform: scale(1.02); }
-  .t { display: grid; grid-template-columns: auto 1fr; column-gap: 12px; }
-  .n { grid-row: span 2; font-weight: 700; color: var(--mid); }
-  .t b { font-size: 20px; letter-spacing: -0.01em; }
-  .b { color: var(--mid); font-size: 15px; }
-  .go { justify-self: start; font-size: 14px; border: 1px solid var(--ink); border-radius: 99px; padding: 7px 14px; }
-  li a:hover .go { background: var(--ink); color: var(--paper); }
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sword Ekel · Full-stack developer in Jakarta</title>
+<meta name="description" content="Sword Ekel, full-stack developer in Jakarta and cyber security student at BINUS University. 18 websites and web apps live on arswordlab.com.">
+<link rel="canonical" href="https://swordekel.arswordlab.com/">
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://swordekel.arswordlab.com/">
+<meta property="og:site_name" content="Sword Ekel">
+<meta property="og:title" content="Sword Ekel · Full-stack developer">
+<meta property="og:description" content="Sword Ekel, full-stack developer in Jakarta and cyber security student at BINUS University. 18 websites and web apps live on arswordlab.com.">
+<meta property="og:image" content="https://swordekel.arswordlab.com/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Portrait of Sword Ekel in front of screenshots of the websites in this portfolio">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://swordekel.arswordlab.com/#sword","name":"Sword Ekel","alternateName":"Sword Christ Imanuel Ekel","jobTitle":"Full-stack developer","url":"https://swordekel.arswordlab.com/","image":"https://swordekel.arswordlab.com/media/foto/potret-warna-800.webp","email":"mailto:swordekel@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Jakarta","addressCountry":"ID"},"affiliation":{"@type":"CollegeOrUniversity","name":"BINUS University"},"sameAs":["https://github.com/Swordekel"],"worksFor":{"@type":"Organization","name":"ARSWORD","url":"https://arswordlab.com/"},"knowsAbout":["JavaScript / TypeScript","React","Astro","WebGL / GLSL shaders","Three.js","Cloudflare Workers","SQL (Cloudflare D1)","Object storage (R2)","WebSockets (Durable Objects)","PWA & Web Push","Payments (QRIS)","Android (Capacitor)","AI (Claude API)","Multilingual","SEO & structured data"]},{"@type":"WebSite","@id":"https://swordekel.arswordlab.com/#web","url":"https://swordekel.arswordlab.com/","name":"Sword Ekel","inLanguage":"en","publisher":{"@id":"https://swordekel.arswordlab.com/#sword"}}]}</script>
+<meta name="format-detection" content="telephone=no, date=no, address=no">
+<meta name="theme-color" content="#f2f3f5">
+<link rel="preload" href="/font/personal/albert-sans-normal-0.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/personal/gaya.css?v=253e6485">
+<link rel="icon" href="/personal/ikon.svg?v=c662927b" type="image/svg+xml">
 </head>
 <body>
-<main>
-  <h1>Lima versi, satu isi.</h1>
-  <p>Semua versi memakai data, foto situs, dan suara yang sama. Buka satu per satu, coba seret, klik, dan nyalakan suaranya, lalu pilih yang akan disempurnakan (bahasa Indonesia, uji akhir, dan rilis menyusul untuk versi terpilih).</p>
-  <ul>
-      <li>
-        <a href="/laporan/">
-          <span class="layar"><img class="d" src="/media/pilih/laporan-desktop.webp?v=04578f7b" alt="" width="1440" height="900" loading="eager"><img class="m" src="/media/pilih/laporan-hp.webp?v=c28cc8d6" alt="" width="390" height="844"></span>
-          <span class="t"><span class="n">A</span><b>Laporan Asesmen</b><span class="b">Portfolio sebagai laporan asesmen resmi: ringkasan eksekutif untuk HR, bukti teknis untuk engineer, cek live 18 situs.</span></span>
-          <span class="go">Buka versi A</span>
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-panah" viewBox="0 0 16 16"><path d="M4.5 11.5l7-7M6 4.5h5.5V10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-bawah" viewBox="0 0 16 16"><path d="M8 2.5v8.5M4.5 7.5L8 11l3.5-3.5M3 13.5h10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-suara" viewBox="0 0 16 16"><path d="M2.5 6.2h2.2L8 3.5v9L4.7 9.8H2.5z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path class="gel" d="M10.6 5.6a3.4 3.4 0 0 1 0 4.8M12.4 3.9a5.8 5.8 0 0 1 0 8.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path class="silang" d="M10.5 6l4 4M14.5 6l-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+  <symbol id="i-salin" viewBox="0 0 16 16"><rect x="5.5" y="5.5" width="8" height="8" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10.5 3.5A1.5 1.5 0 0 0 9 2H4a1.5 1.5 0 0 0-1.5 1.5v5A1.5 1.5 0 0 0 4 10h.5" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-lokasi" viewBox="0 0 16 16"><path d="M8 14s4.5-4.2 4.5-7.6A4.5 4.5 0 0 0 3.5 6.4C3.5 9.8 8 14 8 14z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="8" cy="6.5" r="1.6" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-kampus" viewBox="0 0 16 16"><path d="M1.5 6L8 3l6.5 3L8 9z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M4 7.3v3.2c1.2 1 2.5 1.5 4 1.5s2.8-.5 4-1.5V7.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+  <symbol id="i-perisai" viewBox="0 0 16 16"><path d="M8 1.8l5 2v4c0 3.1-2.1 5.4-5 6.4-2.9-1-5-3.3-5-6.4v-4z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M5.8 8.1l1.6 1.6 3-3.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-pesan" viewBox="0 0 16 16"><path d="M2.5 12.8l1-2.9A5.5 5.5 0 1 1 6 12.4z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+  <symbol id="i-git" viewBox="0 0 16 16"><path d="M6 13.5c-3 .9-3-1.6-4.2-1.9M10 15.5v-2.4a2.1 2.1 0 0 0-.6-1.6c2-.2 4.1-1 4.1-4.4a3.4 3.4 0 0 0-.9-2.4 3.2 3.2 0 0 0-.1-2.4s-.7-.2-2.4.9a8.2 8.2 0 0 0-4.2 0C4.2 2.1 3.5 2.3 3.5 2.3a3.2 3.2 0 0 0-.1 2.4 3.4 3.4 0 0 0-.9 2.4c0 3.4 2.1 4.2 4.1 4.4a2.1 2.1 0 0 0-.6 1.6v2.4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+<a class="lompat" href="#karya">Skip to the work</a>
+
+<header class="kepala" data-kepala>
+  <a class="merek" href="#atas" data-suara="tekan">Sword Ekel</a>
+  <nav class="nav" aria-label="Sections"><a href="#karya">Work</a><a href="#semua">All sites</a><a href="#tentang">About</a><a href="#kontak">Contact</a></nav>
+  <div class="kepala-aksi">
+    <button class="tombol-suara" type="button" aria-pressed="true" data-sunyi><svg class="ik" aria-hidden="true"><use href="#i-suara"/></svg><span>Sound</span></button>
+    <a class="pil pil-gelap pil-kecil" href="/CV_Sword_Christ_Imanuel_Ekel.pdf" download data-suara="tekan"><svg class="ik" aria-hidden="true"><use href="#i-bawah"/></svg>CV</a>
+  </div>
+</header>
+
+<main id="atas">
+  <section class="sampul" aria-labelledby="h-nama">
+    <div class="sampul-teks">
+      <h1 id="h-nama"><span>Sword</span> <span>Ekel</span></h1>
+      <p class="pembuka">I build websites and web apps that real businesses use. Eighteen of them are live on arswordlab.com right now.</p>
+      <div class="aksi">
+        <a class="pil pil-gelap" href="#karya" data-suara="tekan">See my work</a>
+        <a class="pil pil-garis" href="/CV_Sword_Christ_Imanuel_Ekel.pdf" download data-suara="tekan"><svg class="ik" aria-hidden="true"><use href="#i-bawah"/></svg>Download CV</a>
+      </div>
+      <ul class="fakta">
+        <li><svg class="ik" aria-hidden="true"><use href="#i-lokasi"/></svg><span>Jakarta, Indonesia</span></li>
+        <li><svg class="ik" aria-hidden="true"><use href="#i-kampus"/></svg><span>Cyber Security, BINUS University</span></li>
+        <li><svg class="ik" aria-hidden="true"><use href="#i-perisai"/></svg><span>Security analyst intern, PT Inti Siber Net</span></li>
+        <li class="terbuka"><i></i><span>Open to full-stack and web developer roles</span></li>
+      </ul>
+    </div>
+    <figure class="studio" data-studio>
+      <div class="studio-dinding" aria-hidden="true"><div class="arus arus-1"><div class="arus-isi"><img src="/media/karya/arswordlab-desk-400.webp?v=4e6e22c7" width="400" height="250" alt="" decoding="async"><img src="/media/karya/nilamerah-desk-400.webp?v=7a75ada7" width="400" height="250" alt="" decoding="async"><img src="/media/karya/javaloom-desk-400.webp?v=1d9f3431" width="400" height="250" alt="" decoding="async"><img src="/media/karya/pos-desk-400.webp?v=30089b88" width="400" height="250" alt="" decoding="async"><img src="/media/karya/cherish-desk-400.webp?v=397f3f47" width="400" height="250" alt="" decoding="async"><img src="/media/karya/himawari-desk-400.webp?v=cb706dbb" width="400" height="250" alt="" decoding="async"><img src="/media/karya/arswordlab-desk-400.webp?v=4e6e22c7" width="400" height="250" alt="" decoding="async"><img src="/media/karya/nilamerah-desk-400.webp?v=7a75ada7" width="400" height="250" alt="" decoding="async"><img src="/media/karya/javaloom-desk-400.webp?v=1d9f3431" width="400" height="250" alt="" decoding="async"><img src="/media/karya/pos-desk-400.webp?v=30089b88" width="400" height="250" alt="" decoding="async"><img src="/media/karya/cherish-desk-400.webp?v=397f3f47" width="400" height="250" alt="" decoding="async"><img src="/media/karya/himawari-desk-400.webp?v=cb706dbb" width="400" height="250" alt="" decoding="async"></div></div><div class="arus arus-2"><div class="arus-isi"><img src="/media/karya/eskrim-uncle-ren-desk-400.webp?v=fd75290c" width="400" height="250" alt="" decoding="async"><img src="/media/karya/teassence-desk-400.webp?v=5f5c948a" width="400" height="250" alt="" decoding="async"><img src="/media/karya/tsunagu-desk-400.webp?v=61d2063f" width="400" height="250" alt="" decoding="async"><img src="/media/karya/nathaniakhow-desk-400.webp?v=297d6a0f" width="400" height="250" alt="" decoding="async"><img src="/media/karya/radja-desk-400.webp?v=bcd88afd" width="400" height="250" alt="" decoding="async"><img src="/media/karya/seifan-desk-400.webp?v=9cdf2796" width="400" height="250" alt="" decoding="async"><img src="/media/karya/eskrim-uncle-ren-desk-400.webp?v=fd75290c" width="400" height="250" alt="" decoding="async"><img src="/media/karya/teassence-desk-400.webp?v=5f5c948a" width="400" height="250" alt="" decoding="async"><img src="/media/karya/tsunagu-desk-400.webp?v=61d2063f" width="400" height="250" alt="" decoding="async"><img src="/media/karya/nathaniakhow-desk-400.webp?v=297d6a0f" width="400" height="250" alt="" decoding="async"><img src="/media/karya/radja-desk-400.webp?v=bcd88afd" width="400" height="250" alt="" decoding="async"><img src="/media/karya/seifan-desk-400.webp?v=9cdf2796" width="400" height="250" alt="" decoding="async"></div></div></div>
+      <div class="studio-kabut" aria-hidden="true"></div>
+      <img class="potret" src="/media/foto/potret-warna-800.webp?v=f3413cc5" srcset="/media/foto/potret-warna-520.webp?v=e0c049f0 520w, /media/foto/potret-warna-800.webp?v=f3413cc5 800w" sizes="(min-width: 1000px) 34vw, 82vw" width="800" height="800" alt="Portrait of Sword Ekel" fetchpriority="high" decoding="async">
+      <figcaption class="studio-chip" data-chip aria-live="polite"><i></i><span>Checking my sites…</span></figcaption>
+    </figure>
+  </section>
+
+  <section class="bagian" id="karya" aria-labelledby="h-karya">
+    <div class="judul">
+      <h2 id="h-karya">Selected work</h2>
+      <p>Five projects I’m proud of, from products I run to sites for clients. Every link below is live.</p>
+    </div>
+    <div class="daftar-karya">
+      <article class="karya" aria-labelledby="k-pos">
+        <a class="karya-foto" href="https://pos.arswordlab.com/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+          <img src="/media/karya/pos-desk-960.webp?v=a9464977" srcset="/media/karya/pos-desk-1600.webp?v=44d0797d 1600w, /media/karya/pos-desk-960.webp?v=a9464977 960w, /media/karya/pos-desk-560.webp?v=23056d1d 560w, /media/karya/pos-desk-400.webp?v=30089b88 400w, /media/karya/pos-desk-160.webp?v=020e1279 160w" sizes="(min-width: 1000px) 56vw, 100vw" width="960" height="600" alt="" decoding="async" loading="lazy"><video class="vid" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1" data-kecil="/media/video/pos-640.mp4?v=49ecc4e1" data-besar="/media/video/pos-1280.mp4?v=6aa22f08"></video><span class="lencana-demo">Demo outlet, test data</span>
         </a>
-      </li>
-      <li>
-        <a href="/gambar/">
-          <span class="layar"><img class="d" src="/media/pilih/gambar-desktop.webp?v=7945259e" alt="" width="1440" height="900" loading="eager"><img class="m" src="/media/pilih/gambar-hp.webp?v=9b19c221" alt="" width="390" height="844"></span>
-          <span class="t"><span class="n">B</span><b>Gambar Kerja</b><span class="b">Nama dan setiap situs dibelah garis potong yang bisa diseret: di atas tampilan jadinya, di bawah kerangka aslinya.</span></span>
-          <span class="go">Buka versi B</span>
+        <div class="karya-teks">
+          <p class="karya-meta"><span class="label" data-s="produk">Product</span><span>Point-of-sale system</span><span>2026</span></p>
+          <h3 id="k-pos">ARSWORD POS</h3>
+          <p class="karya-baris">Point-of-sale system for food and drink outlets, in daily use at a real ice-cream shop.</p>
+          <p class="karya-isi">A cashier app for Android tablets that keeps selling when the internet drops, an owner dashboard for sales, stock, staff and shifts, a QR menu for tables, and receipt and kitchen-ticket printing per station. Sold as a monthly subscription; the first outlet runs it every day.</p>
+          <p class="karya-peran"><b>My part</b> Sole developer. Architecture, API, cashier app, dashboard, printing, releases.</p>
+          <ul class="karya-tekno"><li>JavaScript / TypeScript</li><li>React</li><li>Cloudflare Workers</li><li>SQL (Cloudflare D1)</li><li>PWA &amp; Web Push</li><li>Payments (QRIS)</li><li>Android (Capacitor)</li></ul>
+          <div class="karya-aksi">
+            <a class="pil pil-gelap" href="https://pos.arswordlab.com/" target="_blank" rel="noopener" data-suara="tekan">Visit pos.arswordlab.com<svg class="ik" aria-hidden="true"><use href="#i-panah"/></svg></a>
+            <span class="hidup" data-hidup="pos.arswordlab.com"><i></i><span>Checking…</span></span>
+          </div>
+          
+        </div>
+      </article>
+      <article class="karya balik" aria-labelledby="k-arswordlab">
+        <a class="karya-foto" href="https://arswordlab.com/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+          <img src="/media/karya/arswordlab-desk-960.webp?v=85cc4672" srcset="/media/karya/arswordlab-desk-1600.webp?v=a602ee2b 1600w, /media/karya/arswordlab-desk-960.webp?v=85cc4672 960w, /media/karya/arswordlab-desk-560.webp?v=aa242bd0 560w, /media/karya/arswordlab-desk-400.webp?v=4e6e22c7 400w, /media/karya/arswordlab-desk-160.webp?v=6f1dec10 160w" sizes="(min-width: 1000px) 56vw, 100vw" width="960" height="600" alt="" decoding="async" loading="lazy"><video class="vid" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1" data-kecil="/media/video/arswordlab-640.mp4?v=98005766" data-besar="/media/video/arswordlab-1280.mp4?v=df66d3ab"></video>
         </a>
-      </li>
-      <li>
-        <a href="/boarding/">
-          <span class="layar"><img class="d" src="/media/pilih/boarding-desktop.webp?v=a802f05a" alt="" width="1440" height="900" loading="lazy"><img class="m" src="/media/pilih/boarding-hp.webp?v=0b922f6f" alt="" width="390" height="844"></span>
-          <span class="t"><span class="n">C</span><b>Boarding Pass + Papan Gate</b><span class="b">Anda adalah boarding pass-nya; 18 situs jadi papan keberangkatan live yang bisa disusun ulang.</span></span>
-          <span class="go">Buka versi C</span>
+        <div class="karya-teks">
+          <p class="karya-meta"><span class="label" data-s="produk">Product</span><span>Studio platform</span><span>2026</span></p>
+          <h3 id="k-arswordlab">ARSWORD</h3>
+          <p class="karya-baris">The studio platform behind all of this: company site, client studio, payments, admin and chat.</p>
+          <p class="karya-isi">My own web studio: website packages with clear prices, a client studio where customers follow their project and mark revisions on their live site, and Student Portfolio templates that are paid by QRIS and published to their own subdomain from the browser. Behind it run an admin dashboard with finance, a chat inbox with push notifications, and an AI assistant on the Claude API.</p>
+          <p class="karya-peran"><b>My part</b> Founder. Product, design, full-stack development and operations.</p>
+          <ul class="karya-tekno"><li>JavaScript / TypeScript</li><li>WebGL / GLSL shaders</li><li>Three.js</li><li>Cloudflare Workers</li><li>SQL (Cloudflare D1)</li><li>Object storage (R2)</li><li>WebSockets (Durable Objects)</li><li>PWA &amp; Web Push</li><li>Payments (QRIS)</li><li>AI (Claude API)</li><li>SEO &amp; structured data</li></ul>
+          <div class="karya-aksi">
+            <a class="pil pil-gelap" href="https://arswordlab.com/" target="_blank" rel="noopener" data-suara="tekan">Visit arswordlab.com<svg class="ik" aria-hidden="true"><use href="#i-panah"/></svg></a>
+            <span class="hidup" data-hidup="arswordlab.com"><i></i><span>Checking…</span></span>
+          </div>
+          <p class="karya-ukur">Measured 9 Nov 2026: 46 requests · 1.0 MB first load · CSP header</p>
+        </div>
+      </article>
+      <article class="karya" aria-labelledby="k-dailytask">
+        <a class="karya-foto" href="https://dailytask.arswordlab.com/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+          <img src="/media/karya/dailytask-desk-960.webp?v=ab0a1d5e" srcset="/media/karya/dailytask-desk-1600.webp?v=3cc57078 1600w, /media/karya/dailytask-desk-960.webp?v=ab0a1d5e 960w, /media/karya/dailytask-desk-560.webp?v=c53f24ca 560w, /media/karya/dailytask-desk-400.webp?v=65526113 400w, /media/karya/dailytask-desk-160.webp?v=5d6c5d51 160w" sizes="(min-width: 1000px) 56vw, 100vw" width="960" height="600" alt="" decoding="async" loading="lazy"><video class="vid" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1" data-kecil="/media/video/dailytask-640.mp4?v=b2f9d1c2" data-besar="/media/video/dailytask-1280.mp4?v=9fc76db9"></video>
         </a>
-      </li>
-      <li>
-        <a href="/standar/">
-          <span class="layar"><img class="d" src="/media/pilih/standar-desktop.webp?v=1b8218c5" alt="" width="1440" height="900" loading="lazy"><img class="m" src="/media/pilih/standar-hp.webp?v=81c2c904" alt="" width="390" height="844"></span>
-          <span class="t"><span class="n">D</span><b>Standar Premium</b><span class="b">Portfolio developer yang lazim, dieksekusi serapi Apple atau Linear.</span></span>
-          <span class="go">Buka versi D</span>
+        <div class="karya-teks">
+          <p class="karya-meta"><span class="label" data-s="klien">Client</span><span>Staff scheduling app</span><span>2026</span></p>
+          <h3 id="k-dailytask">Daily Task</h3>
+          <p class="karya-baris">Scheduling app for an animal shop’s staff: rotations, checks, photo proof and reminders.</p>
+          <p class="karya-isi">Started as a spreadsheet of daily tasks for a pet and aquarium shop. Now every staff member logs in to see only their own tasks for the day, ticks them off with a photo or video as proof, and a supervisor checks them. The admin edits the rolling four-week rota, with a balanced auto-assign.</p>
+          <p class="karya-peran"><b>My part</b> Full-stack: data model, API, auth, front end, notifications.</p>
+          <ul class="karya-tekno"><li>JavaScript / TypeScript</li><li>Cloudflare Workers</li><li>SQL (Cloudflare D1)</li><li>Object storage (R2)</li><li>PWA &amp; Web Push</li></ul>
+          <div class="karya-aksi">
+            <a class="pil pil-gelap" href="https://dailytask.arswordlab.com/" target="_blank" rel="noopener" data-suara="tekan">Visit dailytask.arswordlab.com<svg class="ik" aria-hidden="true"><use href="#i-panah"/></svg></a>
+            <span class="hidup" data-hidup="dailytask.arswordlab.com"><i></i><span>Checking…</span></span>
+          </div>
+          <p class="karya-ukur">Measured 9 Nov 2026: 19 requests · 0.1 MB first load · CSP header</p>
+        </div>
+      </article>
+      <article class="karya balik" aria-labelledby="k-eskrim-uncle-ren">
+        <a class="karya-foto" href="https://eskrim-uncle-ren.arswordlab.com/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+          <img src="/media/karya/eskrim-uncle-ren-desk-960.webp?v=c2f4f2ba" srcset="/media/karya/eskrim-uncle-ren-desk-1600.webp?v=33ffad46 1600w, /media/karya/eskrim-uncle-ren-desk-960.webp?v=c2f4f2ba 960w, /media/karya/eskrim-uncle-ren-desk-560.webp?v=57422768 560w, /media/karya/eskrim-uncle-ren-desk-400.webp?v=fd75290c 400w, /media/karya/eskrim-uncle-ren-desk-160.webp?v=8b1bbea8 160w" sizes="(min-width: 1000px) 56vw, 100vw" width="960" height="600" alt="" decoding="async" loading="lazy"><video class="vid" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1" data-kecil="/media/video/eskrim-uncle-ren-640.mp4?v=5bdc7e65" data-besar="/media/video/eskrim-uncle-ren-1280.mp4?v=8202b52f"></video>
         </a>
-      </li>
-      <li>
-        <a href="/personal/">
-          <span class="layar"><img class="d" src="/media/pilih/personal-desktop.webp?v=c0a3d15b" alt="" width="1440" height="900" loading="lazy"><img class="m" src="/media/pilih/personal-hp.webp?v=fd9a56ce" alt="" width="390" height="844"></span>
-          <span class="t"><span class="n">E</span><b>Personal (dari referensi Anda)</b><span class="b">Foto Anda di depan karya-karya Anda: terang, lega, ramah. Rasa dari referensi, tata letak sendiri.</span></span>
-          <span class="go">Buka versi E</span>
+        <div class="karya-teks">
+          <p class="karya-meta"><span class="label" data-s="klien">Client</span><span>Shop website</span><span>2026</span></p>
+          <h3 id="k-eskrim-uncle-ren">Es Krim Uncle Ren</h3>
+          <p class="karya-baris">Website for an ice-cream shop: live opening hours, a menu with prices and 3D coconut bowls.</p>
+          <p class="karya-isi">Pontianak-style ice cream in Gading Serpong. Menu and prices, location, an open/closed badge that follows the shop’s hours, and coconut bowls in 3D you can turn. Released for Google with full structured data; the menu page shows up in searches for the shop.</p>
+          <p class="karya-peran"><b>My part</b> Design and development, SEO, hosting migration.</p>
+          <ul class="karya-tekno"><li>JavaScript / TypeScript</li><li>React</li><li>Astro</li><li>Three.js</li><li>Cloudflare Workers</li><li>SEO &amp; structured data</li></ul>
+          <div class="karya-aksi">
+            <a class="pil pil-gelap" href="https://eskrim-uncle-ren.arswordlab.com/" target="_blank" rel="noopener" data-suara="tekan">Visit eskrim-uncle-ren.arswordlab.com<svg class="ik" aria-hidden="true"><use href="#i-panah"/></svg></a>
+            <span class="hidup" data-hidup="eskrim-uncle-ren.arswordlab.com"><i></i><span>Checking…</span></span>
+          </div>
+          <p class="karya-ukur">Measured 9 Nov 2026: 28 requests · 1.9 MB first load · CSP header</p>
+        </div>
+      </article>
+      <article class="karya" aria-labelledby="k-teassence">
+        <a class="karya-foto" href="https://teassence.arswordlab.com/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+          <img src="/media/karya/teassence-desk-960.webp?v=1ba0289f" srcset="/media/karya/teassence-desk-1600.webp?v=6fe2d7c7 1600w, /media/karya/teassence-desk-960.webp?v=1ba0289f 960w, /media/karya/teassence-desk-560.webp?v=4eccdcb5 560w, /media/karya/teassence-desk-400.webp?v=5f5c948a 400w, /media/karya/teassence-desk-160.webp?v=f92ab00a 160w" sizes="(min-width: 1000px) 56vw, 100vw" width="960" height="600" alt="" decoding="async" loading="lazy"><video class="vid" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1" data-kecil="/media/video/teassence-640.mp4?v=65db6cae" data-besar="/media/video/teassence-1280.mp4?v=f0e63da7"></video>
         </a>
-      </li>
-  </ul>
+        <div class="karya-teks">
+          <p class="karya-meta"><span class="label" data-s="usulan">Proposal</span><span>Brand website</span><span>2026</span></p>
+          <h3 id="k-teassence">Teassence</h3>
+          <p class="karya-baris">Tea brand site with a real-time fluid simulation in a porcelain cup.</p>
+          <p class="karya-isi">Stir the tea with your cursor; drop lime into butterfly-pea tea and it turns violet. A 40-product catalogue, wholesale terms and seasonal hampers.</p>
+          <p class="karya-peran"><b>My part</b> Design and development.</p>
+          <ul class="karya-tekno"><li>JavaScript / TypeScript</li><li>WebGL / GLSL shaders</li><li>Cloudflare Workers</li></ul>
+          <div class="karya-aksi">
+            <a class="pil pil-gelap" href="https://teassence.arswordlab.com/" target="_blank" rel="noopener" data-suara="tekan">Visit teassence.arswordlab.com<svg class="ik" aria-hidden="true"><use href="#i-panah"/></svg></a>
+            <span class="hidup" data-hidup="teassence.arswordlab.com"><i></i><span>Checking…</span></span>
+          </div>
+          <p class="karya-ukur">Measured 9 Nov 2026: 24 requests · 0.8 MB first load · CSP header</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="bagian" id="semua" aria-labelledby="h-semua">
+    <div class="judul">
+      <h2 id="h-semua">All 18 sites</h2>
+      <p>Everything I’ve built on arswordlab.com, each with an honest label so you know what it is.</p>
+    </div>
+    <div class="saring-baris" role="group" aria-label="Filter by label"><button type="button" class="saring" data-saring="semua" aria-pressed="true" data-suara="tekan">All <span>18</span></button><button type="button" class="saring" data-saring="produk" aria-pressed="false" data-suara="tekan">Product <span>3</span></button><button type="button" class="saring" data-saring="klien" aria-pressed="false" data-suara="tekan">Client <span>4</span></button><button type="button" class="saring" data-saring="usulan" aria-pressed="false" data-suara="tekan">Proposal <span>8</span></button><button type="button" class="saring" data-saring="konsep" aria-pressed="false" data-suara="tekan">Concept <span>2</span></button><button type="button" class="saring" data-saring="kuliah" aria-pressed="false" data-suara="tekan">Course project <span>1</span></button></div>
+    <dl class="arti"><div><dt><span class="label" data-s="produk">Product</span></dt><dd>My own product, running for real users</dd></div><div><dt><span class="label" data-s="klien">Client</span></dt><dd>Built for a client</dd></div><div><dt><span class="label" data-s="usulan">Proposal</span></dt><dd>Design proposal for a real business, not yet approved by them</dd></div><div><dt><span class="label" data-s="konsep">Concept</span></dt><dd>Concept site for a fictional studio</dd></div><div><dt><span class="label" data-s="kuliah">Course project</span></dt><dd>Prototype for a university course</dd></div></dl>
+    <ul class="kisi-situs" data-kisi>
+        <li data-status="produk" data-tekno="js webgl three workers d1 r2 rt push bayar ai seo">
+          <a class="mini" href="https://arswordlab.com/" target="_blank" rel="noopener" aria-label="ARSWORD, Product: The studio platform behind all of this: company site, client studio, payments, admin and chat.">
+          <span class="mini-foto"><img src="/media/karya/arswordlab-desk-960.webp?v=85cc4672" srcset="/media/karya/arswordlab-desk-1600.webp?v=a602ee2b 1600w, /media/karya/arswordlab-desk-960.webp?v=85cc4672 960w, /media/karya/arswordlab-desk-560.webp?v=aa242bd0 560w, /media/karya/arswordlab-desk-400.webp?v=4e6e22c7 400w, /media/karya/arswordlab-desk-160.webp?v=6f1dec10 160w" sizes="(min-width: 1100px) 22vw, (min-width: 700px) 30vw, 46vw" width="960" height="600" alt="" decoding="async" loading="lazy"><video class="vid" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1" data-kecil="/media/video/arswordlab-640.mp4?v=98005766"></video></span>
+          <span class="mini-nama">ARSWORD</span>
+          <span class="mini-jenis">Studio platform</span>
+          <span class="mini-bawah"><span class="label" data-s="produk">Product</span><span class="mini-host">arswordlab.com</span></span></a>
+        </li>
+        <li data-status="produk" data-tekno="js react workers d1 push bayar android">
+          <a class="mini" href="https://pos.arswordlab.com/" target="_blank" rel="noopener" aria-label="ARSWORD POS, Product: Point-of-sale system for food and drink outlets, in daily use at a real ice-cream shop.">
+          <span class="mini-foto"><img src="/media/karya/pos-desk-960.webp?v=a9464977" srcset="/media/karya/pos-desk-1600.webp?v=44d0797d 1600w, /media/karya/pos-desk-960.webp?v=a9464977 960w, /media/karya/pos-desk-560.webp?v=23056d1d 560w, /media/karya/pos-desk-400.webp?v=30089b88 400w, /media/karya/pos-desk-160.webp?v=020e1279 160w" sizes="(min-width: 1100px) 22vw, (min-width: 700px) 30vw, 46vw" width="960" height="600" alt="" decoding="async" loading="lazy"><video class="vid" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1" data-kecil="/media/video/pos-640.mp4?v=49ecc4e1"></video></span>
+          <span class="mini-nama">ARSWORD POS</span>
+          <span class="mini-jenis">Point-of-sale system</span>
+          <span class="mini-bawah"><span class="label" data-s="produk">Product</span><span class="mini-host">pos<span>.arswordlab.com</span></span></span></a>
+        </li>
+        <li data-status="klien" data-tekno="js workers d1 r2 push">
+          <a class="mini" href="https://dailytask.arswordlab.com/" target="_blank" rel="noopener" aria-label="Daily Task, Client: Scheduling app for an animal shop’s staff: rotations, checks, photo proof and reminders.">
+          <span class="mini-foto"><img src="/media/karya/dailytask-desk-960.webp?v=ab0a1d5e" srcset="/media/karya/dailytask-desk-1600.webp?v=3cc57078 1600w, /media/karya/dailytask-desk-960.webp?v=ab0a1d5e 960w, /media/karya/dailytask-desk-560.webp?v=c53f24ca 560w, /media/karya/dailytask-desk-400.webp?v=65526113 400w, /media/karya/dailytask-desk-160.webp?v=5d6c5d51 160w" sizes="(min-width: 1100px) 22vw, (min-width: 700px) 30vw, 46vw" width="960" height="600" alt="" decoding="async" loading="lazy"><video class="vid" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1" data-kecil="/media/video/dailytask-640.mp4?v=b2f9d1c2"></video></span>
+          <span class="mini-nama">Daily Task</span>
+          <span class="mini-jenis">Staff scheduling app</span>
+          <span class="mini-bawah"><span class="label" data-s="klien">Client</span><span class="mini-host">dailytask<span>.arswordlab.com</span></span></span></a>
+        </li>
+        <li data-status="klien" data-tekno="js react astro three workers seo">
+          <a class="mini" href="https://eskrim-uncle-ren.arswordlab.com/" target="_blank" rel="noopener" aria-label="Es Krim Uncle Ren, Client: Website for an ice-cream shop: live opening hours, a menu with prices and 3D coconut bowls.">
+          <span class="mini-foto"><img src="/media/karya/eskrim-uncle-ren-desk-960.webp?v=c2f4f2ba" srcset="/media/karya/eskrim-uncle-ren-desk-1600.webp?v=33ffad46 1600w, /media/karya/eskrim-uncle-ren-desk-960.webp?v=c2f4f2ba 960w, /media/karya/eskrim-uncle-ren-desk-560.webp?v=57422768 560w, /media/karya/eskrim-uncle-ren-desk-400.webp?v=fd75290c 400w, /media/karya/eskrim-uncle-ren-desk-160.webp?v=8b1bbea8 160w" sizes="(min-width: 1100px) 22vw, (min-width: 700px) 30vw, 46vw" width="960" height="600" alt="" decoding="async" loading="lazy"><video class="vid" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1" data-kecil="/media/video/eskrim-uncle-ren-640.mp4?v=5bdc7e65"></video></span>
+          <span class="mini-nama">Es Krim Uncle Ren</span>
+          <span class="mini-jenis">Shop website</span>
+          <span class="mini-bawah"><span class="label" data-s="klien">Client</span><span class="mini-host">eskrim-uncle-ren<span>.arswordlab.com</span></span></span></a>
+        </li>
+        <li data-status="klien" data-tekno="js react workers seo">
+          <a class="mini" href="https://nathaniakhow.arswordlab.com/" target="_blank" rel="noopener" aria-label="NATHA, Client: Official site of singer-songwriter Nathania Khow, told in four chapters.">
+          <span class="mini-foto"><img src="/media/karya/nathaniakhow-desk-960.webp?v=46b9437e" srcset="/media/karya/nathaniakhow-desk-1600.webp?v=906811d7 1600w, /media/karya/nathaniakhow-desk-960.webp?v=46b9437e 960w, /media/karya/nathaniakhow-desk-560.webp?v=218a3c77 560w, /media/karya/nathaniakhow-desk-400.webp?v=297d6a0f 400w, /media/karya/nathaniakhow-desk-160.webp?v=e30fd184 160w" sizes="(min-width: 1100px) 22vw, (min-width: 700px) 30vw, 46vw" width="960" height="600" alt="" decoding="async" loading="lazy"><video class="vid" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1" data-kecil="/media/video/nathaniakhow-640.mp4?v=c2b8c25a"></video></span>
+          <span class="mini-nama">NATHA</span>
+          <span class="mini-jenis">Musician website</span>
+          <span class="mini-bawah"><span class="label" data-s="klien">Client</span><span class="mini-host">nathaniakhow<span>.arswordlab.com</span></span></span></a>
+        </li>
+        <li data-status="klien" data-tekno="js webgl workers">
+          <a class="mini" href="https://nilamerah.arswordlab.com/" target="_blank" rel="noopener" aria-label="Nila Merah, Client: Seven-page site for a red tilapia supplier, with a WebGL pond that ripples under your finger.">
+          <span class="mini-foto"><img src="/media/karya/nilamerah-desk-960.webp?v=a8dcdc88" srcset="/media/karya/nilamerah-desk-1600.webp?v=5740f5bb 1600w, /media/karya/nilamerah-desk-960.webp?v=a8dcdc88 960w, /media/karya/nilamerah-desk-560.webp?v=53e2cbe1 560w, /media/karya/nilamerah-desk-400.webp?v=7a75ada7 400w, /media/karya/nilamerah-desk-160.webp?v=1064407f 160w" sizes="(min-width: 1100px) 22vw, (min-width: 700px) 30vw, 46vw" width="960" height="600" alt="" decoding="async" loading="lazy"><video class="vid" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1" data-kecil="/media/video/nilamerah-640.mp4?v=d12addd6"></video></span>
+          <span class="mini-nama">Nila Merah</span>
+          <span class="mini-jenis">Supplier website</span>
+          <span class="mini-bawah"><span class="label" data-s="klien">Client</span><span class="mini-host">nilamerah<span>.arswordlab.com</span></span></span></a>
+        </li>
+        <li data-status="usulan" data-tekno="js react astro three workers">
+          <a class="mini" href="https://himawari.arswordlab.com/" target="_blank" rel="noopener" aria-label="Himawari Cookies, Proposal: Landing page for a cookie brand, with 3D cookies you can spin.">
+          <span class="mini-foto"><img src="/media/karya/himawari-desk-960.webp?v=748a93d7" srcset="/media/karya/himawari-desk-1600.webp?v=bca6a86f 1600w, /media/karya/himawari-desk-960.webp?v=748a93d7 960w, /media/karya/himawari-desk-560.webp?v=40c83094 560w, /media/karya/himawari-desk-400.webp?v=cb706dbb 400w, /media/karya/himawari-desk-160.webp?v=12cdaaa6 160w" sizes="(min-width: 1100px) 22vw, (min-width: 700px) 30vw, 46vw" width="960" height="600" alt="" decoding="async" loading="lazy"><video class="vid" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1" data-kecil="/media/video/himawari-640.mp4?v=31a815cb"></video></span>
+          <span class="mini-nama">Himawari Cookies</span>
+          <span class="mini-jenis">Landing page</span>
+          <span class="mini-bawah"><span class="label" data-s="usulan">Proposal</span><span class="mini-host">himawari<span>.arswordlab.com</span></span></span></a>
+        </li>
+        <li data-status="usulan" data-tekno="js webgl workers i18n">
+          <a class="mini" href="https://javaloom.arswordlab.com/" target="_blank" rel="noopener" aria-label="Javaloom, Proposal: Bilingual company profile for a bamboo and teak craft exporter.">
+          <span class="mini-foto"><img src="/media/karya/javaloom-desk-960.webp?v=f5a89ac9" srcset="/media/karya/javaloom-desk-1600.webp?v=241e0b4f 1600w, /media/karya/javaloom-desk-960.webp?v=f5a89ac9 960w, /media/karya/javaloom-desk-560.webp?v=ab19509a 560w, /media/karya/javaloom-desk-400.webp?v=1d9f3431 400w, /media/karya/javaloom-desk-160.webp?v=aca24a71 160w" sizes="(min-width: 1100px) 22vw, (min-width: 700px) 30vw, 46vw" width="960" height="600" alt="" decoding="async" loading="lazy"><video class="vid" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1" data-kecil="/media/video/javaloom-640.mp4?v=661df4ce"></video></span>
+          <span class="mini-nama">Javaloom</span>
+          <span class="mini-jenis">Exporter profile</span>
+          <span class="mini-bawah"><span class="label" data-s="usulan">Proposal</span><span class="mini-host">javaloom<span>.arswordlab.com</span></span></span></a>
+        </li>
+        <li data-status="usulan" data-tekno="js webgl workers i18n">
+          <a class="mini" href="https://radja.arswordlab.com/" target="_blank" rel="noopener" aria-label="RAN, Proposal: Bilingual profile for a betel-nut exporter, with a cut-test tray and an export route map.">
+          <span class="mini-foto"><img src="/media/karya/radja-desk-960.webp?v=d41726cb" srcset="/media/karya/radja-desk-1600.webp?v=a3889c0f 1600w, /media/karya/radja-desk-960.webp?v=d41726cb 960w, /media/karya/radja-desk-560.webp?v=9e9a0a08 560w, /media/karya/radja-desk-400.webp?v=bcd88afd 400w, /media/karya/radja-desk-160.webp?v=64ead48a 160w" sizes="(min-width: 1100px) 22vw, (min-width: 700px) 30vw, 46vw" width="960" height="600" alt="" decoding="async" loading="lazy"><video class="vid" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1" data-kecil="/media/video/radja-640.mp4?v=ae5ed7cb"></video></span>
+          <span class="mini-nama">RAN</span>
+          <span class="mini-jenis">Exporter profile</span>
+          <span class="mini-bawah"><span class="label" data-s="usulan">Proposal</span><span class="mini-host">radja<span>.arswordlab.com</span></span></span></a>
+        </li>
+        <li data-status="usulan" data-tekno="js webgl workers">
+          <a class="mini" href="https://bengkelnusantara.arswordlab.com/" target="_blank" rel="noopener" aria-label="Bengkel Nusantara, Proposal: Car workshop site with a rolling-door intro, a symptom checker and online booking.">
+          <span class="mini-foto"><img src="/media/karya/bengkelnusantara-desk-960.webp?v=919de7f6" srcset="/media/karya/bengkelnusantara-desk-1600.webp?v=40071c97 1600w, /media/karya/bengkelnusantara-desk-960.webp?v=919de7f6 960w, /media/karya/bengkelnusantara-desk-560.webp?v=f7aef201 560w, /media/karya/bengkelnusantara-desk-400.webp?v=29b2fdb2 400w, /media/karya/bengkelnusantara-desk-160.webp?v=05f165c2 160w" sizes="(min-width: 1100px) 22vw, (min-width: 700px) 30vw, 46vw" width="960" height="600" alt="" decoding="async" loading="lazy"><video class="vid" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1" data-kecil="/media/video/bengkelnusantara-640.mp4?v=08a0c1f0"></video></span>
+          <span class="mini-nama">Bengkel Nusantara</span>
+          <span class="mini-jenis">Workshop website</span>
+          <span class="mini-bawah"><span class="label" data-s="usulan">Proposal</span><span class="mini-host">bengkelnusantara<span>.arswordlab.com</span></span></span></a>
+        </li>
+        <li data-status="usulan" data-tekno="js webgl workers">
+          <a class="mini" href="https://cherish.arswordlab.com/" target="_blank" rel="noopener" aria-label="Cherishcom, Proposal: Apple consignment and escrow service, with a 3D phone whose screen follows the page.">
+          <span class="mini-foto"><img src="/media/karya/cherish-desk-960.webp?v=29146b2a" srcset="/media/karya/cherish-desk-1600.webp?v=0d1b98df 1600w, /media/karya/cherish-desk-960.webp?v=29146b2a 960w, /media/karya/cherish-desk-560.webp?v=efdbdf33 560w, /media/karya/cherish-desk-400.webp?v=397f3f47 400w, /media/karya/cherish-desk-160.webp?v=5332e844 160w" sizes="(min-width: 1100px) 22vw, (min-width: 700px) 30vw, 46vw" width="960" height="600" alt="" decoding="async" loading="lazy"><video class="vid" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1" data-kecil="/media/video/cherish-640.mp4?v=9a95f1fe"></video></span>
+          <span class="mini-nama">Cherishcom</span>
+          <span class="mini-jenis">Service website</span>
+          <span class="mini-bawah"><span class="label" data-s="usulan">Proposal</span><span class="mini-host">cherish<span>.arswordlab.com</span></span></span></a>
+        </li>
+        <li data-status="usulan" data-tekno="js webgl workers i18n">
+          <a class="mini" href="https://seifan.arswordlab.com/" target="_blank" rel="noopener" aria-label="Seifan Translation, Proposal: Sworn translation service, with a lens that shows the same page in four languages.">
+          <span class="mini-foto"><img src="/media/karya/seifan-desk-960.webp?v=d236d95a" srcset="/media/karya/seifan-desk-1600.webp?v=dbdc0d24 1600w, /media/karya/seifan-desk-960.webp?v=d236d95a 960w, /media/karya/seifan-desk-560.webp?v=396a4134 560w, /media/karya/seifan-desk-400.webp?v=9cdf2796 400w, /media/karya/seifan-desk-160.webp?v=b1f084dd 160w" sizes="(min-width: 1100px) 22vw, (min-width: 700px) 30vw, 46vw" width="960" height="600" alt="" decoding="async" loading="lazy"><video class="vid" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1" data-kecil="/media/video/seifan-640.mp4?v=91f1dab8"></video></span>
+          <span class="mini-nama">Seifan Translation</span>
+          <span class="mini-jenis">Service website</span>
+          <span class="mini-bawah"><span class="label" data-s="usulan">Proposal</span><span class="mini-host">seifan<span>.arswordlab.com</span></span></span></a>
+        </li>
+        <li data-status="usulan" data-tekno="js webgl workers i18n">
+          <a class="mini" href="https://tsunagu.arswordlab.com/" target="_blank" rel="noopener" aria-label="Tsunagu, Proposal: Training agency for work in Japan, in Indonesian and Japanese.">
+          <span class="mini-foto"><img src="/media/karya/tsunagu-desk-960.webp?v=03a26689" srcset="/media/karya/tsunagu-desk-1600.webp?v=60a890c9 1600w, /media/karya/tsunagu-desk-960.webp?v=03a26689 960w, /media/karya/tsunagu-desk-560.webp?v=2709f39d 560w, /media/karya/tsunagu-desk-400.webp?v=61d2063f 400w, /media/karya/tsunagu-desk-160.webp?v=8f679864 160w" sizes="(min-width: 1100px) 22vw, (min-width: 700px) 30vw, 46vw" width="960" height="600" alt="" decoding="async" loading="lazy"><video class="vid" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1" data-kecil="/media/video/tsunagu-640.mp4?v=0c986787"></video></span>
+          <span class="mini-nama">Tsunagu</span>
+          <span class="mini-jenis">Agency website</span>
+          <span class="mini-bawah"><span class="label" data-s="usulan">Proposal</span><span class="mini-host">tsunagu<span>.arswordlab.com</span></span></span></a>
+        </li>
+        <li data-status="usulan" data-tekno="js webgl workers">
+          <a class="mini" href="https://teassence.arswordlab.com/" target="_blank" rel="noopener" aria-label="Teassence, Proposal: Tea brand site with a real-time fluid simulation in a porcelain cup.">
+          <span class="mini-foto"><img src="/media/karya/teassence-desk-960.webp?v=1ba0289f" srcset="/media/karya/teassence-desk-1600.webp?v=6fe2d7c7 1600w, /media/karya/teassence-desk-960.webp?v=1ba0289f 960w, /media/karya/teassence-desk-560.webp?v=4eccdcb5 560w, /media/karya/teassence-desk-400.webp?v=5f5c948a 400w, /media/karya/teassence-desk-160.webp?v=f92ab00a 160w" sizes="(min-width: 1100px) 22vw, (min-width: 700px) 30vw, 46vw" width="960" height="600" alt="" decoding="async" loading="lazy"><video class="vid" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1" data-kecil="/media/video/teassence-640.mp4?v=65db6cae"></video></span>
+          <span class="mini-nama">Teassence</span>
+          <span class="mini-jenis">Brand website</span>
+          <span class="mini-bawah"><span class="label" data-s="usulan">Proposal</span><span class="mini-host">teassence<span>.arswordlab.com</span></span></span></a>
+        </li>
+        <li data-status="konsep" data-tekno="js webgl workers">
+          <a class="mini" href="https://seraphine.arswordlab.com/" target="_blank" rel="noopener" aria-label="Seraphine, Concept: Concept site for a marble sculpture studio, with WebGL light on stone.">
+          <span class="mini-foto"><img src="/media/karya/seraphine-desk-960.webp?v=b21bb869" srcset="/media/karya/seraphine-desk-1600.webp?v=88f88477 1600w, /media/karya/seraphine-desk-960.webp?v=b21bb869 960w, /media/karya/seraphine-desk-560.webp?v=62397694 560w, /media/karya/seraphine-desk-400.webp?v=063c2aec 400w, /media/karya/seraphine-desk-160.webp?v=bf305529 160w" sizes="(min-width: 1100px) 22vw, (min-width: 700px) 30vw, 46vw" width="960" height="600" alt="" decoding="async" loading="lazy"><video class="vid" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1" data-kecil="/media/video/seraphine-640.mp4?v=8d999065"></video></span>
+          <span class="mini-nama">Seraphine</span>
+          <span class="mini-jenis">Studio website</span>
+          <span class="mini-bawah"><span class="label" data-s="konsep">Concept</span><span class="mini-host">seraphine<span>.arswordlab.com</span></span></span></a>
+        </li>
+        <li data-status="konsep" data-tekno="js webgl workers">
+          <a class="mini" href="https://ashfield.arswordlab.com/" target="_blank" rel="noopener" aria-label="Ashfield, Concept: Concept site for a film studio: one film, re-graded by shaders as you scroll.">
+          <span class="mini-foto"><img src="/media/karya/ashfield-desk-960.webp?v=3d1e3f52" srcset="/media/karya/ashfield-desk-1600.webp?v=1bc990f7 1600w, /media/karya/ashfield-desk-960.webp?v=3d1e3f52 960w, /media/karya/ashfield-desk-560.webp?v=8a9130f5 560w, /media/karya/ashfield-desk-400.webp?v=c708c7a5 400w, /media/karya/ashfield-desk-160.webp?v=877cb403 160w" sizes="(min-width: 1100px) 22vw, (min-width: 700px) 30vw, 46vw" width="960" height="600" alt="" decoding="async" loading="lazy"><video class="vid" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1" data-kecil="/media/video/ashfield-640.mp4?v=5ffefd5c"></video></span>
+          <span class="mini-nama">Ashfield</span>
+          <span class="mini-jenis">Studio website</span>
+          <span class="mini-bawah"><span class="label" data-s="konsep">Concept</span><span class="mini-host">ashfield<span>.arswordlab.com</span></span></span></a>
+        </li>
+        <li data-status="kuliah" data-tekno="js react push workers">
+          <a class="mini" href="https://koaslink.arswordlab.com/" target="_blank" rel="noopener" aria-label="KoasLink, Course project: App-like prototype that matches dental patients with Co-Ass students.">
+          <span class="mini-foto"><img src="/media/karya/koaslink-desk-960.webp?v=26381daa" srcset="/media/karya/koaslink-desk-1600.webp?v=7471241e 1600w, /media/karya/koaslink-desk-960.webp?v=26381daa 960w, /media/karya/koaslink-desk-560.webp?v=91085268 560w, /media/karya/koaslink-desk-400.webp?v=84d8093b 400w, /media/karya/koaslink-desk-160.webp?v=bdb15d16 160w" sizes="(min-width: 1100px) 22vw, (min-width: 700px) 30vw, 46vw" width="960" height="600" alt="" decoding="async" loading="lazy"><video class="vid" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1" data-kecil="/media/video/koaslink-640.mp4?v=6ee32143"></video></span>
+          <span class="mini-nama">KoasLink</span>
+          <span class="mini-jenis">App prototype (PWA)</span>
+          <span class="mini-bawah"><span class="label" data-s="kuliah">Course project</span><span class="mini-host">koaslink<span>.arswordlab.com</span></span></span></a>
+        </li>
+        <li data-status="produk" data-tekno="js workers d1 rt push">
+          <div class="mini">
+          <span class="mini-foto"><span class="mini-kosong">Sign-in only</span></span>
+          <span class="mini-nama">ARSWORD Chat</span>
+          <span class="mini-jenis">Admin inbox (PWA)</span>
+          <span class="mini-bawah"><span class="label" data-s="produk">Product</span><span class="mini-host">chat<span>.arswordlab.com</span></span></span></div>
+        </li>
+    </ul>
+  </section>
+
+  <section class="bagian" id="alat" aria-labelledby="h-alat">
+    <div class="judul">
+      <h2 id="h-alat">What I work with</h2>
+      <p>Counted from the sites themselves, not a wish list. 16 of the 18 sites also send a Content-Security-Policy header (checked 9 Nov 2026).</p>
+    </div>
+    <ul class="tekno">
+        <li>
+          <span class="tek-nama">JavaScript / TypeScript</span>
+          <span class="tek-tumpuk" aria-hidden="true"><img src="/media/karya/arswordlab-desk-160.webp?v=6f1dec10" alt="" width="56" height="35" loading="lazy" decoding="async"><img src="/media/karya/pos-desk-160.webp?v=020e1279" alt="" width="56" height="35" loading="lazy" decoding="async"><img src="/media/karya/dailytask-desk-160.webp?v=5d6c5d51" alt="" width="56" height="35" loading="lazy" decoding="async"><img src="/media/karya/eskrim-uncle-ren-desk-160.webp?v=8b1bbea8" alt="" width="56" height="35" loading="lazy" decoding="async"><img src="/media/karya/nathaniakhow-desk-160.webp?v=e30fd184" alt="" width="56" height="35" loading="lazy" decoding="async"><img src="/media/karya/nilamerah-desk-160.webp?v=1064407f" alt="" width="56" height="35" loading="lazy" decoding="async"><img src="/media/karya/himawari-desk-160.webp?v=12cdaaa6" alt="" width="56" height="35" loading="lazy" decoding="async"><img src="/media/karya/javaloom-desk-160.webp?v=aca24a71" alt="" width="56" height="35" loading="lazy" decoding="async"><b>+10</b></span>
+          <span class="tek-jumlah">18 sites</span>
+          <span class="sr-only">: ARSWORD, ARSWORD POS, Daily Task, Es Krim Uncle Ren, NATHA, Nila Merah, Himawari Cookies, Javaloom, RAN, Bengkel Nusantara, Cherishcom, Seifan Translation, Tsunagu, Teassence, Seraphine, Ashfield, KoasLink, ARSWORD Chat</span>
+        </li>
+        <li>
+          <span class="tek-nama">Cloudflare Workers</span>
+          <span class="tek-tumpuk" aria-hidden="true"><img src="/media/karya/arswordlab-desk-160.webp?v=6f1dec10" alt="" width="56" height="35" loading="lazy" decoding="async"><img src="/media/karya/pos-desk-160.webp?v=020e1279" alt="" width="56" height="35" loading="lazy" decoding="async"><img src="/media/karya/dailytask-desk-160.webp?v=5d6c5d51" alt="" width="56" height="35" loading="lazy" decoding="async"><img src="/media/karya/eskrim-uncle-ren-desk-160.webp?v=8b1bbea8" alt="" width="56" height="35" loading="lazy" decoding="async"><img src="/media/karya/nathaniakhow-desk-160.webp?v=e30fd184" alt="" width="56" height="35" loading="lazy" decoding="async"><img src="/media/karya/nilamerah-desk-160.webp?v=1064407f" alt="" width="56" height="35" loading="lazy" decoding="async"><img src="/media/karya/himawari-desk-160.webp?v=12cdaaa6" alt="" width="56" height="35" loading="lazy" decoding="async"><img src="/media/karya/javaloom-desk-160.webp?v=aca24a71" alt="" width="56" height="35" loading="lazy" decoding="async"><b>+10</b></span>
+          <span class="tek-jumlah">18 sites</span>
+          <span class="sr-only">: ARSWORD, ARSWORD POS, Daily Task, Es Krim Uncle Ren, NATHA, Nila Merah, Himawari Cookies, Javaloom, RAN, Bengkel Nusantara, Cherishcom, Seifan Translation, Tsunagu, Teassence, Seraphine, Ashfield, KoasLink, ARSWORD Chat</span>
+        </li>
+        <li>
+          <span class="tek-nama">WebGL / GLSL shaders</span>
+          <span class="tek-tumpuk" aria-hidden="true"><img src="/media/karya/arswordlab-desk-160.webp?v=6f1dec10" alt="" width="56" height="35" loading="lazy" decoding="async"><img src="/media/karya/nilamerah-desk-160.webp?v=1064407f" alt="" width="56" height="35" loading="lazy" decoding="async"><img src="/media/karya/javaloom-desk-160.webp?v=aca24a71" alt="" width="56" height="35" loading="lazy" decoding="async"><img src="/media/karya/radja-desk-160.webp?v=64ead48a" alt="" width="56" height="35" loading="lazy" decoding="async"><img src="/media/karya/bengkelnusantara-desk-160.webp?v=05f165c2" alt="" width="56" height="35" loading="lazy" decoding="async"><img src="/media/karya/cherish-desk-160.webp?v=5332e844" alt="" width="56" height="35" loading="lazy" decoding="async"><img src="/media/karya/seifan-desk-160.webp?v=b1f084dd" alt="" width="56" height="35" loading="lazy" decoding="async"><img src="/media/karya/tsunagu-desk-160.webp?v=8f679864" alt="" width="56" height="35" loading="lazy" decoding="async"><b>+3</b></span>
+          <span class="tek-jumlah">11 sites</span>
+          <span class="sr-only">: ARSWORD, Nila Merah, Javaloom, RAN, Bengkel Nusantara, Cherishcom, Seifan Translation, Tsunagu, Teassence, Seraphine, Ashfield</span>
+        </li>
+        <li>
+          <span class="tek-nama">React</span>
+          <span class="tek-tumpuk" aria-hidden="true"><img src="/media/karya/pos-desk-160.webp?v=020e1279" alt="" width="56" height="35" loading="lazy" decoding="async"><img src="/media/karya/eskrim-uncle-ren-desk-160.webp?v=8b1bbea8" alt="" width="56" height="35" loading="lazy" decoding="async"><img src="/media/karya/nathaniakhow-desk-160.webp?v=e30fd184" alt="" width="56" height="35" loading="lazy" decoding="async"><img src="/media/karya/himawari-desk-160.webp?v=12cdaaa6" alt="" width="56" height="35" loading="lazy" decoding="async"><img src="/media/karya/koaslink-desk-160.webp?v=bdb15d16" alt="" width="56" height="35" loading="lazy" decoding="async"></span>
+          <span class="tek-jumlah">5 sites</span>
+          <span class="sr-only">: ARSWORD POS, Es Krim Uncle Ren, NATHA, Himawari Cookies, KoasLink</span>
+        </li>
+        <li>
+          <span class="tek-nama">PWA &amp; Web Push</span>
+          <span class="tek-tumpuk" aria-hidden="true"><img src="/media/karya/arswordlab-desk-160.webp?v=6f1dec10" alt="" width="56" height="35" loading="lazy" decoding="async"><img src="/media/karya/pos-desk-160.webp?v=020e1279" alt="" width="56" height="35" loading="lazy" decoding="async"><img src="/media/karya/dailytask-desk-160.webp?v=5d6c5d51" alt="" width="56" height="35" loading="lazy" decoding="async"><img src="/media/karya/koaslink-desk-160.webp?v=bdb15d16" alt="" width="56" height="35" loading="lazy" decoding="async"><i></i></span>
+          <span class="tek-jumlah">5 sites</span>
+          <span class="sr-only">: ARSWORD, ARSWORD POS, Daily Task, KoasLink, ARSWORD Chat</span>
+        </li>
+        <li>
+          <span class="tek-nama">SQL (Cloudflare D1)</span>
+          <span class="tek-tumpuk" aria-hidden="true"><img src="/media/karya/arswordlab-desk-160.webp?v=6f1dec10" alt="" width="56" height="35" loading="lazy" decoding="async"><img src="/media/karya/pos-desk-160.webp?v=020e1279" alt="" width="56" height="35" loading="lazy" decoding="async"><img src="/media/karya/dailytask-desk-160.webp?v=5d6c5d51" alt="" width="56" height="35" loading="lazy" decoding="async"><i></i></span>
+          <span class="tek-jumlah">4 sites</span>
+          <span class="sr-only">: ARSWORD, ARSWORD POS, Daily Task, ARSWORD Chat</span>
+        </li>
+        <li>
+          <span class="tek-nama">Multilingual</span>
+          <span class="tek-tumpuk" aria-hidden="true"><img src="/media/karya/javaloom-desk-160.webp?v=aca24a71" alt="" width="56" height="35" loading="lazy" decoding="async"><img src="/media/karya/radja-desk-160.webp?v=64ead48a" alt="" width="56" height="35" loading="lazy" decoding="async"><img src="/media/karya/seifan-desk-160.webp?v=b1f084dd" alt="" width="56" height="35" loading="lazy" decoding="async"><img src="/media/karya/tsunagu-desk-160.webp?v=8f679864" alt="" width="56" height="35" loading="lazy" decoding="async"></span>
+          <span class="tek-jumlah">4 sites</span>
+          <span class="sr-only">: Javaloom, RAN, Seifan Translation, Tsunagu</span>
+        </li>
+        <li>
+          <span class="tek-nama">Three.js</span>
+          <span class="tek-tumpuk" aria-hidden="true"><img src="/media/karya/arswordlab-desk-160.webp?v=6f1dec10" alt="" width="56" height="35" loading="lazy" decoding="async"><img src="/media/karya/eskrim-uncle-ren-desk-160.webp?v=8b1bbea8" alt="" width="56" height="35" loading="lazy" decoding="async"><img src="/media/karya/himawari-desk-160.webp?v=12cdaaa6" alt="" width="56" height="35" loading="lazy" decoding="async"></span>
+          <span class="tek-jumlah">3 sites</span>
+          <span class="sr-only">: ARSWORD, Es Krim Uncle Ren, Himawari Cookies</span>
+        </li>
+        <li>
+          <span class="tek-nama">SEO &amp; structured data</span>
+          <span class="tek-tumpuk" aria-hidden="true"><img src="/media/karya/arswordlab-desk-160.webp?v=6f1dec10" alt="" width="56" height="35" loading="lazy" decoding="async"><img src="/media/karya/eskrim-uncle-ren-desk-160.webp?v=8b1bbea8" alt="" width="56" height="35" loading="lazy" decoding="async"><img src="/media/karya/nathaniakhow-desk-160.webp?v=e30fd184" alt="" width="56" height="35" loading="lazy" decoding="async"></span>
+          <span class="tek-jumlah">3 sites</span>
+          <span class="sr-only">: ARSWORD, Es Krim Uncle Ren, NATHA</span>
+        </li>
+        <li>
+          <span class="tek-nama">Astro</span>
+          <span class="tek-tumpuk" aria-hidden="true"><img src="/media/karya/eskrim-uncle-ren-desk-160.webp?v=8b1bbea8" alt="" width="56" height="35" loading="lazy" decoding="async"><img src="/media/karya/himawari-desk-160.webp?v=12cdaaa6" alt="" width="56" height="35" loading="lazy" decoding="async"></span>
+          <span class="tek-jumlah">2 sites</span>
+          <span class="sr-only">: Es Krim Uncle Ren, Himawari Cookies</span>
+        </li>
+        <li>
+          <span class="tek-nama">Object storage (R2)</span>
+          <span class="tek-tumpuk" aria-hidden="true"><img src="/media/karya/arswordlab-desk-160.webp?v=6f1dec10" alt="" width="56" height="35" loading="lazy" decoding="async"><img src="/media/karya/dailytask-desk-160.webp?v=5d6c5d51" alt="" width="56" height="35" loading="lazy" decoding="async"></span>
+          <span class="tek-jumlah">2 sites</span>
+          <span class="sr-only">: ARSWORD, Daily Task</span>
+        </li>
+        <li>
+          <span class="tek-nama">WebSockets (Durable Objects)</span>
+          <span class="tek-tumpuk" aria-hidden="true"><img src="/media/karya/arswordlab-desk-160.webp?v=6f1dec10" alt="" width="56" height="35" loading="lazy" decoding="async"><i></i></span>
+          <span class="tek-jumlah">2 sites</span>
+          <span class="sr-only">: ARSWORD, ARSWORD Chat</span>
+        </li>
+        <li>
+          <span class="tek-nama">Payments (QRIS)</span>
+          <span class="tek-tumpuk" aria-hidden="true"><img src="/media/karya/arswordlab-desk-160.webp?v=6f1dec10" alt="" width="56" height="35" loading="lazy" decoding="async"><img src="/media/karya/pos-desk-160.webp?v=020e1279" alt="" width="56" height="35" loading="lazy" decoding="async"></span>
+          <span class="tek-jumlah">2 sites</span>
+          <span class="sr-only">: ARSWORD, ARSWORD POS</span>
+        </li>
+        <li>
+          <span class="tek-nama">Android (Capacitor)</span>
+          <span class="tek-tumpuk" aria-hidden="true"><img src="/media/karya/pos-desk-160.webp?v=020e1279" alt="" width="56" height="35" loading="lazy" decoding="async"></span>
+          <span class="tek-jumlah">1 site</span>
+          <span class="sr-only">: ARSWORD POS</span>
+        </li>
+        <li>
+          <span class="tek-nama">AI (Claude API)</span>
+          <span class="tek-tumpuk" aria-hidden="true"><img src="/media/karya/arswordlab-desk-160.webp?v=6f1dec10" alt="" width="56" height="35" loading="lazy" decoding="async"></span>
+          <span class="tek-jumlah">1 site</span>
+          <span class="sr-only">: ARSWORD</span>
+        </li>
+    </ul>
+  </section>
+
+  <section class="bagian tentang" id="tentang" aria-labelledby="h-tentang">
+    <div class="judul">
+      <h2 id="h-tentang">About me</h2>
+    </div>
+    <div class="tentang-isi">
+      <div class="tentang-teks">
+        <p class="besar">I’m Sword, a full-stack developer from Jakarta. I study Cyber Security at BINUS University and I’m interning as a security analyst at PT Inti Siber Net.</p>
+        <p>Since 2025 I’ve built sites and web apps for clients under my own studio, ARSWORD, from the first sketch to the deployed site. I also run two products of my own: the studio platform and a point-of-sale system that a real shop uses every day. Working in security taught me to look at a site from the attacker’s side, so I ship with strict headers and keep secrets on the server.</p>
+        <p class="kecil">Outside client work I practise on HackTheBox as @Swokel.</p>
+      </div>
+      <ol class="riwayat">
+          <li><span class="waktu">Feb 2026 – Feb 2027</span><div><b>Cyber Security Analyst (intern)</b><span class="tempat">PT Inti Siber Net</span><p>Security assessments of internal web applications, penetration-test reports, and support on vulnerability triage and remediation tracking.</p></div></li>
+          <li><span class="waktu">2025 – now</span><div><b>Freelance web developer, founder of ARSWORD</b><span class="tempat">arswordlab.com</span><p>Websites and web apps for clients from first sketch to deployment, and my own products: the studio platform and a point-of-sale system.</p></div></li>
+          <li><span class="waktu">Expected 2027</span><div><b>B.Sc. Cyber Security</b><span class="tempat">BINUS University</span><p>Secure programming, network defence, system and network administration, applied web security.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="kontak" id="kontak" aria-labelledby="h-kontak">
+    <div class="kontak-papan">
+      <img class="kontak-potret" src="/media/foto/potret-warna-520.webp?v=e0c049f0" width="520" height="520" alt="" loading="lazy" decoding="async">
+      <div class="kontak-teks">
+        <h2 id="h-kontak">Hiring, or have a project?</h2>
+        <p>Open to full-stack and web developer roles, and freelance projects. The quickest way to reach me is email.</p>
+        <div class="kontak-surel">
+          <a href="mailto:swordekel@gmail.com" data-suara="tekan">swordekel@gmail.com</a>
+          <button type="button" class="salin" data-salin="swordekel@gmail.com" data-sunyi><svg class="ik" aria-hidden="true"><use href="#i-salin"/></svg><span>Copy</span></button>
+        </div>
+        <div class="kontak-lain">
+          <a class="pil pil-gelap" href="https://wa.me/628111688303" target="_blank" rel="noopener" data-suara="tekan"><svg class="ik" aria-hidden="true"><use href="#i-pesan"/></svg><span>WhatsApp +62 811-1688-303</span></a>
+          <a class="pil pil-garis" href="/CV_Sword_Christ_Imanuel_Ekel.pdf" download data-suara="tekan"><svg class="ik" aria-hidden="true"><use href="#i-bawah"/></svg>Download CV</a>
+          <a class="pil pil-garis" href="https://github.com/Swordekel" target="_blank" rel="noopener" data-suara="tekan"><svg class="ik" aria-hidden="true"><use href="#i-git"/></svg>GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
+
+<footer class="kaki"><span>© 2026 Sword Ekel</span><span>Jakarta, Indonesia</span></footer>
+<script type="module" src="/personal/main.js?v=a77dfb7b"></script>
 </body>
 </html>

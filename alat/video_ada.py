@@ -40,9 +40,10 @@ def ff(*args):
 
 def keluaran(key, masuk_args, vf_dasar):
     """Encode one source (given as ffmpeg input args + a filter that yields 16:9 frames) into the shipped sizes."""
-    lebar = [(640, 360, 29)] + ([(1280, 720, 25)] if key in UNGGULAN else [])
-    for w, h, crf in lebar:
-        ff(*masuk_args, '-vf', f'{vf_dasar},scale={w}:{h}:flags=lanczos,fps=30,format=yuv420p', '-an',
+    # grid: 24 fps (less decoding when many play at once); featured rows: 30 fps
+    lebar = [(640, 360, 29, 24)] + ([(1280, 720, 25, 30)] if key in UNGGULAN else [])
+    for w, h, crf, fps in lebar:
+        ff(*masuk_args, '-vf', f'{vf_dasar},scale={w}:{h}:flags=lanczos,fps={fps},format=yuv420p', '-an',
            '-c:v', 'libx264', '-profile:v', 'high', '-preset', 'slow', '-crf', crf, '-movflags', '+faststart', *WARNA,
            OUT / f'{key}-{w}.mp4')
     besar = OUT / f'{key}-{lebar[-1][0]}.mp4'

@@ -1,0 +1,2 @@
+# Cloudflare reads _headers line by line; keep it LF on every checkout
+_headers text eol=lf

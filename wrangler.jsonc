@@ -1,0 +1,25 @@
+// Portfolio Sword Ekel di Cloudflare Workers pada swordekel.arswordlab.com (akun Cloudflare milik arswordlab.com).
+// Tanpa langkah build di Cloudflare: situsnya berkas jadi di ./public. Alurnya: `node bangun.mjs`, commit, push ke
+// GitHub (Swordekel/sword-portfolio), lalu dari folder ini:
+//   node ../arsword-pos/node_modules/wrangler/bin/wrangler.js deploy
+{
+  "name": "swordekel",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-09-01",
+  // rute di bawah adalah satu-satunya alamat situs
+  "workers_dev": false,
+  "preview_urls": false,
+  // Worker "arswordlab" (arswordlab.com) menjawab *.arswordlab.com/* untuk situs template ARSWORD. Rute ini menyebut
+  // alamatnya persis, dan rute yang paling spesifik yang menang. Nama "swordekel" juga dicadangkan di ARSWORD (RESERVED
+  // di worker/sites.js), seperti javaloom dan teassence.
+  "routes": [{ "pattern": "swordekel.arswordlab.com/*", "zone_name": "arswordlab.com" }],
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    // hanya video yang lewat Worker (jawaban 206 untuk Safari); berkas lain dilayani langsung dengan public/_headers
+    "run_worker_first": ["/media/video/*"],
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  "observability": { "enabled": true }
+}

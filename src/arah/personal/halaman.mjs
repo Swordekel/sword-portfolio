@@ -4,6 +4,50 @@
 
 export const BAHASA = ['en'];
 
+// data terstruktur untuk mesin pencari: orangnya dan situsnya
+function jsonLd(situs, DATA, tt) {
+  const { PROFIL } = DATA;
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Person', '@id': `${situs}/#sword`, name: PROFIL.nama, alternateName: PROFIL.namaLengkap,
+        jobTitle: 'Full-stack developer', url: `${situs}/`, image: `${situs}/media/foto/potret-warna-800.webp`,
+        email: `mailto:${PROFIL.email}`, address: { '@type': 'PostalAddress', addressLocality: 'Jakarta', addressCountry: 'ID' },
+        affiliation: { '@type': 'CollegeOrUniversity', name: 'BINUS University' },
+        sameAs: [PROFIL.github],
+        worksFor: { '@type': 'Organization', name: 'ARSWORD', url: 'https://arswordlab.com/' },
+        knowsAbout: DATA.TEKNO.map((t) => t.nama),
+      },
+      { '@type': 'WebSite', '@id': `${situs}/#web`, url: `${situs}/`, name: 'Sword Ekel', inLanguage: 'en', publisher: { '@id': `${situs}/#sword` } },
+    ],
+  };
+}
+
+// halaman 404 dengan gaya yang sama
+export function halaman404({ aset }) {
+  return `<!doctype html>
+<html lang="en" data-arah="personal">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found · Sword Ekel</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#f2f3f5">
+<link rel="stylesheet" href="${aset('personal/gaya.css')}">
+<link rel="icon" href="${aset('personal/ikon.svg')}" type="image/svg+xml">
+</head>
+<body>
+<main class="hilang">
+  <h1>This page doesn’t exist.</h1>
+  <p>The link may be old. Everything is on the main page.</p>
+  <a class="pil pil-gelap" href="/">Go to the portfolio</a>
+</main>
+</body>
+</html>
+`;
+}
+
 const UNGGULAN = ['pos', 'arswordlab', 'dailytask', 'eskrim-uncle-ren', 'teassence'];
 
 const IKON = `<svg class="sprite" aria-hidden="true" focusable="false">
@@ -20,7 +64,7 @@ const IKON = `<svg class="sprite" aria-hidden="true" focusable="false">
 const ik = (id, kelas = 'ik') => `<svg class="${kelas}" aria-hidden="true"><use href="#i-${id}"/></svg>`;
 
 export default function halaman(ctx) {
-  const { DATA, tt, esc, aset, gambar, media, info, PERIKSA, MEDIA } = ctx;
+  const { DATA, tt, esc, aset, gambar, media, info, PERIKSA, MEDIA, situs = '' } = ctx;
   const { PROFIL, STATUS, TEKNO, PROYEK, PENGALAMAN, PENDIDIKAN } = DATA;
   const byKunci = Object.fromEntries(PROYEK.map((p) => [p.kunci, p]));
   const tautan = (p) => (p.tertutup ? '' : `https://${p.host}/`);
@@ -40,9 +84,11 @@ export default function halaman(ctx) {
   const csp = PROYEK.filter((p) => PERIKSA.hosts[p.host]?.headers?.['content-security-policy']).length;
 
   // dua kolom tangkapan yang melayang di belakang potret (hiasan; daftar dobel supaya putarannya mulus)
-  const kolom = [adaFoto.filter((_, i) => i % 2 === 0), adaFoto.filter((_, i) => i % 2 === 1)];
+  const DINDING = ['arswordlab', 'eskrim-uncle-ren', 'nilamerah', 'teassence', 'javaloom', 'tsunagu',
+    'pos', 'nathaniakhow', 'cherish', 'radja', 'himawari', 'seifan'];
+  const kolom = [DINDING.filter((_, i) => i % 2 === 0), DINDING.filter((_, i) => i % 2 === 1)];
   const studio = kolom.map((k, n) => {
-    const isi = k.map((p) => `<img src="${media(p.kunci, 'desk', 560)}" width="560" height="350" alt="" decoding="async" loading="${n === 0 ? 'eager' : 'lazy'}">`).join('');
+    const isi = k.map((kunci) => `<img src="${media(kunci, 'desk', 400)}" width="400" height="250" alt="" decoding="async">`).join('');
     return `<div class="arus arus-${n + 1}"><div class="arus-isi">${isi}${isi}</div></div>`;
   }).join('');
 
@@ -99,7 +145,7 @@ export default function halaman(ctx) {
     .map((t) => `
         <li>
           <span class="tek-nama">${esc(t.nama)}</span>
-          <span class="tek-tumpuk" aria-hidden="true">${t.pakai.slice(0, 8).map((p) => MEDIA[p.kunci]?.desk ? `<img src="${media(p.kunci, 'desk', 560)}" alt="" width="56" height="35" loading="lazy" decoding="async">` : '<i></i>').join('')}${t.pakai.length > 8 ? `<b>+${t.pakai.length - 8}</b>` : ''}</span>
+          <span class="tek-tumpuk" aria-hidden="true">${t.pakai.slice(0, 8).map((p) => MEDIA[p.kunci]?.desk ? `<img src="${media(p.kunci, 'desk', 160)}" alt="" width="56" height="35" loading="lazy" decoding="async">` : '<i></i>').join('')}${t.pakai.length > 8 ? `<b>+${t.pakai.length - 8}</b>` : ''}</span>
           <span class="tek-jumlah">${t.pakai.length} ${t.pakai.length === 1 ? 'site' : 'sites'}</span>
           <span class="sr-only">: ${t.pakai.map((p) => esc(p.nama)).join(', ')}</span>
         </li>`).join('');
@@ -114,9 +160,22 @@ export default function halaman(ctx) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Sword Ekel · Full-stack developer</title>
+<title>Sword Ekel · Full-stack developer in Jakarta</title>
 <meta name="description" content="${esc(desc)}">
-<meta name="robots" content="noindex">
+<link rel="canonical" href="${situs}/">
+<meta property="og:type" content="profile">
+<meta property="og:url" content="${situs}/">
+<meta property="og:site_name" content="Sword Ekel">
+<meta property="og:title" content="Sword Ekel · Full-stack developer">
+<meta property="og:description" content="${esc(desc)}">
+<meta property="og:image" content="${situs}/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Portrait of Sword Ekel in front of screenshots of the websites in this portfolio">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">${JSON.stringify(jsonLd(situs, DATA, tt)).replace(/</g, '\\u003c')}</script>
 <meta name="format-detection" content="telephone=no, date=no, address=no">
 <meta name="theme-color" content="#f2f3f5">
 <link rel="preload" href="/font/personal/albert-sans-normal-0.woff2" as="font" type="font/woff2" crossorigin>
@@ -154,7 +213,8 @@ ${IKON}
     </div>
     <figure class="studio" data-studio>
       <div class="studio-dinding" aria-hidden="true">${studio}</div>
-      <img class="potret" src="/media/foto/potret-warna-800.webp" srcset="/media/foto/potret-warna-520.webp 520w, /media/foto/potret-warna-800.webp 800w" sizes="(min-width: 1000px) 34vw, 82vw" width="800" height="800" alt="Portrait of Sword Ekel" fetchpriority="high" decoding="async">
+      <div class="studio-kabut" aria-hidden="true"></div>
+      <img class="potret" src="${aset('media/foto/potret-warna-800.webp')}" srcset="${aset('media/foto/potret-warna-520.webp')} 520w, ${aset('media/foto/potret-warna-800.webp')} 800w" sizes="(min-width: 1000px) 34vw, 82vw" width="800" height="800" alt="Portrait of Sword Ekel" fetchpriority="high" decoding="async">
       <figcaption class="studio-chip" data-chip aria-live="polite"><i></i><span>Checking my sites…</span></figcaption>
     </figure>
   </section>
@@ -205,7 +265,7 @@ ${IKON}
 
   <section class="kontak" id="kontak" aria-labelledby="h-kontak">
     <div class="kontak-papan">
-      <img class="kontak-potret" src="/media/foto/potret-warna-520.webp" width="520" height="520" alt="" loading="lazy" decoding="async">
+      <img class="kontak-potret" src="${aset('media/foto/potret-warna-520.webp')}" width="520" height="520" alt="" loading="lazy" decoding="async">
       <div class="kontak-teks">
         <h2 id="h-kontak">Hiring, or have a project?</h2>
         <p>${esc(tt(PROFIL.terbuka))} The quickest way to reach me is email.</p>

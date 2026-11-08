@@ -1,0 +1,17 @@
+# Header untuk semua berkas statis di swordekel.arswordlab.com (disalin bangun.mjs ke public/_headers).
+# /media/video/* lewat Worker (worker/index.js) yang memasang header videonya sendiri.
+/*
+  Content-Security-Policy: default-src 'self'; img-src 'self'; media-src 'self'; font-src 'self'; style-src 'self'; script-src 'self'; connect-src 'self' https://arswordlab.com https://*.arswordlab.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()
+  Strict-Transport-Security: max-age=31536000
+  X-Frame-Options: DENY
+  Cross-Origin-Opener-Policy: same-origin
+
+# gambar dan huruf dirujuk dengan penanda versi (?v=isi-berkas) atau tidak pernah berubah namanya
+/media/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/font/*
+  Cache-Control: public, max-age=31536000, immutable

@@ -93,23 +93,39 @@ function putar(v) {
   const p = v.play();
   if (p && p.catch) p.catch(() => {});
 }
+const rasio = new Map();
+const batasPutar = () => (matchMedia('(pointer: coarse)').matches || innerWidth < 760 ? 2 : 6);
+let antreAtur = 0;
+function aturPutar() {
+  antreAtur = 0;
+  const tengah = innerHeight / 2;
+  const calon = [...rasio].filter(([, r]) => r >= 0.3).map(([v, r]) => {
+    const b = v.getBoundingClientRect();
+    return { v, skor: r * 2 - Math.abs(b.top + b.height / 2 - tengah) / innerHeight };
+  }).sort((a, b) => b.skor - a.skor);
+  const pilih = new Set(calon.slice(0, batasPutar()).map((c) => c.v));
+  for (const v of $$('video.vid')) {
+    if (pilih.has(v)) putar(v);
+    else if (!v.paused) v.pause();
+  }
+}
+const jadwalAtur = () => { if (!antreAtur) antreAtur = setTimeout(aturPutar, 120); };
 if ('IntersectionObserver' in window) {
   const pengamat = new IntersectionObserver((daftar) => {
     for (const e of daftar) {
-      const v = e.target;
-      if (e.isIntersecting && e.intersectionRatio >= 0.3) putar(v);
-      else if (!v.paused) v.pause();
+      if (e.isIntersecting) rasio.set(e.target, e.intersectionRatio);
+      else rasio.delete(e.target);
     }
-  }, { threshold: [0, 0.3, 0.6] });
+    jadwalAtur();
+  }, { threshold: [0, 0.3, 0.6, 0.9] });
   for (const v of $$('video.vid')) pengamat.observe(v);
+  addEventListener('scroll', jadwalAtur, { passive: true });
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) for (const v of $$('video.vid')) v.pause(); else jadwalAtur();
+  });
 }
 // iPhone dalam mode hemat daya menolak autoplay: ketukan pertama di halaman mencoba lagi
-addEventListener('touchend', () => {
-  for (const v of $$('video.vid')) {
-    const r = v.getBoundingClientRect();
-    if (r.bottom > 0 && r.top < innerHeight && v.paused) putar(v);
-  }
-}, { once: true, passive: true });
+addEventListener('touchend', () => { if ('IntersectionObserver' in window) aturPutar(); }, { once: true, passive: true });
 
 // penyaring daftar semua situs
 const kisi = $('[data-kisi]');
