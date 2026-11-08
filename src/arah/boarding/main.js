@@ -22,15 +22,17 @@ daftarkan('flap', ({ n = 10, pan = 0 } = {}) => {
   let t = 0;
   for (let i = 0; i < n; i++) {
     t += 0.015 + Math.random() * 0.011;
-    semburan({ waktu: w + t, lama: 0.005, puncak: 0.04 + Math.random() * 0.025, f: 2000 + Math.random() * 1500, q: 1.8, pan });
-    if (i % 4 === 0) nada({ waktu: w + t, f: 150, f2: 95, lama: 0.018, puncak: 0.022, pan });
+    semburan({ waktu: w + t, lama: 0.006, puncak: 0.07 + Math.random() * 0.04, f: 2000 + Math.random() * 1500, q: 1.8, pan });
+    if (i % 4 === 0) nada({ waktu: w + t, f: 520, f2: 330, lama: 0.02, puncak: 0.07, pan });
   }
 });
 // panggilan: dua nada lembut seperti pengumuman terminal, hanya setelah pemeriksaan selesai
 daftarkan('panggil', () => {
   const w = t0();
-  nada({ waktu: w, f: 659.25, lama: 0.55, puncak: 0.03, serang: 0.012 });
-  nada({ waktu: w + 0.34, f: 523.25, lama: 0.8, puncak: 0.026, serang: 0.012 });
+  nada({ waktu: w, f: 659.25, lama: 0.55, puncak: 0.16, serang: 0.012 });
+  nada({ waktu: w, f: 1318.5, lama: 0.3, puncak: 0.05, serang: 0.012 });
+  nada({ waktu: w + 0.34, f: 523.25, lama: 0.8, puncak: 0.14, serang: 0.012 });
+  nada({ waktu: w + 0.34, f: 1046.5, lama: 0.4, puncak: 0.045, serang: 0.012 });
 });
 
 // ---- tombol suara -------------------------------------------------------------------------------------------------
