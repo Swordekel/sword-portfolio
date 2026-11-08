@@ -134,6 +134,12 @@ const BUNYI = {
   kertas: () => semburan({ lama: 0.32, puncak: 0.05, serang: 0.08, jenis: 'bandpass', f: 1400, f2: 700, q: 0.5 }),
 };
 
+// Bahan dasar untuk bunyi buatan sendiri. Panggil HANYA di dalam fungsi yang didaftarkan lewat daftarkan(),
+// karena bunyi() yang memastikan konteks audio sudah berjalan sebelum fungsi itu dipanggil. Contoh:
+//   daftarkan('flap', () => { const w = t0(); for (let i = 0; i < 6; i++) semburan({ waktu: w + i * 0.018, lama: 0.006, puncak: 0.06, f: 2400 }); });
+//   bunyi('flap');
+export { semburan, nada, logam, t0 };
+
 export function daftarkan(nama, fungsi) { BUNYI[nama] = fungsi; }
 
 // bunyi terus-menerus yang dikendalikan langsung (gesekan bilah saat diseret, desis papan flap):
