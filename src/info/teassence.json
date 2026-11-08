@@ -1,0 +1,52 @@
+{
+ "key": "teassence",
+ "url": "https://teassence.arswordlab.com/",
+ "captured": "2026-11-09T02:56:03+07:00",
+ "desk": {
+  "title": "Teassence · Teh Tiongkok, tisane, dan herbal, grosir dan eceran",
+  "description": "Teassence menjual teh Tiongkok, tisane, dan bunga kering pilihan dengan harga grosir. Untuk secangkir di rumah atau ratusan cangkir di kafe. Kabupaten Bekasi, kirim ke seluruh Indonesia.",
+  "themeColor": "#F3EEE3",
+  "lang": "id",
+  "fonts": [
+   "Archivo",
+   "Teassence SC"
+  ],
+  "contexts": [
+   "2d",
+   "webgl",
+   "webgl",
+   "webgl",
+   "2d",
+   "2d",
+   "webgl"
+  ],
+  "requests": 24,
+  "transferBytes": 802088,
+  "canvases": 4,
+  "videos": 0,
+  "height": 10727
+ },
+ "hp": {
+  "title": "Teassence · Teh Tiongkok, tisane, dan herbal, grosir dan eceran",
+  "description": "Teassence menjual teh Tiongkok, tisane, dan bunga kering pilihan dengan harga grosir. Untuk secangkir di rumah atau ratusan cangkir di kafe. Kabupaten Bekasi, kirim ke seluruh Indonesia.",
+  "themeColor": "#F3EEE3",
+  "lang": "id",
+  "fonts": [
+   "Archivo",
+   "Teassence SC"
+  ],
+  "contexts": [
+   "2d",
+   "webgl",
+   "webgl",
+   "webgl",
+   "2d",
+   "2d",
+   "webgl"
+  ],
+  "requests": 24,
+  "transferBytes": 780169,
+  "canvases": 4,
+  "videos": 0
+ }
+}

@@ -1,0 +1,49 @@
+{
+ "key": "bengkelnusantara",
+ "url": "https://bengkelnusantara.arswordlab.com/",
+ "captured": "2026-11-09T02:54:20+07:00",
+ "desk": {
+  "title": "Bengkel Nusantara | Servis mobil di Balikpapan",
+  "description": "Bengkel mobil di Batakan Asri, Balikpapan. Tune up, scan engine, AC, kaki-kaki, cleaner diesel dan bensin, mulai Rp100 ribu. Buka 08.00 sampai 23.59 WITA, terima mekanik panggilan.",
+  "themeColor": "#0E0D0C",
+  "lang": "id",
+  "fonts": [
+   "Archivo"
+  ],
+  "contexts": [
+   "2d",
+   "webgl",
+   "webgl",
+   "2d",
+   "2d",
+   "webgl"
+  ],
+  "requests": 9,
+  "transferBytes": 151667,
+  "canvases": 5,
+  "videos": 0,
+  "height": 10367
+ },
+ "hp": {
+  "title": "Bengkel Nusantara | Servis mobil di Balikpapan",
+  "description": "Bengkel mobil di Batakan Asri, Balikpapan. Tune up, scan engine, AC, kaki-kaki, cleaner diesel dan bensin, mulai Rp100 ribu. Buka 08.00 sampai 23.59 WITA, terima mekanik panggilan.",
+  "themeColor": "#0E0D0C",
+  "lang": "id",
+  "fonts": [
+   "Archivo"
+  ],
+  "contexts": [
+   "2d",
+   "webgl",
+   "webgl",
+   "2d",
+   "2d",
+   "2d",
+   "webgl"
+  ],
+  "requests": 9,
+  "transferBytes": 131341,
+  "canvases": 5,
+  "videos": 0
+ }
+}

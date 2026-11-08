@@ -1,0 +1,44 @@
+{
+ "key": "seraphine",
+ "url": "https://seraphine.arswordlab.com/",
+ "captured": "2026-11-09T02:51:29+07:00",
+ "desk": {
+  "title": "Seraphine — Hand-carved marble sculpture, Yogyakarta",
+  "description": "Seraphine is a small studio in Yogyakarta working in marble and limestone. Figures, busts and commissions, carved by hand.",
+  "themeColor": "#1c1916",
+  "lang": "en",
+  "fonts": [
+   "Cormorant Garamond",
+   "Manrope"
+  ],
+  "contexts": [
+   "webgl",
+   "webgl",
+   "webgl"
+  ],
+  "requests": 27,
+  "transferBytes": 1472745,
+  "canvases": 3,
+  "videos": 0,
+  "height": 15850
+ },
+ "hp": {
+  "title": "Seraphine — Hand-carved marble sculpture, Yogyakarta",
+  "description": "Seraphine is a small studio in Yogyakarta working in marble and limestone. Figures, busts and commissions, carved by hand.",
+  "themeColor": "#1c1916",
+  "lang": "en",
+  "fonts": [
+   "Cormorant Garamond",
+   "Manrope"
+  ],
+  "contexts": [
+   "webgl",
+   "webgl",
+   "webgl"
+  ],
+  "requests": 27,
+  "transferBytes": 1472771,
+  "canvases": 3,
+  "videos": 0
+ }
+}

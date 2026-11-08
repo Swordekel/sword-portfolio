@@ -1,0 +1,152 @@
+{
+  "title": "Pilih dunia visual portfolio Anda",
+  "question": "Undian menetapkan \"Laporan Asesmen\". Pakai itu, ambil alternatif, atau undi ulang. Klik Details di tiap kartu untuk tampilan layar pertamanya.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "Laporan Asesmen",
+      "kicker": "THE ROLL",
+      "lineage": "Laporan security assessment / pentest profesional",
+      "thesis": "Portfolio sebagai laporan asesmen resmi atas 18 situs live Anda: ringkasan eksekutif untuk HR, bukti teknis untuk engineer.",
+      "palette": ["#F6F6F3", "#0D0D0E", "#3A3A3C", "#8C8C88", "#D8D8D4"],
+      "materials": ["lembar laporan bernomor halaman", "tabel bukti dan cap TERVERIFIKASI", "kutipan respons server monospace"],
+      "viewport": "Sampul laporan: ASSESSMENT OF WORK, Sword Ekel, Full-stack Developer. Kotak ringkasan eksekutif berisi 3 temuan dalam bahasa awam (18 situs live, full-stack, 16 dari 18 situs memakai CSP), tombol CV dan Kontak langsung di sampul. Tombol Jalankan pemeriksaan mengecek 18 situs secara live dari browser HR, baris demi baris, dengan bunyi pemindai.",
+      "risk": "Bisa terbaca seperti lamaran posisi security, bukan full-stack; nadanya harus dijaga hangat, bukan birokratis.",
+      "raised": [
+        {"from": "challenger-zone", "raise": "Disiplin nada: satu tangga abu-abu 11 tingkat jadi satu-satunya sistem warna; status dibaca dari tingkat dan arsiran, bukan warna."},
+        {"from": "challenger-vu", "raise": "Balistik: setiap angka live (waktu respons, hitungan) bergerak dengan massa dan redaman, tidak meloncat."},
+        {"from": "challenger-alphabet", "raise": "Sampul dipikul satu grotesk monumental; huruf adalah material utamanya."},
+        {"from": "challenger-forge", "raise": "Satu proyek per baris selebar halaman, semua angka tabular dan berukuran."},
+        {"from": "challenger-comic", "raise": "Ritme: grid hanya disela satu halaman penuh bila ceritanya memang pantas."}
+      ],
+      "wireframe": {"cols": 12, "rows": 10, "regions": [
+        {"label": "kop dokumen", "x": 0, "y": 0, "w": 12, "h": 1},
+        {"label": "judul sampul raksasa", "x": 0, "y": 1, "w": 8, "h": 4, "accent": true},
+        {"label": "ringkasan eksekutif", "x": 0, "y": 5, "w": 7, "h": 3},
+        {"label": "CV + kontak", "x": 0, "y": 8, "w": 7, "h": 2},
+        {"label": "tabel lingkup 18 situs", "x": 8, "y": 1, "w": 4, "h": 9}
+      ]}
+    },
+    {
+      "id": "model-pick",
+      "label": "Gambar Kerja",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "Set gambar kerja arsitek: lembar bernomor, kop gambar, potongan A–A",
+      "thesis": "Setiap situs jadi satu lembar gambar kerja; garis potong seperti bilah pedang membelah tampilan dan memperlihatkan struktur di baliknya.",
+      "palette": ["#F4F4F1", "#0B0B0C", "#8A8A86", "#161618"],
+      "materials": ["kertas gambar dan garis rambut", "kop gambar (title block)", "garis potong dengan panah arah"],
+      "viewport": "Nama Sword Ekel raksasa dibelah garis potong diagonal: bagian atas tinta pekat, bagian bawah kerangka huruf dengan titik dan tuas bezier. Kop gambar di pojok berisi peran, lokasi, status, dan tombol CV. Garis potong bisa diseret, berbunyi seperti bilah.",
+      "risk": "Gaya blueprint insinyur cukup sering dipakai portfolio developer; harus dieksekusi sangat rapi agar tidak klise.",
+      "wireframe": {"cols": 12, "rows": 10, "regions": [
+        {"label": "nav", "x": 0, "y": 0, "w": 12, "h": 1},
+        {"label": "nama dibelah garis potong", "x": 0, "y": 1, "w": 12, "h": 5, "accent": true},
+        {"label": "intro + tombol", "x": 0, "y": 6, "w": 7, "h": 3},
+        {"label": "kop gambar", "x": 8, "y": 6, "w": 4, "h": 4}
+      ]}
+    },
+    {
+      "id": "challenger-boarding",
+      "label": "Boarding Pass + Papan Gate",
+      "verdict": "competitive",
+      "lineage": "Boarding pass bersegmen dan papan gate bandara yang live",
+      "thesis": "Anda adalah boarding pass-nya; 18 situs adalah papan keberangkatan live yang bisa disusun ulang.",
+      "palette": ["#0B0D10", "#1C2127", "#E6E8EB", "#FFFFFF", "#FFD400"],
+      "materials": ["panel netral kontras tinggi", "blok pindai (QR ke CV)", "huruf flap yang bergulir"],
+      "viewport": "Kiri: boarding pass SWORD EKEL, JKT ke FULL-STACK, blok pindai berisi QR ke CV. Kanan: papan LIVE BOARD *.arswordlab.com berisi 18 baris dengan status live; filter menyusun ulang baris di tempat dengan bunyi flap.",
+      "case": "Semua orang kenal bentuknya (unggul di pengenalan), tapi kalah tipis di kejelasan: metafora penerbangan menambah satu lapis terjemahan.",
+      "risk": "Metafora perjalanan tidak berhubungan dengan pekerjaan Anda; bisa terasa gimmick. Kuning hanya untuk perubahan status.",
+      "hero": "https://impeccable.style/worlds/cards/vernacular-ephemera-boarding-pass-and-gate-board-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/vernacular-ephemera-boarding-pass-and-gate-board.webp",
+      "wireframe": {"cols": 12, "rows": 10, "regions": [
+        {"label": "nav", "x": 0, "y": 0, "w": 12, "h": 1},
+        {"label": "boarding pass", "x": 0, "y": 1, "w": 4, "h": 8},
+        {"label": "judul", "x": 4, "y": 1, "w": 4, "h": 4, "accent": true},
+        {"label": "papan live 18 baris", "x": 8, "y": 1, "w": 4, "h": 9}
+      ]}
+    },
+    {
+      "id": "challenger-vu",
+      "label": "Jembatan VU Meter",
+      "verdict": "declined",
+      "lineage": "Deretan VU meter di meja rekaman",
+      "thesis": "18 jarum untuk 18 situs, condong mengikuti waktu respons live.",
+      "palette": ["#EFE6D2", "#111111", "#5A3B22", "#B3261E"],
+      "materials": ["muka meter gading di balik kaca", "rangka kayu walnut"],
+      "viewport": "Deretan 18 meter di bawah nama Anda, jarum bergerak saat situs dicek.",
+      "case": "Cerdas untuk menunjukkan situs live, tapi tidak menjelaskan proyeknya ke HR.",
+      "kept": "Balistik: angka live bergerak dengan massa dan redaman.",
+      "risk": "Skeuomorfis dan berwarna, bertabrakan dengan selera hitam-putih Anda.",
+      "hero": "https://impeccable.style/worlds/cards/signals-instruments-vu-meter-bridge-hero.webp"
+    },
+    {
+      "id": "challenger-zone",
+      "label": "Catatan Paparan Kamar Gelap",
+      "verdict": "declined",
+      "lineage": "Kartu catatan cetak foto di kamar gelap",
+      "thesis": "Lembar tembus pandang bertumpuk dengan arsiran sebagai data.",
+      "palette": ["#F2F2EF", "#7A7A76", "#1B1B1C", "#C2185B"],
+      "materials": ["kertas kalkir", "tangga zona 11 tingkat"],
+      "viewport": "Lembar-lembar proyek bertumpuk miring di atas tangga zona abu-abu.",
+      "case": "HR tidak mengenal catatan kamar gelap; kejelasannya rendah.",
+      "kept": "Tangga abu-abu 11 tingkat sebagai satu-satunya warna.",
+      "risk": "Terlalu esoteris untuk penyaringan cepat."
+    },
+    {
+      "id": "challenger-alphabet",
+      "label": "Badai Huruf",
+      "verdict": "declined",
+      "lineage": "Dunia surealis tempat huruf menjadi cuaca",
+      "thesis": "Huruf berkumpul jadi kata lalu pecah jadi cuaca.",
+      "palette": ["#FFFFFF", "#0A0A0A", "#BFC3C7"],
+      "materials": ["satu grotesk monumental", "partikel huruf"],
+      "viewport": "Nama Anda terurai jadi hujan huruf yang menyusun nama proyek.",
+      "case": "Puitis, tapi terlalu abstrak untuk HR yang membaca cepat.",
+      "kept": "Satu grotesk monumental sebagai material utama.",
+      "risk": "Keterbacaan dikorbankan demi efek."
+    },
+    {
+      "id": "challenger-forge",
+      "label": "Palu Tempa",
+      "verdict": "declined",
+      "lineage": "Bengkel pandai besi dan palu mesin",
+      "thesis": "Setiap proyek ditempa dalam satu pukulan.",
+      "palette": ["#121212", "#5C6166", "#C0392B", "#F5F0E6"],
+      "materials": ["baja panas", "kapur ukur"],
+      "viewport": "Batang besi membara memanjang tiap kali proyek baru muncul.",
+      "case": "Membaca nama Sword terlalu harfiah; nuansa industri berat tidak cocok.",
+      "kept": "Satu proyek per baris, angka tabular dan berukuran.",
+      "risk": "Kesan kasar, jauh dari premium."
+    },
+    {
+      "id": "challenger-comic",
+      "label": "Halaman Komik",
+      "verdict": "declined",
+      "lineage": "Komik pulp dengan titik ben-day",
+      "thesis": "Setiap proyek satu panel komik dengan kotak narasi.",
+      "palette": ["#F4E9C8", "#E53935", "#1E4BA3", "#111111"],
+      "materials": ["titik ben-day", "tinta CMYK meleset"],
+      "viewport": "Grid enam panel, proyek dibaca kiri ke kanan.",
+      "case": "Ceria, tapi bertabrakan dengan selera hitam-putih premium Anda.",
+      "kept": "Halaman penuh hanya bila ceritanya pantas.",
+      "risk": "Main-main untuk audiens HR."
+    }
+  ],
+  "reroll": {"registers": ["safer", "bolder"]},
+  "buildPath": {"value": "code"},
+  "canon": true,
+  "canonCard": {
+    "label": "Standar kategori",
+    "thesis": "Portfolio developer premium yang lazim, dieksekusi serapi Apple atau Linear.",
+    "palette": ["#FFFFFF", "#0A0A0A", "#737373"],
+    "materials": ["grid bersih", "screenshot karya besar"],
+    "viewport": "Nama dan peran di kiri atas, dua tombol, lalu grid karya besar, pengalaman, kontak.",
+    "risk": "Mirip portfolio developer lain, memang begitu rancangannya.",
+    "wireframe": {"cols": 12, "rows": 10, "regions": [
+      {"label": "nav", "x": 0, "y": 0, "w": 12, "h": 1},
+      {"label": "nama + peran", "x": 0, "y": 2, "w": 7, "h": 3, "accent": true},
+      {"label": "tombol", "x": 0, "y": 5, "w": 4, "h": 1},
+      {"label": "grid karya", "x": 0, "y": 7, "w": 12, "h": 3}
+    ]}
+  },
+  "steer": true
+}

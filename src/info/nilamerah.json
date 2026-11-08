@@ -1,0 +1,46 @@
+{
+ "key": "nilamerah",
+ "url": "https://nilamerah.arswordlab.com/",
+ "captured": "2026-11-09T02:52:19+07:00",
+ "desk": {
+  "title": "Supplier Ikan Nila Merah untuk Grosir & B2B",
+  "description": "Budidaya dan supplier ikan nila merah untuk distributor, pedagang grosir, restoran, hotel, katering, dan industri pengolahan. Tanyakan harga grosir dan jadwal panen melalui WhatsApp.",
+  "themeColor": "#140E0C",
+  "lang": "id",
+  "fonts": [
+   "Archivo"
+  ],
+  "contexts": [
+   "2d",
+   "webgl",
+   "webgl",
+   "webgl",
+   "2d"
+  ],
+  "requests": 10,
+  "transferBytes": 365116,
+  "canvases": 4,
+  "videos": 0,
+  "height": 8187
+ },
+ "hp": {
+  "title": "Supplier Ikan Nila Merah untuk Grosir & B2B",
+  "description": "Budidaya dan supplier ikan nila merah untuk distributor, pedagang grosir, restoran, hotel, katering, dan industri pengolahan. Tanyakan harga grosir dan jadwal panen melalui WhatsApp.",
+  "themeColor": "#140E0C",
+  "lang": "id",
+  "fonts": [
+   "Archivo"
+  ],
+  "contexts": [
+   "2d",
+   "webgl",
+   "webgl",
+   "webgl",
+   "2d"
+  ],
+  "requests": 10,
+  "transferBytes": 188253,
+  "canvases": 4,
+  "videos": 0
+ }
+}

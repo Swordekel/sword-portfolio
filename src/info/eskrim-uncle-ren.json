@@ -1,0 +1,48 @@
+{
+ "key": "eskrim-uncle-ren",
+ "url": "https://eskrim-uncle-ren.arswordlab.com/",
+ "captured": "2026-11-09T02:50:47+07:00",
+ "desk": {
+  "title": "Es Krim Pontianak Uncle Ren · Es Krim Kelapa Gading Serpong",
+  "description": "Es krim Pontianak premium homemade di batok kelapa muda, topping gratis, plus pisang goreng dan rujak ebi. Mampir ke Ruko South Goldfinch, Gading Serpong.",
+  "themeColor": "#f8c9db",
+  "lang": "id",
+  "fonts": [
+   "Bricolage Grotesque Variable",
+   "Gochi Hand"
+  ],
+  "contexts": [
+   "webgl2",
+   "webgl2",
+   "offscreen-2d",
+   "webgl2",
+   "offscreen-2d"
+  ],
+  "requests": 28,
+  "transferBytes": 2022277,
+  "canvases": 2,
+  "videos": 0,
+  "height": 7397
+ },
+ "hp": {
+  "title": "Es Krim Pontianak Uncle Ren · Es Krim Kelapa Gading Serpong",
+  "description": "Es krim Pontianak premium homemade di batok kelapa muda, topping gratis, plus pisang goreng dan rujak ebi. Mampir ke Ruko South Goldfinch, Gading Serpong.",
+  "themeColor": "#f8c9db",
+  "lang": "id",
+  "fonts": [
+   "Bricolage Grotesque Variable",
+   "Gochi Hand"
+  ],
+  "contexts": [
+   "webgl2",
+   "webgl2",
+   "offscreen-2d",
+   "webgl2",
+   "offscreen-2d"
+  ],
+  "requests": 28,
+  "transferBytes": 1593411,
+  "canvases": 2,
+  "videos": 0
+ }
+}

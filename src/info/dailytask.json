@@ -1,0 +1,34 @@
+{
+ "key": "dailytask",
+ "url": "https://dailytask.arswordlab.com/",
+ "captured": "2026-11-09T02:56:27+07:00",
+ "desk": {
+  "title": "Masuk · Daily Task",
+  "description": "Jadwal Daily Task: tugas harian setiap staf, centang selesai, dan cek pengawas.",
+  "themeColor": "#EDF7F0",
+  "lang": "id",
+  "fonts": [
+   "Inter"
+  ],
+  "contexts": [],
+  "requests": 19,
+  "transferBytes": 102891,
+  "canvases": 0,
+  "videos": 0,
+  "height": 900
+ },
+ "hp": {
+  "title": "Masuk · Daily Task",
+  "description": "Jadwal Daily Task: tugas harian setiap staf, centang selesai, dan cek pengawas.",
+  "themeColor": "#EDF7F0",
+  "lang": "id",
+  "fonts": [
+   "Inter"
+  ],
+  "contexts": [],
+  "requests": 19,
+  "transferBytes": 102817,
+  "canvases": 0,
+  "videos": 0
+ }
+}

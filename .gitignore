@@ -68,3 +68,13 @@ coverage/
 *.fbx
 *.obj
 .vercel
+
+# ============ Portfolio remake ============
+sumber/tangkap/
+sumber/foto/
+.impeccable/questions/
+.impeccable/review/
+.impeccable/tmp/
+.impeccable/catalog/
+.impeccable/decision/answer.txt
+.impeccable/decision/wait.log

@@ -1,0 +1,44 @@
+{
+ "key": "javaloom",
+ "url": "https://javaloom.arswordlab.com/",
+ "captured": "2026-11-09T02:53:29+07:00",
+ "desk": {
+  "title": "JAVALOOM | Handwoven bamboo and carved teak from Blora",
+  "description": "Handwoven bamboo hamper baskets and hand-carved teak homeware from Blora, Indonesia. Export-ready, custom branding, FOB Surabaya or Semarang.",
+  "themeColor": "#120D09",
+  "lang": "en",
+  "fonts": [
+   "Archivo"
+  ],
+  "contexts": [
+   "2d",
+   "webgl",
+   "webgl",
+   "webgl"
+  ],
+  "requests": 10,
+  "transferBytes": 130130,
+  "canvases": 4,
+  "videos": 1,
+  "height": 10623
+ },
+ "hp": {
+  "title": "JAVALOOM | Handwoven bamboo and carved teak from Blora",
+  "description": "Handwoven bamboo hamper baskets and hand-carved teak homeware from Blora, Indonesia. Export-ready, custom branding, FOB Surabaya or Semarang.",
+  "themeColor": "#120D09",
+  "lang": "en",
+  "fonts": [
+   "Archivo"
+  ],
+  "contexts": [
+   "2d",
+   "webgl",
+   "webgl",
+   "webgl"
+  ],
+  "requests": 10,
+  "transferBytes": 130130,
+  "canvases": 4,
+  "videos": 1
+ }
+}

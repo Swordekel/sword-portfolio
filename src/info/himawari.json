@@ -1,0 +1,46 @@
+{
+ "key": "himawari",
+ "url": "https://himawari.arswordlab.com/",
+ "captured": "2026-11-09T02:52:45+07:00",
+ "desk": {
+  "title": "Himawari Cookies · A Little Bite of Happiness",
+  "description": "Himawari Cookies: Double Chocolate Walnut, Classic Chocolate Chunk, Signature Green, and Fudgy Brownies. Order easily on WhatsApp.",
+  "themeColor": "#fff8ee",
+  "lang": "en",
+  "fonts": [
+   "Fraunces Variable",
+   "Plus Jakarta Sans Variable"
+  ],
+  "contexts": [
+   "webgl2",
+   "webgl2",
+   "offscreen-2d",
+   "2d"
+  ],
+  "requests": 20,
+  "transferBytes": 2660393,
+  "canvases": 1,
+  "videos": 0,
+  "height": 9705
+ },
+ "hp": {
+  "title": "Himawari Cookies · A Little Bite of Happiness",
+  "description": "Himawari Cookies: Double Chocolate Walnut, Classic Chocolate Chunk, Signature Green, and Fudgy Brownies. Order easily on WhatsApp.",
+  "themeColor": "#fff8ee",
+  "lang": "en",
+  "fonts": [
+   "Fraunces Variable",
+   "Plus Jakarta Sans Variable"
+  ],
+  "contexts": [
+   "webgl2",
+   "webgl2",
+   "offscreen-2d",
+   "2d"
+  ],
+  "requests": 21,
+  "transferBytes": 2069627,
+  "canvases": 1,
+  "videos": 0
+ }
+}

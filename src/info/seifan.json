@@ -1,0 +1,58 @@
+{
+ "key": "seifan",
+ "url": "https://seifan.arswordlab.com/",
+ "captured": "2026-11-09T02:55:09+07:00",
+ "desk": {
+  "title": "Seifan Translation | Penerjemah tersumpah Arab, Inggris, Indonesia, Mandarin",
+  "description": "Seifan Translation, penerjemah tersumpah bahasa Arab, Inggris, Indonesia, dan Mandarin. Spesialis dokumen resmi, akademik, dan bisnis, lengkap dengan legalisir dan pengiriman. Hemat dan tepat.",
+  "themeColor": "#101418",
+  "lang": "id",
+  "fonts": [
+   "Archivo",
+   "Seifan Naskh",
+   "Seifan SC"
+  ],
+  "contexts": [
+   "2d",
+   "webgl",
+   "webgl",
+   "2d",
+   "2d",
+   "webgl",
+   "2d",
+   "2d",
+   "2d"
+  ],
+  "requests": 10,
+  "transferBytes": 162488,
+  "canvases": 4,
+  "videos": 0,
+  "height": 10264
+ },
+ "hp": {
+  "title": "Seifan Translation | Penerjemah tersumpah Arab, Inggris, Indonesia, Mandarin",
+  "description": "Seifan Translation, penerjemah tersumpah bahasa Arab, Inggris, Indonesia, dan Mandarin. Spesialis dokumen resmi, akademik, dan bisnis, lengkap dengan legalisir dan pengiriman. Hemat dan tepat.",
+  "themeColor": "#101418",
+  "lang": "id",
+  "fonts": [
+   "Archivo",
+   "Seifan Naskh",
+   "Seifan SC"
+  ],
+  "contexts": [
+   "2d",
+   "webgl",
+   "webgl",
+   "2d",
+   "2d",
+   "webgl",
+   "2d",
+   "2d",
+   "2d"
+  ],
+  "requests": 10,
+  "transferBytes": 162806,
+  "canvases": 4,
+  "videos": 0
+ }
+}

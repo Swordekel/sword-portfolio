@@ -1,0 +1,54 @@
+{
+ "key": "cherish",
+ "url": "https://cherish.arswordlab.com/",
+ "captured": "2026-11-09T02:54:46+07:00",
+ "desk": {
+  "title": "Cherishcom Apple | Titip jual, rekber, dan jual beli Apple sejak 2017",
+  "description": "Cherishcom Apple: titip jual, rekber (rekening bersama), dan beli putus iPhone, iPad, Mac, dan aksesorinya. Lebih dari 30.000 transaksi dan listing sejak 2017, dari Bekasi.",
+  "themeColor": "#0C0C0D",
+  "lang": "id",
+  "fonts": [
+   "Archivo"
+  ],
+  "contexts": [
+   "2d",
+   "2d",
+   "webgl",
+   "webgl",
+   "2d",
+   "webgl",
+   "2d",
+   "2d",
+   "2d"
+  ],
+  "requests": 8,
+  "transferBytes": 100244,
+  "canvases": 4,
+  "videos": 0,
+  "height": 14712
+ },
+ "hp": {
+  "title": "Cherishcom Apple | Titip jual, rekber, dan jual beli Apple sejak 2017",
+  "description": "Cherishcom Apple: titip jual, rekber (rekening bersama), dan beli putus iPhone, iPad, Mac, dan aksesorinya. Lebih dari 30.000 transaksi dan listing sejak 2017, dari Bekasi.",
+  "themeColor": "#0C0C0D",
+  "lang": "id",
+  "fonts": [
+   "Archivo"
+  ],
+  "contexts": [
+   "2d",
+   "2d",
+   "webgl",
+   "webgl",
+   "2d",
+   "webgl",
+   "2d",
+   "2d",
+   "2d"
+  ],
+  "requests": 8,
+  "transferBytes": 100191,
+  "canvases": 4,
+  "videos": 0
+ }
+}

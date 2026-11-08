@@ -1,0 +1,48 @@
+{
+ "key": "tsunagu",
+ "url": "https://tsunagu.arswordlab.com/",
+ "captured": "2026-11-09T02:55:36+07:00",
+ "desk": {
+  "title": "LPK Tsunagu Japan Indonesia · Magang dan Tokutei Ginou ke Jepang",
+  "description": "Lembaga Pelatihan Kerja dan sending organization di Tondano, Minahasa. Pelatihan bahasa Jepang, magang, dan Tokutei Ginou, berangkat dari Manado.",
+  "themeColor": "#0E0F12",
+  "lang": "id",
+  "fonts": [
+   "Archivo",
+   "Noto Sans JP"
+  ],
+  "contexts": [
+   "webgl",
+   "webgl",
+   "webgl",
+   "2d",
+   "webgl"
+  ],
+  "requests": 11,
+  "transferBytes": 365943,
+  "canvases": 4,
+  "videos": 0,
+  "height": 14141
+ },
+ "hp": {
+  "title": "LPK Tsunagu Japan Indonesia · Magang dan Tokutei Ginou ke Jepang",
+  "description": "Lembaga Pelatihan Kerja dan sending organization di Tondano, Minahasa. Pelatihan bahasa Jepang, magang, dan Tokutei Ginou, berangkat dari Manado.",
+  "themeColor": "#0E0F12",
+  "lang": "id",
+  "fonts": [
+   "Archivo",
+   "Noto Sans JP"
+  ],
+  "contexts": [
+   "webgl",
+   "webgl",
+   "webgl",
+   "2d",
+   "webgl"
+  ],
+  "requests": 11,
+  "transferBytes": 366000,
+  "canvases": 4,
+  "videos": 0
+ }
+}

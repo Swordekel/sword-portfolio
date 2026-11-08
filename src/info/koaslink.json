@@ -1,0 +1,34 @@
+{
+ "key": "koaslink",
+ "url": "https://koaslink.arswordlab.com/",
+ "captured": "2026-11-09T02:53:12+07:00",
+ "desk": {
+  "title": "KoasLink",
+  "description": "KoasLink — menghubungkan pasien dengan dokter muda (Co-Ass) Fakultas Kedokteran Gigi untuk perawatan gigi berkualitas.",
+  "themeColor": "#298ea8",
+  "lang": "id",
+  "fonts": [
+   "League Spartan Variable"
+  ],
+  "contexts": [],
+  "requests": 11,
+  "transferBytes": 255581,
+  "canvases": 0,
+  "videos": 0,
+  "height": 900
+ },
+ "hp": {
+  "title": "KoasLink",
+  "description": "KoasLink — menghubungkan pasien dengan dokter muda (Co-Ass) Fakultas Kedokteran Gigi untuk perawatan gigi berkualitas.",
+  "themeColor": "#298ea8",
+  "lang": "id",
+  "fonts": [
+   "League Spartan Variable"
+  ],
+  "contexts": [],
+  "requests": 9,
+  "transferBytes": 240746,
+  "canvases": 0,
+  "videos": 0
+ }
+}

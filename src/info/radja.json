@@ -1,0 +1,42 @@
+{
+ "key": "radja",
+ "url": "https://radja.arswordlab.com/",
+ "captured": "2026-11-09T02:53:54+07:00",
+ "desk": {
+  "title": "RAN | PT Radja Agronesia Nusantara, betel nuts from Jambi",
+  "description": "PT Radja Agronesia Nusantara exports sun-dried split and whole betel nuts (areca nuts) from Jambi, Sumatra. Full containers, FOB, CNF or CIF, T/T or LC at sight.",
+  "themeColor": "#0A1A10",
+  "lang": "en",
+  "fonts": [
+   "Archivo"
+  ],
+  "contexts": [
+   "2d",
+   "webgl",
+   "2d"
+  ],
+  "requests": 14,
+  "transferBytes": 607196,
+  "canvases": 4,
+  "videos": 3,
+  "height": 10156
+ },
+ "hp": {
+  "title": "RAN | PT Radja Agronesia Nusantara, betel nuts from Jambi",
+  "description": "PT Radja Agronesia Nusantara exports sun-dried split and whole betel nuts (areca nuts) from Jambi, Sumatra. Full containers, FOB, CNF or CIF, T/T or LC at sight.",
+  "themeColor": "#0A1A10",
+  "lang": "en",
+  "fonts": [
+   "Archivo"
+  ],
+  "contexts": [
+   "2d",
+   "webgl",
+   "2d"
+  ],
+  "requests": 14,
+  "transferBytes": 501152,
+  "canvases": 4,
+  "videos": 3
+ }
+}

@@ -1,0 +1,40 @@
+{
+ "key": "ashfield",
+ "url": "https://ashfield.arswordlab.com/",
+ "captured": "2026-11-09T02:51:52+07:00",
+ "desk": {
+  "title": "Ashfield — Stillness",
+  "description": "Ashfield is a small studio for direction, film and identity. We work with few clients at a time, from the first sketch to the final grade.",
+  "themeColor": "#0c0b0a",
+  "lang": "en",
+  "fonts": [
+   "Cormorant Garamond",
+   "Jost"
+  ],
+  "contexts": [
+   "webgl"
+  ],
+  "requests": 9,
+  "transferBytes": 4086079,
+  "canvases": 1,
+  "videos": 1,
+  "height": 4320
+ },
+ "hp": {
+  "title": "Ashfield — Stillness",
+  "description": "Ashfield is a small studio for direction, film and identity. We work with few clients at a time, from the first sketch to the final grade.",
+  "themeColor": "#0c0b0a",
+  "lang": "en",
+  "fonts": [
+   "Cormorant Garamond",
+   "Jost"
+  ],
+  "contexts": [
+   "webgl"
+  ],
+  "requests": 9,
+  "transferBytes": 2480016,
+  "canvases": 1,
+  "videos": 1
+ }
+}
