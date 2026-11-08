@@ -29,6 +29,8 @@ node ../arsword-pos/node_modules/wrangler/bin/wrangler.js deploy
 
 The build drops media files that the page does not reference. `alat/media.py` recreates them when they are needed again.
 
+The old address, sword-portfolio.vercel.app, only redirects here: `vercel.json` sends every path (the CV link included) to the same path on swordekel.arswordlab.com with a permanent 308.
+
 ## Earlier directions
 
 `node bangun.mjs gambar` builds one earlier direction into `public/gambar/` for a local look; do not commit that output. Their fonts left `public/font/` at release, so restore them first with `git checkout e886c86 -- public/font/gambar` (or the direction's own name).

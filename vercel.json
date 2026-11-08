@@ -1,0 +1,10 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "",
+  "outputDirectory": "public",
+  "redirects": [
+    { "source": "/", "destination": "https://swordekel.arswordlab.com/", "permanent": true },
+    { "source": "/:path*", "destination": "https://swordekel.arswordlab.com/:path*", "permanent": true }
+  ]
+}
