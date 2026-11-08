@@ -29,6 +29,14 @@ export default function halaman(ctx) {
     return i > 0 ? `${esc(h.slice(0, i))}<span>.arswordlab.com</span>` : esc(h);
   };
   const adaFoto = PROYEK.filter((p) => MEDIA[p.kunci]?.desk);
+  // rekaman layar yang berputar sendiri: dimuat hanya saat kartunya terlihat (main.js), gambar diam di bawahnya
+  const adaVideo = (k, w) => { try { return aset(`media/video/${k}-${w}.mp4`); } catch { return ''; } };
+  const video = (k, besar = false) => {
+    const kecil = adaVideo(k, 640);
+    if (!kecil) return '';
+    const lebar = besar ? adaVideo(k, 1280) : '';
+    return `<video class="vid" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1" data-kecil="${kecil}"${lebar ? ` data-besar="${lebar}"` : ''}></video>`;
+  };
   const csp = PROYEK.filter((p) => PERIKSA.hosts[p.host]?.headers?.['content-security-policy']).length;
 
   // dua kolom tangkapan yang melayang di belakang potret (hiasan; daftar dobel supaya putarannya mulus)
@@ -50,7 +58,7 @@ export default function halaman(ctx) {
     return `
       <article class="karya${i % 2 ? ' balik' : ''}" aria-labelledby="k-${k}">
         <a class="karya-foto" href="${tautan(p)}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
-          ${gambar(k, 'desk', '', '(min-width: 1000px) 56vw, 100vw', 'loading="lazy"')}${demo}
+          ${gambar(k, 'desk', '', '(min-width: 1000px) 56vw, 100vw', 'loading="lazy"')}${video(k, true)}${demo}
         </a>
         <div class="karya-teks">
           <p class="karya-meta"><span class="label" data-s="${p.status}">${esc(tt(STATUS[p.status].label))}</span><span>${esc(tt(p.jenis))}</span><span>${p.tahun}</span></p>
@@ -71,7 +79,7 @@ export default function halaman(ctx) {
   const kartuSemua = PROYEK.map((p) => {
     const ada = !!MEDIA[p.kunci]?.desk;
     const isi = `
-          <span class="mini-foto">${ada ? gambar(p.kunci, 'desk', '', '(min-width: 1100px) 22vw, (min-width: 700px) 30vw, 46vw', 'loading="lazy"') : '<span class="mini-kosong">Sign-in only</span>'}</span>
+          <span class="mini-foto">${ada ? gambar(p.kunci, 'desk', '', '(min-width: 1100px) 22vw, (min-width: 700px) 30vw, 46vw', 'loading="lazy"') + video(p.kunci) : '<span class="mini-kosong">Sign-in only</span>'}</span>
           <span class="mini-nama">${esc(p.nama)}</span>
           <span class="mini-jenis">${esc(tt(p.jenis))}</span>
           <span class="mini-bawah"><span class="label" data-s="${p.status}">${esc(tt(STATUS[p.status].label))}</span><span class="mini-host">${host(p.host)}</span></span>`;

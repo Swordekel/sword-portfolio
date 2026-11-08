@@ -78,3 +78,6 @@ sumber/foto/
 .impeccable/catalog/
 .impeccable/decision/answer.txt
 .impeccable/decision/wait.log
+
+# video masters and frame dumps
+sumber/video/

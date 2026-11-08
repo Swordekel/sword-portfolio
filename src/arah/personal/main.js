@@ -80,6 +80,37 @@ async function cekLive() {
 const mulaiCek = () => cekLive().catch(() => { chipTeks.textContent = '18 sites on arswordlab.com'; chip.classList.remove('tunggu'); });
 if ('requestIdleCallback' in window) requestIdleCallback(mulaiCek, { timeout: 2500 }); else setTimeout(mulaiCek, 1200);
 
+// rekaman layar: setiap video baru diunduh saat kartunya terlihat, berputar selama terlihat, berhenti saat lewat.
+// Tidak diputar otomatis bila pengunjung memilih gerak dikurangi atau mode hemat data.
+const hemat = !!(navigator.connection && navigator.connection.saveData);
+const lebarLayar = matchMedia('(min-width: 701px)');
+function putar(v) {
+  if (gerakKurang.matches || hemat) return;
+  if (!v.src) {
+    v.src = (lebarLayar.matches && v.dataset.besar) || v.dataset.kecil;
+    v.addEventListener('playing', () => v.classList.add('main'), { once: true });
+  }
+  const p = v.play();
+  if (p && p.catch) p.catch(() => {});
+}
+if ('IntersectionObserver' in window) {
+  const pengamat = new IntersectionObserver((daftar) => {
+    for (const e of daftar) {
+      const v = e.target;
+      if (e.isIntersecting && e.intersectionRatio >= 0.3) putar(v);
+      else if (!v.paused) v.pause();
+    }
+  }, { threshold: [0, 0.3, 0.6] });
+  for (const v of $$('video.vid')) pengamat.observe(v);
+}
+// iPhone dalam mode hemat daya menolak autoplay: ketukan pertama di halaman mencoba lagi
+addEventListener('touchend', () => {
+  for (const v of $$('video.vid')) {
+    const r = v.getBoundingClientRect();
+    if (r.bottom > 0 && r.top < innerHeight && v.paused) putar(v);
+  }
+}, { once: true, passive: true });
+
 // penyaring daftar semua situs
 const kisi = $('[data-kisi]');
 for (const t of $$('[data-saring]')) {
