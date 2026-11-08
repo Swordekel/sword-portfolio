@@ -35,6 +35,16 @@ alpha = np.where(bg, 0.0, 1.0)
 alpha = np.where(band, np.minimum(alpha + soft * band, 1.0) * np.where(bg, soft, 1.0), alpha)
 alpha = ndimage.gaussian_filter(alpha, 0.6)
 
+# the outermost pixels of the JPEG keep a blue cast the flood fill misses: clear a thin frame on the top, left and
+# right (the bottom edge is where the shoulders are cut, so it stays), and any strongly blue pixel next to the backdrop
+h, w = alpha.shape
+tepi = 4
+alpha[:tepi, :] = 0
+alpha[:, :tepi] = 0
+alpha[:, w - tepi:] = 0
+dekat = ndimage.binary_dilation(bg, iterations=6)
+alpha = np.where(dekat & (blueness > 55), np.minimum(alpha, np.clip((95 - blueness) / 40.0, 0, 1)), alpha)
+
 # de-spill: pull the blue cast out of edge pixels
 spill = np.clip(b - np.maximum(r, g), 0, None) * (1 - alpha) * 1.2
 b2 = np.clip(b - spill, 0, 255)

@@ -11,6 +11,7 @@ const ARAH = [
   { id: 'gambar', nama: 'Gambar Kerja', baris: 'Nama dan setiap situs dibelah garis potong yang bisa diseret: di atas tampilan jadinya, di bawah kerangka aslinya.' },
   { id: 'boarding', nama: 'Boarding Pass + Papan Gate', baris: 'Anda adalah boarding pass-nya; 18 situs jadi papan keberangkatan live yang bisa disusun ulang.' },
   { id: 'standar', nama: 'Standar Premium', baris: 'Portfolio developer yang lazim, dieksekusi serapi Apple atau Linear.' },
+  { id: 'personal', nama: 'Personal (dari referensi Anda)', baris: 'Foto Anda di depan karya-karya Anda: terang, lega, ramah. Rasa dari referensi, tata letak sendiri.' },
 ];
 
 export default function pilih({ esc, aset, semua }) {
@@ -58,7 +59,7 @@ export default function pilih({ esc, aset, semua }) {
 </head>
 <body>
 <main>
-  <h1>Empat versi, satu isi.</h1>
+  <h1>Lima versi, satu isi.</h1>
   <p>Semua versi memakai data, foto situs, dan suara yang sama. Buka satu per satu, coba seret, klik, dan nyalakan suaranya, lalu pilih yang akan disempurnakan (bahasa Indonesia, uji akhir, dan rilis menyusul untuk versi terpilih).</p>
   <ul>${kartu}
   </ul>
