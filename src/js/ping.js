@@ -7,8 +7,9 @@ export async function cekHost(host, { batas = 8000 } = {}) {
   const timer = setTimeout(() => ctrl.abort(), batas);
   const mulai = performance.now();
   try {
-    await fetch(`https://${host}/favicon.ico?cek=${Date.now().toString(36)}`, {
-      mode: 'no-cors', cache: 'no-store', credentials: 'omit', referrerPolicy: 'no-referrer', signal: ctrl.signal,
+    // HEAD ke halaman utama: setiap situs menjawab 200 di sini (tidak semua punya /favicon.ico, dan 404 mengotori console)
+    await fetch(`https://${host}/?cek=${Date.now().toString(36)}`, {
+      method: 'HEAD', mode: 'no-cors', cache: 'no-store', credentials: 'omit', referrerPolicy: 'no-referrer', signal: ctrl.signal,
     });
     return { ok: true, ms: Math.round(performance.now() - mulai) };
   } catch {

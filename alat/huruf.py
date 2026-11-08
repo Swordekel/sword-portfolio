@@ -1,4 +1,4 @@
-"""Outline the name "Sword Ekel" in Mona Sans for the Gambar Kerja hero: one solid path plus the construction
+"""Outline the name "Sword Ekel" in Hubot Sans for the Gambar Kerja hero: one solid path plus the construction
 (on-curve anchors and bezier handles), so the page can show the same letters as ink and as drawing.
 
     python -I -X utf8 alat/huruf.py [wght] [wdth]
@@ -14,7 +14,7 @@ from fontTools.pens.qu2cuPen import Qu2CuPen
 import uharfbuzz as hb
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-FONT = ROOT / 'public' / 'font' / 'gambar' / 'mona-sans-normal-0.woff2'
+FONT = ROOT / 'public' / 'font' / 'gambar' / 'hubot-sans.woff2'
 OUT = ROOT / 'src' / 'arah' / 'gambar' / 'nama.json'
 
 W = float(sys.argv[1]) if len(sys.argv) > 1 else 780
@@ -93,7 +93,7 @@ def garis(teks):
 
 
 out = {
-    'font': 'Mona Sans', 'wght': W, 'wdth': D, 'upm': upm, 'cap': cap, 'xh': xh, 'asc': asc, 'desc': desc,
+    'font': 'Hubot Sans', 'wght': W, 'wdth': D, 'upm': upm, 'cap': cap, 'xh': xh, 'asc': asc, 'desc': desc,
     # y = 0 at cap height, y = cap at the baseline; x-height line at cap - xh
     'satu': garis('Sword Ekel'),
     'dua': [garis('Sword'), garis('Ekel')],
