@@ -33,6 +33,7 @@ SITES = {
     'seifan':           dict(url='https://seifan.arswordlab.com/', wait=6.0),
     'tsunagu':          dict(url='https://tsunagu.arswordlab.com/', wait=7.0),
     'teassence':        dict(url='https://teassence.arswordlab.com/', wait=6.0),
+    'silibet':          dict(url='https://silibet.arswordlab.com/', wait=7.0),
     'dailytask':        dict(url='https://dailytask.arswordlab.com/', wait=3.0),
     'pos':              dict(url='https://pos.arswordlab.com/', wait=3.0),
 }

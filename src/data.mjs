@@ -23,7 +23,7 @@ export const PROFIL = {
 export const STATUS = {
   produk:  { label: ['Product', 'Produk'], arti: ['My own product, running for real users', 'Produk sendiri, dipakai pengguna sungguhan'] },
   klien:   { label: ['Client', 'Klien'], arti: ['Built for a client', 'Dibuat untuk klien'] },
-  usulan:  { label: ['Proposal', 'Usulan'], arti: ['Design proposal for a real business, not yet approved by them', 'Desain usulan untuk bisnis nyata, belum disetujui pemiliknya'] },
+  usulan:  { label: ['Proposal', 'Usulan'], arti: ['Design proposal for a real business or organization, not yet approved by them', 'Desain usulan untuk bisnis atau organisasi nyata, belum disetujui pemiliknya'] },
   konsep:  { label: ['Concept', 'Konsep'], arti: ['Concept site for a fictional studio', 'Situs konsep untuk studio fiktif'] },
   kuliah:  { label: ['Course project', 'Proyek kuliah'], arti: ['Prototype for a university course', 'Purwarupa untuk mata kuliah'] },
 };
@@ -134,6 +134,17 @@ export const PROYEK = [
       ['Tilapia swim and scatter from your touch in the footer pond, drawn in a fragment shader.', 'Ikan nila berenang dan menghindar dari sentuhan di kolam footer, digambar di fragment shader.'],
     ],
     tekno: ['js', 'webgl', 'workers'],
+  },
+  {
+    kunci: 'silibet', host: 'silibet.arswordlab.com', nama: 'Silibet Kreasi Indonesia', status: 'usulan', tahun: 2026,
+    jenis: ['Organization profile', 'Profil organisasi'],
+    baris: ['Profile for a Betawi cultural community in South Jakarta: WebGL ondel-ondel and a content admin of its own.',
+            'Profil komunitas budaya Betawi di Jakarta Selatan: ondel-ondel WebGL dan panel admin isi sendiri.'],
+    isi: ['Seven pages for Silibet Kreasi Indonesia, the umbrella for Betawi art studios, silat schools and arts communities in Pengadegan: 28 art forms with detail cards, a searchable directory of its member groups, achievements on a dotted world map, and an event planner that fills an invitation and sends it over WhatsApp. In the hero a pair of ondel-ondel follow your cursor with their eyes; the footer is a gambang you can play. Behind it runs an admin panel where staff sign in with a one-time code sent by email, edit each section beside a live preview, publish or restore versions, and upload photos to R2.',
+          'Tujuh halaman untuk Silibet Kreasi Indonesia, wadah sanggar, perguruan silat, dan komunitas seni Betawi di Pengadegan: 28 kesenian dengan kartu detail, direktori anggota yang bisa dicari, prestasi di peta dunia bertitik, dan perencana acara yang mengisi kartu undangan lalu mengirimnya lewat WhatsApp. Di hero, sepasang ondel-ondel mengikuti kursor dengan matanya; footer-nya gambang yang bisa dimainkan. Di belakangnya ada panel admin: pengurus masuk dengan kode sekali pakai lewat email, mengubah tiap bagian di samping pratinjau langsung, menerbitkan atau memulihkan versi, dan mengunggah foto ke R2.'],
+    peran: ['Design and full-stack development, including the admin CMS.', 'Desain dan pengembangan full-stack, termasuk CMS admin.'],
+    poin: [],
+    tekno: ['js', 'webgl', 'workers', 'd1', 'r2'],
   },
   {
     kunci: 'himawari', host: 'himawari.arswordlab.com', nama: 'Himawari Cookies', status: 'usulan', tahun: 2026,

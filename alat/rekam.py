@@ -22,6 +22,7 @@ SITUS = {
     'teassence': dict(url='https://teassence.arswordlab.com/', tunggu=6.0, gerak='aduk'),
     'cherish': dict(url='https://cherish.arswordlab.com/', tunggu=6.0, gerak='lampu'),
     'tsunagu': dict(url='https://tsunagu.arswordlab.com/', tunggu=7.0, gerak='lampu'),
+    'silibet': dict(url='https://silibet.arswordlab.com/', tunggu=7.0, gerak='ondel'),
 }
 W, H = 1600, 900
 
@@ -79,6 +80,13 @@ async def tur(page, gerak):
             await page.wait_for_timeout(38)
         await page.mouse.click(cx, cy)
         await page.wait_for_timeout(600)
+    elif gerak == 'ondel':  # silibet: the ondel-ondel's eyes follow the pointer across the hero, one tap = jolt + petasan
+        for i in range(60):
+            t = i / 59
+            await page.mouse.move(W * (0.14 + 0.72 * t), H * (0.36 + 0.08 * math.sin(t * math.pi)))
+            await page.wait_for_timeout(40)
+        await page.mouse.click(W * 0.885, H * 0.62)
+        await page.wait_for_timeout(1100)
     else:  # lampu: sweep the pointer across the hero object (key light / cursor lamp)
         for i in range(56):
             t = i / 55

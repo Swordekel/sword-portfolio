@@ -8,7 +8,7 @@ A static site with no framework and no dependencies. `bangun.mjs` assembles `src
 
 | Path | What it holds |
 |---|---|
-| `src/data.mjs` | Profile, experience, and the 18 sites on arswordlab.com, each with an honest label (product, client, proposal, concept, course project) |
+| `src/data.mjs` | Profile, experience, and every site on arswordlab.com, each with an honest label (product, client, proposal, concept, course project) |
 | `src/arah/personal/` | The page that ships: markup in `halaman.mjs`, plus `gaya.css`, `main.js`, `ikon.svg` |
 | `src/arah/{laporan,gambar,boarding,standar}/` | Four earlier design directions, kept as source only |
 | `src/js/suara.js` | UI sounds synthesized with the Web Audio API (no audio files), with a mute toggle that is remembered |

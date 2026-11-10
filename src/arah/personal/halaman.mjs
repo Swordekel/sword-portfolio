@@ -1,4 +1,4 @@
-// Arah E, "Personal": berkunjung ke studionya. Orangnya di depan karya yang sudah ia kirim: foto diri dan 18 situs
+// Arah E, "Personal": berkunjung ke studionya. Orangnya di depan karya yang sudah ia kirim: foto diri dan semua situs
 // yang hidup berbagi layar pertama. Terang, lega, ramah. Rasa dari referensi pemilik (foto besar, terang), tata letak
 // sendiri: tanpa intro sapaan, tanpa nama berjalan, tanpa label "Based in", tanpa testimoni contoh.
 
@@ -63,6 +63,15 @@ const IKON = `<svg class="sprite" aria-hidden="true" focusable="false">
 </svg>`;
 const ik = (id, kelas = 'ik') => `<svg class="${kelas}" aria-hidden="true"><use href="#i-${id}"/></svg>`;
 
+// angka dan tanggal dalam kalimat bahasa Inggris (jumlah situs dan tanggal ukur ikut data, tidak ditulis tangan)
+const ANGKA = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve',
+  'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+const PULUHAN = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+const kata = (n) => (n < 20 ? ANGKA[n] : n < 100 ? PULUHAN[Math.floor(n / 10)] + (n % 10 ? `-${ANGKA[n % 10]}` : '') : String(n));
+const Kata = (n) => { const k = kata(n); return k[0].toUpperCase() + k.slice(1); };
+const BULAN = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const tanggal = (iso) => { const [y, m, d] = String(iso).slice(0, 10).split('-').map(Number); return `${d} ${BULAN[m - 1]} ${y}`; };
+
 export default function halaman(ctx) {
   const { DATA, tt, esc, aset, gambar, media, info, PERIKSA, MEDIA, situs = '' } = ctx;
   const { PROFIL, STATUS, TEKNO, PROYEK, PENGALAMAN, PENDIDIKAN } = DATA;
@@ -117,7 +126,7 @@ export default function halaman(ctx) {
             <a class="pil pil-gelap" href="${tautan(p)}" target="_blank" rel="noopener" data-suara="tekan">Visit ${esc(p.host)}${ik('panah')}</a>
             <span class="hidup" data-hidup="${p.host}"><i></i><span>Checking…</span></span>
           </div>
-          ${fakta.length && k !== 'pos' ? `<p class="karya-ukur">Measured 9 Nov 2026: ${fakta.map(esc).join(' · ')}</p>` : ''}
+          ${fakta.length && k !== 'pos' ? `<p class="karya-ukur">Measured ${tanggal((info(k) || {}).captured)}: ${fakta.map(esc).join(' · ')}</p>` : ''}
         </div>
       </article>`;
   }).join('');
@@ -153,7 +162,7 @@ export default function halaman(ctx) {
   const riwayat = [...PENGALAMAN, ...PENDIDIKAN].map((e) => `
           <li><span class="waktu">${esc(tt(e.waktu))}</span><div><b>${esc(tt(e.judul))}</b><span class="tempat">${esc(e.tempat)}</span><p>${esc(tt(e.isi))}</p></div></li>`).join('');
 
-  const desc = 'Sword Ekel, full-stack developer in Jakarta and cyber security student at BINUS University. 18 websites and web apps live on arswordlab.com.';
+  const desc = `Sword Ekel, full-stack developer in Jakarta and cyber security student at BINUS University. ${PROYEK.length} websites and web apps live on arswordlab.com.`;
 
   return `<!doctype html>
 <html lang="en" data-arah="personal">
@@ -199,7 +208,7 @@ ${IKON}
   <section class="sampul" aria-labelledby="h-nama">
     <div class="sampul-teks">
       <h1 id="h-nama"><span>Sword</span> <span>Ekel</span></h1>
-      <p class="pembuka">I build websites and web apps that real businesses use. Eighteen of them are live on arswordlab.com right now.</p>
+      <p class="pembuka">I build websites and web apps that real businesses use. ${Kata(PROYEK.length)} of them are live on arswordlab.com right now.</p>
       <div class="aksi">
         <a class="pil pil-gelap" href="#karya" data-suara="tekan">See my work</a>
         <a class="pil pil-garis" href="${PROFIL.cv}" download data-suara="tekan">${ik('bawah')}Download CV</a>
@@ -242,7 +251,7 @@ ${IKON}
   <section class="bagian" id="alat" aria-labelledby="h-alat">
     <div class="judul">
       <h2 id="h-alat">What I work with</h2>
-      <p>Counted from the sites themselves, not a wish list. ${csp} of the ${PROYEK.length} sites also send a Content-Security-Policy header (checked 9 Nov 2026).</p>
+      <p>Counted from the sites themselves, not a wish list. ${csp} of the ${PROYEK.length} sites also send a Content-Security-Policy header (checked ${tanggal(PERIKSA.measured)}).</p>
     </div>
     <ul class="tekno">${tekno}
     </ul>

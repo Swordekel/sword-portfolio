@@ -1,0 +1,70 @@
+{
+ "key": "silibet",
+ "url": "https://silibet.arswordlab.com/",
+ "captured": "2026-11-10T12:53:48+07:00",
+ "desk": {
+  "title": "Silibet Kreasi Indonesia · Rumah budaya Betawi di Pengadegan, Jakarta Selatan",
+  "description": "Silibet Kreasi Indonesia (SKI) adalah rumah budaya Betawi: wadah sanggar, perguruan silat, dan komunitas seni tradisional di Pengadegan, Pancoran, Jakarta Selatan.",
+  "themeColor": "#0C1612",
+  "lang": "id",
+  "fonts": [
+   "Jakarta"
+  ],
+  "contexts": [
+   "webgl",
+   "webgl",
+   "webgl",
+   "2d",
+   "2d",
+   "2d",
+   "2d",
+   "2d",
+   "2d",
+   "2d",
+   "2d",
+   "2d",
+   "2d",
+   "2d",
+   "2d",
+   "2d",
+   "webgl"
+  ],
+  "requests": 10,
+  "transferBytes": 221456,
+  "canvases": 4,
+  "videos": 0,
+  "height": 12662
+ },
+ "hp": {
+  "title": "Silibet Kreasi Indonesia · Rumah budaya Betawi di Pengadegan, Jakarta Selatan",
+  "description": "Silibet Kreasi Indonesia (SKI) adalah rumah budaya Betawi: wadah sanggar, perguruan silat, dan komunitas seni tradisional di Pengadegan, Pancoran, Jakarta Selatan.",
+  "themeColor": "#0C1612",
+  "lang": "id",
+  "fonts": [
+   "Jakarta"
+  ],
+  "contexts": [
+   "webgl",
+   "webgl",
+   "webgl",
+   "webgl",
+   "2d",
+   "2d",
+   "2d",
+   "2d",
+   "2d",
+   "2d",
+   "2d",
+   "2d",
+   "2d",
+   "2d",
+   "2d",
+   "2d",
+   "2d"
+  ],
+  "requests": 10,
+  "transferBytes": 221476,
+  "canvases": 4,
+  "videos": 0
+ }
+}

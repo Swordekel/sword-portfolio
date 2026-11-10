@@ -21,7 +21,7 @@ Personal portfolio of **Sword Ekel** (full name on the CV: Sword Christ Imanuel 
 
 ## Positioning
 
-Every project shown is a real, live site on his own domain: **18 hosts on arswordlab.com** (the ARSWORD studio site plus 17 subdomains), built and deployed by him on Cloudflare in 2026. A neighbouring junior portfolio of tutorial clones or tribute pages cannot copy that. Security background (BINUS Cyber Security + analyst internship) is the second differentiator: 16 of the 18 sites send a Content-Security-Policy header (measured 2026-11-09; himawari and koaslink do not).
+Every project shown is a real, live site on his own domain: **19 hosts on arswordlab.com** (the ARSWORD studio site plus 18 subdomains), built and deployed by him on Cloudflare in 2026. A neighbouring junior portfolio of tutorial clones or tribute pages cannot copy that. Security background (BINUS Cyber Security + analyst internship) is the second differentiator: 17 of the 19 sites send a Content-Security-Policy header (measured 2026-11-10; himawari and koaslink do not).
 
 ## Operating Context
 
@@ -51,7 +51,7 @@ Contacts: email swordekel@gmail.com; WhatsApp +62 811-1688-303 (as on the CV and
 
 ## Evidence on Hand
 
-- 18 live hosts, all answering 200 on 2026-11-09; per-site security headers recorded in the build data.
+- 19 live hosts, all answering 200 on 2026-11-10; per-site security headers recorded in the build data.
 - Repos and commit history for every site (e.g. arswordlab.com 265 commits since 2026-09-26; NATHA 176; POS monorepo with API, cashier app, owner dashboard, QR menu, ESC/POS package).
 - Existing captures/recordings: `racik-paket-pos/media-source/` (NATHA, Uncle Ren, Seraphine, Ashfield, Himawari), Cloudinary `arsword/karya/*` (also Nila Merah, KoasLink), `video-arsword/hasil/*-rekam-layar-*.mp4` (Javaloom, Radja, Bengkel Nusantara, Seifan).
 - Experience: Cyber Security Analyst intern, PT Inti Siber Net, Feb 2026 – Feb 2027. Freelance web developer, 2025 – now (ARSWORD). Education: BINUS University, S1 Cyber Security (B.Sc.), expected 2027.

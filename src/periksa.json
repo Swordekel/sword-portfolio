@@ -1,9 +1,9 @@
 {
- "measured": "2026-11-09T02:46+07:00",
+ "measured": "2026-11-10T12:55+07:00",
  "hosts": {
   "arswordlab.com": {
    "status": 200,
-   "ms": 125,
+   "ms": 160,
    "headers": {
     "content-security-policy": true,
     "strict-transport-security": true,
@@ -17,7 +17,7 @@
   },
   "pos.arswordlab.com": {
    "status": 200,
-   "ms": 210,
+   "ms": 132,
    "headers": {
     "content-security-policy": true,
     "strict-transport-security": true,
@@ -31,7 +31,7 @@
   },
   "chat.arswordlab.com": {
    "status": 200,
-   "ms": 126,
+   "ms": 160,
    "headers": {
     "content-security-policy": true,
     "strict-transport-security": true,
@@ -45,7 +45,7 @@
   },
   "dailytask.arswordlab.com": {
    "status": 200,
-   "ms": 84,
+   "ms": 110,
    "headers": {
     "content-security-policy": true,
     "strict-transport-security": false,
@@ -59,7 +59,7 @@
   },
   "eskrim-uncle-ren.arswordlab.com": {
    "status": 200,
-   "ms": 122,
+   "ms": 190,
    "headers": {
     "content-security-policy": true,
     "strict-transport-security": false,
@@ -73,7 +73,7 @@
   },
   "nathaniakhow.arswordlab.com": {
    "status": 200,
-   "ms": 118,
+   "ms": 191,
    "headers": {
     "content-security-policy": true,
     "strict-transport-security": false,
@@ -87,7 +87,7 @@
   },
   "nilamerah.arswordlab.com": {
    "status": 200,
-   "ms": 81,
+   "ms": 130,
    "headers": {
     "content-security-policy": true,
     "strict-transport-security": false,
@@ -101,7 +101,7 @@
   },
   "himawari.arswordlab.com": {
    "status": 200,
-   "ms": 103,
+   "ms": 201,
    "headers": {
     "content-security-policy": false,
     "strict-transport-security": false,
@@ -115,7 +115,7 @@
   },
   "javaloom.arswordlab.com": {
    "status": 200,
-   "ms": 116,
+   "ms": 110,
    "headers": {
     "content-security-policy": true,
     "strict-transport-security": false,
@@ -129,7 +129,7 @@
   },
   "radja.arswordlab.com": {
    "status": 200,
-   "ms": 117,
+   "ms": 183,
    "headers": {
     "content-security-policy": true,
     "strict-transport-security": false,
@@ -143,7 +143,7 @@
   },
   "bengkelnusantara.arswordlab.com": {
    "status": 200,
-   "ms": 118,
+   "ms": 154,
    "headers": {
     "content-security-policy": true,
     "strict-transport-security": false,
@@ -157,7 +157,7 @@
   },
   "cherish.arswordlab.com": {
    "status": 200,
-   "ms": 95,
+   "ms": 129,
    "headers": {
     "content-security-policy": true,
     "strict-transport-security": false,
@@ -171,7 +171,7 @@
   },
   "seifan.arswordlab.com": {
    "status": 200,
-   "ms": 122,
+   "ms": 138,
    "headers": {
     "content-security-policy": true,
     "strict-transport-security": false,
@@ -185,7 +185,7 @@
   },
   "tsunagu.arswordlab.com": {
    "status": 200,
-   "ms": 82,
+   "ms": 130,
    "headers": {
     "content-security-policy": true,
     "strict-transport-security": false,
@@ -199,7 +199,7 @@
   },
   "teassence.arswordlab.com": {
    "status": 200,
-   "ms": 92,
+   "ms": 104,
    "headers": {
     "content-security-policy": true,
     "strict-transport-security": false,
@@ -213,7 +213,7 @@
   },
   "seraphine.arswordlab.com": {
    "status": 200,
-   "ms": 105,
+   "ms": 114,
    "headers": {
     "content-security-policy": true,
     "strict-transport-security": false,
@@ -227,7 +227,7 @@
   },
   "ashfield.arswordlab.com": {
    "status": 200,
-   "ms": 110,
+   "ms": 112,
    "headers": {
     "content-security-policy": true,
     "strict-transport-security": false,
@@ -241,7 +241,7 @@
   },
   "koaslink.arswordlab.com": {
    "status": 200,
-   "ms": 113,
+   "ms": 140,
    "headers": {
     "content-security-policy": false,
     "strict-transport-security": false,
@@ -252,6 +252,20 @@
    },
    "server": "cloudflare",
    "noindex": false
+  },
+  "silibet.arswordlab.com": {
+   "status": 200,
+   "ms": 295,
+   "headers": {
+    "content-security-policy": true,
+    "strict-transport-security": false,
+    "x-content-type-options": true,
+    "referrer-policy": true,
+    "permissions-policy": true,
+    "x-frame-options": false
+   },
+   "server": "cloudflare",
+   "noindex": true
   }
  }
 }

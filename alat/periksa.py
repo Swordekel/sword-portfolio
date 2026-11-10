@@ -13,7 +13,7 @@ HOSTS = ['arswordlab.com', 'pos.arswordlab.com', 'chat.arswordlab.com', 'dailyta
          'eskrim-uncle-ren.arswordlab.com', 'nathaniakhow.arswordlab.com', 'nilamerah.arswordlab.com',
          'himawari.arswordlab.com', 'javaloom.arswordlab.com', 'radja.arswordlab.com', 'bengkelnusantara.arswordlab.com',
          'cherish.arswordlab.com', 'seifan.arswordlab.com', 'tsunagu.arswordlab.com', 'teassence.arswordlab.com',
-         'seraphine.arswordlab.com', 'ashfield.arswordlab.com', 'koaslink.arswordlab.com']
+         'seraphine.arswordlab.com', 'ashfield.arswordlab.com', 'koaslink.arswordlab.com', 'silibet.arswordlab.com']
 HEADERS = ['content-security-policy', 'strict-transport-security', 'x-content-type-options', 'referrer-policy',
            'permissions-policy', 'x-frame-options']
 
