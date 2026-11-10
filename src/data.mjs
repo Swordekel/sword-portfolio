@@ -136,7 +136,7 @@ export const PROYEK = [
     tekno: ['js', 'webgl', 'workers'],
   },
   {
-    kunci: 'silibet', host: 'silibet.arswordlab.com', nama: 'Silibet Kreasi Indonesia', status: 'usulan', tahun: 2026,
+    kunci: 'silibet', host: 'silibet.arswordlab.com', nama: 'Silibet Kreasi Indonesia', status: 'klien', tahun: 2026,
     jenis: ['Organization profile', 'Profil organisasi'],
     baris: ['Profile for a Betawi cultural community in South Jakarta: WebGL ondel-ondel and a content admin of its own.',
             'Profil komunitas budaya Betawi di Jakarta Selatan: ondel-ondel WebGL dan panel admin isi sendiri.'],

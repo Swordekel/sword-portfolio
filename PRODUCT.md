@@ -36,7 +36,7 @@ Projects are ONLY the *.arswordlab.com sites (owner, 2026-11-09); the old portfo
 
 Status labels must be truthful:
 - **Product**: arswordlab.com (studio platform), pos.arswordlab.com (ARSWORD POS, in use by Es Krim Uncle Ren), chat.arswordlab.com (part of the studio platform, internal).
-- **Client**: eskrim-uncle-ren, nathaniakhow (NATHA), nilamerah (real client, still sample data), himawari (requested through the ARSWORD dashboard, temporary data), dailytask (staff scheduling app in daily use by an animal shop's team).
+- **Client**: eskrim-uncle-ren, nathaniakhow (NATHA), nilamerah (real client, still sample data), himawari (requested through the ARSWORD dashboard, temporary data), dailytask (staff scheduling app in daily use by an animal shop's team), silibet (Silibet Kreasi Indonesia, a Betawi cultural community organisation; owner confirmed client 2026-11-10, site still a draft).
 - **Proposal** ("Usulan"): javaloom, radja, bengkelnusantara, cherish, seifan, tsunagu, teassence: designs for real businesses not yet approved by them (owner's choice to label them, 2026-11-09).
 - **Concept**: seraphine, ashfield (fictional studios; built from design prototypes).
 - **Course project**: koaslink (HCI course prototype, "Purwarupa").
