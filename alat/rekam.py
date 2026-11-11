@@ -22,7 +22,7 @@ SITUS = {
     'teassence': dict(url='https://teassence.arswordlab.com/', tunggu=6.0, gerak='aduk'),
     'cherish': dict(url='https://cherish.arswordlab.com/', tunggu=6.0, gerak='lampu'),
     'tsunagu': dict(url='https://tsunagu.arswordlab.com/', tunggu=7.0, gerak='lampu'),
-    'silibet': dict(url='https://silibet.arswordlab.com/', tunggu=7.0, gerak='ondel'),
+    'silibet': dict(url='https://silibetkreasiindonesia.com/', tunggu=7.0, gerak='ondel'),
 }
 W, H = 1600, 900
 

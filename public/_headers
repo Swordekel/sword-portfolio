@@ -1,8 +1,9 @@
 # Header untuk semua berkas statis di swordekel.arswordlab.com (disalin bangun.mjs ke public/_headers).
 # /media/video/* lewat Worker (worker/index.js) yang memasang header videonya sendiri.
 # cloudflareinsights: Web Analytics Cloudflare yang disisipkan otomatis di zona arswordlab.com (tanpa cookie).
+# silibetkreasiindonesia.com: domain milik klien Silibet; cek live (js/ping.js) menghubunginya seperti host *.arswordlab.com.
 /*
-  Content-Security-Policy: default-src 'self'; img-src 'self'; media-src 'self'; font-src 'self'; style-src 'self'; script-src 'self' https://static.cloudflareinsights.com; connect-src 'self' https://arswordlab.com https://*.arswordlab.com https://cloudflareinsights.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; img-src 'self'; media-src 'self'; font-src 'self'; style-src 'self'; script-src 'self' https://static.cloudflareinsights.com; connect-src 'self' https://arswordlab.com https://*.arswordlab.com https://silibetkreasiindonesia.com https://cloudflareinsights.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()
